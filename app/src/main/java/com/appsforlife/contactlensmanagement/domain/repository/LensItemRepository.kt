@@ -9,5 +9,6 @@ interface LensItemRepository {
 
     suspend fun deleteLensItem(lensItem: LensItem)
 
-    fun getLensItemList() : LiveData<List<LensItem>>
+    fun getLensItemList(): LiveData<List<LensItem>>
+
 }
