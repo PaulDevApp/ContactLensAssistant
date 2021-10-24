@@ -1,4 +1,4 @@
-package com.appsforlife.contactlensmanagement.presentation
+package com.appsforlife.contactlensmanagement.presentation.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
