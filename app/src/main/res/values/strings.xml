@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Contact lens management</string>
+    <string name="desc_mark">mark</string>
 </resources>

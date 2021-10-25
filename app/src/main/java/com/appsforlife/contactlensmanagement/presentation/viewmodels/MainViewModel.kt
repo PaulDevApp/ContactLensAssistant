@@ -25,6 +25,13 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
             deleteLensItemUseCase.deleteLensItem(lensItem)
         }
     }
+
+    fun addLensItem(){
+        viewModelScope.launch {
+            val lensItem = LensItem(date = "25.10.2021")
+            addLensItemUseCase.addLensItem(lensItem)
+        }
+    }
 }
 
 
