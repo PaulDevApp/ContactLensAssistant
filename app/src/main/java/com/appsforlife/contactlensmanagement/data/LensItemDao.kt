@@ -9,7 +9,7 @@ import androidx.room.Query
 @Dao
 interface LensItemDao {
 
-    @Query("SELECT * FROM lens_item_db_name")
+    @Query("SELECT * FROM lens_item_db_name ORDER BY id DESC")
     fun getLensItemList(): LiveData<List<LensItemDbModel>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
@@ -19,5 +19,8 @@ interface LensItemDao {
     suspend fun deleteLensItem(lensItemId: Int)
 
     @Query("DELETE from lens_item_db_name")
-    fun removeAllLensItems()
+    suspend fun removeAllLensItems()
+
+    @Query("SELECT COUNT(date) FROM lens_item_db_name")
+    fun getRowCount(): LiveData<Int>
 }

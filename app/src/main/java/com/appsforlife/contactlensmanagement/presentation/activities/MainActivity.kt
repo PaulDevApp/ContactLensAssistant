@@ -1,8 +1,9 @@
 package com.appsforlife.contactlensmanagement.presentation.activities
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.lifecycle.AndroidViewModel
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
@@ -10,6 +11,7 @@ import com.appsforlife.contactlensmanagement.R
 import com.appsforlife.contactlensmanagement.databinding.ActivityMainBinding
 import com.appsforlife.contactlensmanagement.presentation.adapter.LensListAdapter
 import com.appsforlife.contactlensmanagement.presentation.viewmodels.MainViewModel
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -25,19 +27,31 @@ class MainActivity : AppCompatActivity() {
         setUpRecyclerView()
 
         mainViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+
         mainViewModel.lensItemList.observe(this) {
             lensListAdapter.submitList(it)
         }
 
+        mainViewModel.numberOfDay.observe(this) {
+            supportActionBar?.subtitle = String.format(resources.getString(R.string.marked_days),
+                it.toString())
+        }
+
         binding.fabMark.setOnClickListener {
             mainViewModel.addLensItem()
+            binding.rvLensItems.smoothScrollToPosition(0)
+        }
+
+        binding.fabDelete.setOnClickListener {
+            mainViewModel.removeAllItems()
         }
     }
+
 
     private fun setUpRecyclerView() {
         lensListAdapter = LensListAdapter()
         binding.rvLensItems.adapter = lensListAdapter
-
+        binding.rvLensItems.setHasFixedSize(true)
         setUpItemTouchHelper(binding.rvLensItems)
     }
 

@@ -7,7 +7,7 @@ import com.appsforlife.contactlensmanagement.domain.entity.LensItem
 import com.appsforlife.contactlensmanagement.domain.repository.LensItemRepository
 
 class LensItemListRepositoryImpl(
-    application: Application
+    application: Application,
 ) : LensItemRepository {
 
     private val lensItemDao = AppDataBase.getInstance(application).lensItemDao()
@@ -25,6 +25,12 @@ class LensItemListRepositoryImpl(
         lensItemDao.getLensItemList()
     ) {
         mapper.mapListDBModelToListEntity(it)
+    }
+
+    override fun getLensItemCount(): LiveData<Int> = lensItemDao.getRowCount()
+
+    override suspend fun removeAllItems() {
+        lensItemDao.removeAllLensItems()
     }
 
 }

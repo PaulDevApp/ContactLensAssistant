@@ -2,12 +2,13 @@ package com.appsforlife.contactlensmanagement.presentation.viewmodels
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.appsforlife.contactlensmanagement.data.LensItemListRepositoryImpl
 import com.appsforlife.contactlensmanagement.domain.entity.LensItem
-import com.appsforlife.contactlensmanagement.domain.usecases.AddLensItemUseCase
-import com.appsforlife.contactlensmanagement.domain.usecases.DeleteLensItemUseCase
-import com.appsforlife.contactlensmanagement.domain.usecases.GetLensItemListUseCase
+import com.appsforlife.contactlensmanagement.domain.usecases.*
+import com.appsforlife.contactlensmanagement.presentation.utils.getCurrentDate
 import kotlinx.coroutines.launch
 
 class MainViewModel(application: Application) : AndroidViewModel(application) {
@@ -17,18 +18,27 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     private val getLensItemListUseCase = GetLensItemListUseCase(repository)
     private val deleteLensItemUseCase = DeleteLensItemUseCase(repository)
     private val addLensItemUseCase = AddLensItemUseCase(repository)
+    private val getLensItemCountUseCase = GetLensItemCountUseCase(repository)
+    private val removeAllItemsUseCase = RemoveAllItemsUseCase(repository)
 
     val lensItemList = getLensItemListUseCase.getLensList()
+    val numberOfDay = getLensItemCountUseCase.getLensItemCount()
 
-    fun deleteLensItem(lensItem: LensItem){
+    fun deleteLensItem(lensItem: LensItem) {
         viewModelScope.launch {
             deleteLensItemUseCase.deleteLensItem(lensItem)
         }
     }
 
-    fun addLensItem(){
+    fun removeAllItems() {
         viewModelScope.launch {
-            val lensItem = LensItem(date = "25.10.2021")
+            removeAllItemsUseCase.removeAllCounts()
+        }
+    }
+
+    fun addLensItem() {
+        viewModelScope.launch {
+            val lensItem = LensItem(date = getCurrentDate())
             addLensItemUseCase.addLensItem(lensItem)
         }
     }

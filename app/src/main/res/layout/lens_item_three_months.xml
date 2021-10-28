@@ -14,9 +14,9 @@
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardCornerRadius="12dp"
+        android:backgroundTint="@color/threeMonthsColor"
         android:elevation="2dp"
-        android:backgroundTint="@color/monthColor"
+        app:cardCornerRadius="12dp"
         app:cardUseCompatPadding="true">
 
         <TextView
