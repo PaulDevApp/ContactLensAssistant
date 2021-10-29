@@ -12,11 +12,14 @@
             android:id="@+id/rv_lens_items"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:layoutAnimation="@anim/layout_animation"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:reverseLayout="true"
+            app:stackFromEnd="true"
             tools:listitem="@layout/lens_item_two_weeks" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -29,6 +32,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
+
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab_delete"
             android:layout_width="56dp"

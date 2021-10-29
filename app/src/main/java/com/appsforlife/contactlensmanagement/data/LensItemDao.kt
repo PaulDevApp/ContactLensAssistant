@@ -9,7 +9,7 @@ import androidx.room.Query
 @Dao
 interface LensItemDao {
 
-    @Query("SELECT * FROM lens_item_db_name ORDER BY id DESC")
+    @Query("SELECT * FROM lens_item_db_name ORDER BY id ASC")
     fun getLensItemList(): LiveData<List<LensItemDbModel>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)

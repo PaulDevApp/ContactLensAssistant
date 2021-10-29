@@ -51,14 +51,14 @@ class LensListAdapter : ListAdapter<LensItem, LensItemViewHolder>(LensItemDiffCa
     }
 
     override fun getItemViewType(position: Int): Int {
-        return when {
-            itemCount <= 14 -> {
+        return when (position) {
+            in 0..13 -> {
                 VIEW_TYPE_TWO_WEEKS
             }
-            itemCount in 15..30 -> {
+            in 14..29 -> {
                 VIEW_TYPE_ONE_MONTH
             }
-            itemCount in 31..90 -> {
+            in 30..89 -> {
                 VIEW_TYPE_THREE_MONTHS
             }
             else -> {

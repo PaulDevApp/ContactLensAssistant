@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/twoWeekColor"
-        android:elevation="2dp"
+        android:elevation="4dp"
         app:cardCornerRadius="12dp"
         app:cardUseCompatPadding="true">
 
