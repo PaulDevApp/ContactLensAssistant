@@ -7,4 +7,9 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="twoWeekColor">#76A492</color>
+    <color name="monthColor">#C3D2C2</color>
+    <color name="threeMonthsColor">#FFE4B3</color>
+    <color name="extraColor">#CE796B</color>
 </resources>

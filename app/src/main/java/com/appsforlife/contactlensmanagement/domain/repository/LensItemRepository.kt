@@ -11,4 +11,7 @@ interface LensItemRepository {
 
     fun getLensItemList(): LiveData<List<LensItem>>
 
+    fun getLensItemCount() : LiveData<Int>
+
+    suspend fun removeAllItems()
 }

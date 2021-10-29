@@ -1,6 +1,10 @@
 package com.appsforlife.contactlensmanagement.domain.entity
 
 data class LensItem(
-    val id: Int,
-    val date: String
-)
+    val date: String,
+    var id: Int = UNDEFINED_ID,
+) {
+    companion object {
+        const val UNDEFINED_ID = 0
+    }
+}

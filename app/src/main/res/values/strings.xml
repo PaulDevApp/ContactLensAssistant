@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Contact lens management</string>
+    <string name="desc_mark">mark</string>
+    <string name="marked_days">marked days: %s</string>
 </resources>
