@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
 
         binding.fabMark.setOnClickListener {
             mainViewModel.addLensItem()
-            if (lensListAdapter.itemCount > 10) {
+            if (lensListAdapter.itemCount > 15) {
                 binding.rvLensItems.smoothScrollToPosition(lensListAdapter.itemCount - 1)
             }
         }
