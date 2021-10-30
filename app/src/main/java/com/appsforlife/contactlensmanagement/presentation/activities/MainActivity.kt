@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
@@ -21,6 +22,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        installSplashScreen()
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -33,7 +35,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         mainViewModel.numberOfDay.observe(this) {
-            supportActionBar?.subtitle = String.format(resources.getString(R.string.marked_days),
+            binding.toolbar.subtitle = String.format(resources.getString(R.string.marked_days),
                 it.toString())
         }
 
@@ -44,9 +46,9 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        binding.fabDelete.setOnClickListener {
-            mainViewModel.removeAllItems()
-        }
+//        binding.fabDelete.setOnClickListener {
+//            mainViewModel.removeAllItems()
+//        }
     }
 
 

@@ -24,6 +24,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
+            android:textColor="@color/colorText"
             android:padding="4dp"
             android:text="@{lensItem.date}"
             android:textSize="17sp"

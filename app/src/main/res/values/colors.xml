@@ -1,15 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">#FF3700B3</color>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="colorPrimaryDay">#FFFFFF</color>
+    <color name="colorPrimaryNight">#212121</color>
+    <color name="colorPrimaryDarkDay">#FFFFFF</color>
+    <color name="colorPrimaryDarkNight">#212121</color>
+    <color name="colorBackgroundDay">#FFFFFF</color>
+    <color name="colorBackgroundNight">#212121</color>
+    <color name="colorSurfaceDay">#FFFFFF</color>
+    <color name="colorSurfaceNight">#212121</color>
+    <color name="colorAccentDay">#B4DEFF</color>
+    <color name="colorAccentNight">#F3EBA2</color>
 
-    <color name="twoWeekColor">#76A492</color>
-    <color name="monthColor">#C3D2C2</color>
-    <color name="threeMonthsColor">#FFE4B3</color>
+    <color name="colorText">#212121</color>
+
+    <color name="twoWeekColor">#D3E0DC</color>
+    <color name="monthColor">#ECE2E1</color>
+    <color name="threeMonthsColor">#FCD1D1</color>
     <color name="extraColor">#CE796B</color>
 </resources>
