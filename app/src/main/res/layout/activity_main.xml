@@ -25,7 +25,6 @@
             android:id="@+id/rv_lens_items"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layoutAnimation="@anim/layout_animation"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
             app:reverseLayout="true"
@@ -39,9 +38,9 @@
             android:layout_gravity="bottom"
             app:fabAlignmentMode="end"
             app:hideOnScroll="true"
-            app:navigationIcon="@drawable/ic_settings"
             app:menu="@menu/menu_bottom"
-            app:layout_scrollFlags="scroll|enterAlways" />
+            app:layout_scrollFlags="scroll|enterAlways"
+            app:navigationIcon="@drawable/ic_settings" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab_mark"

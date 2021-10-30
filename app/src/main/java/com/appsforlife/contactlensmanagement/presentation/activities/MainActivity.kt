@@ -1,6 +1,12 @@
 package com.appsforlife.contactlensmanagement.presentation.activities
 
+import android.content.Intent
 import android.os.Bundle
+import android.speech.RecognizerIntent
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
+import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -12,6 +18,8 @@ import com.appsforlife.contactlensmanagement.R
 import com.appsforlife.contactlensmanagement.databinding.ActivityMainBinding
 import com.appsforlife.contactlensmanagement.presentation.adapter.LensListAdapter
 import com.appsforlife.contactlensmanagement.presentation.viewmodels.MainViewModel
+import java.lang.Exception
+import java.util.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -28,10 +36,16 @@ class MainActivity : AppCompatActivity() {
 
         setUpRecyclerView()
 
+        setSupportActionBar(binding.bottomAppbar)
+
         mainViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+
+        val animation = AnimationUtils.loadLayoutAnimation(this,
+            R.anim.layout_animation)
 
         mainViewModel.lensItemList.observe(this) {
             lensListAdapter.submitList(it)
+            binding.rvLensItems.layoutAnimation = animation
         }
 
         mainViewModel.numberOfDay.observe(this) {
@@ -46,9 +60,26 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-//        binding.fabDelete.setOnClickListener {
-//            mainViewModel.removeAllItems()
-//        }
+        binding.bottomAppbar.setNavigationOnClickListener {
+            Toast.makeText(this, R.string.coming_soon, Toast.LENGTH_SHORT).show()
+        }
+
+    }
+
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        val inflater = menuInflater
+        inflater.inflate(R.menu.menu_bottom, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.menu_restart -> mainViewModel.removeAllItems()
+            R.id.menu_note -> Toast.makeText(
+                this, R.string.coming_soon, Toast.LENGTH_SHORT).show()
+        }
+        return true
     }
 
 
