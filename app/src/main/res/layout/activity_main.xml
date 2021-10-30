@@ -39,6 +39,8 @@
             android:layout_gravity="bottom"
             app:fabAlignmentMode="end"
             app:hideOnScroll="true"
+            app:navigationIcon="@drawable/ic_settings"
+            app:menu="@menu/menu_bottom"
             app:layout_scrollFlags="scroll|enterAlways" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton

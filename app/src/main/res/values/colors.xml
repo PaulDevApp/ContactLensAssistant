@@ -8,11 +8,13 @@
     <color name="colorBackgroundNight">#212121</color>
     <color name="colorSurfaceDay">#FFFFFF</color>
     <color name="colorSurfaceNight">#212121</color>
-    <color name="colorAccentDay">#ac7e62</color>
-    <color name="colorAccentNight">#ba9a88</color>
+    <color name="colorAccentDay">#a3869a</color>
+    <color name="colorAccentNight">#75596f</color>
 
-    <color name="twoWeekColor">#666b3a</color>
-    <color name="monthColor">#adab76</color>
-    <color name="threeMonthsColor">#989e8f</color>
-    <color name="extraColor">#d49c6b</color>
+    <color name="colorText">#212121</color>
+
+    <color name="twoWeekColor">#6e93d6</color>
+    <color name="monthColor">#63a583</color>
+    <color name="threeMonthsColor">#d2bba2</color>
+    <color name="extraColor">#9a532b</color>
 </resources>
