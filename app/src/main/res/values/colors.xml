@@ -11,10 +11,8 @@
     <color name="colorAccentDay">#B4DEFF</color>
     <color name="colorAccentNight">#F3EBA2</color>
 
-    <color name="colorText">#212121</color>
-
-    <color name="twoWeekColor">#D3E0DC</color>
-    <color name="monthColor">#ECE2E1</color>
-    <color name="threeMonthsColor">#FCD1D1</color>
-    <color name="extraColor">#CE796B</color>
+    <color name="twoWeekColor">#0b8eab</color>
+    <color name="monthColor">#85aac5</color>
+    <color name="threeMonthsColor">#887d8a</color>
+    <color name="extraColor">#6f4947</color>
 </resources>
