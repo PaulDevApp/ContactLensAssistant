@@ -22,16 +22,6 @@
                 app:title="@string/app_name" />
         </com.google.android.material.appbar.AppBarLayout>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_lens_items"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior"
-            app:reverseLayout="true"
-            app:stackFromEnd="true"
-            tools:listitem="@layout/lens_item_two_weeks" />
-
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/lottie_empty"
             android:layout_width="wrap_content"
@@ -43,6 +33,16 @@
             app:lottie_loop="true"
             app:lottie_rawRes="@raw/marking" />
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_lens_items"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            app:reverseLayout="true"
+            app:stackFromEnd="true"
+            tools:listitem="@layout/lens_item_two_weeks" />
+
 
         <com.google.android.material.bottomappbar.BottomAppBar
             android:id="@+id/bottom_appbar"
@@ -50,9 +50,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             app:fabAlignmentMode="end"
-            app:hideOnScroll="true"
-            app:fabCradleRoundedCornerRadius="25dp"
             app:fabCradleMargin="12dp"
+            app:fabCradleRoundedCornerRadius="25dp"
+            app:hideOnScroll="true"
             app:layout_scrollFlags="scroll|enterAlways"
             app:menu="@menu/menu_bottom"
             app:navigationIcon="@drawable/ic_settings" />
