@@ -3,6 +3,7 @@ package com.appsforlife.contactlensmanagement.presentation.activities
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -50,22 +51,39 @@ class MainActivity : AppCompatActivity(), DialogClickListener {
         }
 
         mainViewModel.numberOfDay.observe(this) {
-            binding.toolbar.subtitle = String.format(resources.getString(R.string.marked_days),
-                it.toString())
+            setSubTitle(it)
+            setLottieVisibility(it)
         }
 
         binding.fabMark.setOnClickListener {
             val lensItem = LensItem(date = getCurrentDate())
             mainViewModel.addLensItem(lensItem)
-            if (lensListAdapter.itemCount > 15) {
-                binding.rvLensItems.smoothScrollToPosition(lensListAdapter.itemCount - 1)
-            }
+            liftUp(lensListAdapter.itemCount > 15)
         }
 
         binding.bottomAppbar.setNavigationOnClickListener {
             Toast.makeText(this, R.string.toast_coming_soon, Toast.LENGTH_SHORT).show()
         }
 
+    }
+
+    private fun setLottieVisibility(it: Int) {
+        if (it > 0) {
+            binding.lottieEmpty.visibility = View.GONE
+        } else {
+            binding.lottieEmpty.visibility = View.VISIBLE
+        }
+    }
+
+    private fun setSubTitle(it: Int) {
+        binding.toolbar.subtitle = String.format(resources.getString(R.string.marked_days),
+            it.toString())
+    }
+
+    private fun liftUp(isMore: Boolean) {
+        if (isMore) {
+            binding.rvLensItems.smoothScrollToPosition(lensListAdapter.itemCount - 1)
+        }
     }
 
     private fun startAnimationList() {
