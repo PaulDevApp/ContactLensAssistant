@@ -32,17 +32,11 @@ class MainActivity : AppCompatActivity() {
 
         setSupportActionBar(binding.bottomAppbar)
 
-        mainViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
-
-        val animation = AnimationUtils.loadLayoutAnimation(this,
-            R.anim.layout_animation)
+        mainViewModel = ViewModelProvider(this)[MainViewModel::class.java]
 
         mainViewModel.lensItemList.observe(this) {
             lensListAdapter.submitList(it)
-            if (isAnim) {
-                binding.rvLensItems.layoutAnimation = animation
-                isAnim = false
-            }
+            startAnimationList()
         }
 
         mainViewModel.numberOfDay.observe(this) {
@@ -61,6 +55,15 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this, R.string.coming_soon, Toast.LENGTH_SHORT).show()
         }
 
+    }
+
+    private fun startAnimationList() {
+        val animation = AnimationUtils.loadLayoutAnimation(this,
+            R.anim.layout_animation)
+        if (isAnim) {
+            binding.rvLensItems.layoutAnimation = animation
+            isAnim = false
+        }
     }
 
 
