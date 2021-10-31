@@ -2,4 +2,8 @@
     <string name="app_name">Contact lens management</string>
     <string name="desc_mark">mark</string>
     <string name="marked_days">marked days: %s</string>
+    <string name="menu_restart">Restart</string>
+    <string name="menu_note">Note</string>
+    <string name="coming_soon">Coming soon…</string>
+    <string name="menu_help">Help</string>
 </resources>

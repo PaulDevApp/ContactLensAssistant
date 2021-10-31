@@ -3,13 +3,24 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/YandexDisk/Projects_AS/Kotlin course/Contactlensmanagement/app/src/main/res/drawable/back_two_week_to_one_month.xml" value="0.27314814814814814" />
+        <entry key="..\:/YandexDisk/Projects_AS/Kotlin course/Contactlensmanagement/app/src/main/res/drawable/background_transition_from_1_month_to_3_months.xml" value="0.27314814814814814" />
+        <entry key="..\:/YandexDisk/Projects_AS/Kotlin course/Contactlensmanagement/app/src/main/res/drawable/background_transition_from_3_months_extra.xml" value="0.27314814814814814" />
+        <entry key="..\:/YandexDisk/Projects_AS/Kotlin course/Contactlensmanagement/app/src/main/res/drawable/ic_mark.xml" value="0.27314814814814814" />
+        <entry key="..\:/YandexDisk/Projects_AS/Kotlin course/Contactlensmanagement/app/src/main/res/drawable/ic_refresh.xml" value="0.27314814814814814" />
+        <entry key="..\:/YandexDisk/Projects_AS/Kotlin course/Contactlensmanagement/app/src/main/res/drawable/ic_settings.xml" value="0.27314814814814814" />
         <entry key="..\:/YandexDisk/Projects_AS/Kotlin course/Contactlensmanagement/app/src/main/res/layout/activity_main.xml" value="0.27447916666666666" />
         <entry key="..\:/YandexDisk/Projects_AS/Kotlin course/Contactlensmanagement/app/src/main/res/layout/lens_item.xml" value="0.27447916666666666" />
         <entry key="..\:/YandexDisk/Projects_AS/Kotlin course/Contactlensmanagement/app/src/main/res/layout/lens_item_extra.xml" value="0.27447916666666666" />
         <entry key="..\:/YandexDisk/Projects_AS/Kotlin course/Contactlensmanagement/app/src/main/res/layout/lens_item_one_month.xml" value="0.27447916666666666" />
         <entry key="..\:/YandexDisk/Projects_AS/Kotlin course/Contactlensmanagement/app/src/main/res/layout/lens_item_three_months.xml" value="0.27447916666666666" />
+        <entry key="..\:/YandexDisk/Projects_AS/Kotlin course/Contactlensmanagement/app/src/main/res/layout/lens_item_transition_from_1_month_to_3_months.xml" value="0.27447916666666666" />
+        <entry key="..\:/YandexDisk/Projects_AS/Kotlin course/Contactlensmanagement/app/src/main/res/layout/lens_item_transition_from_2_weeks_to_1_month.xml" value="0.27447916666666666" />
+        <entry key="..\:/YandexDisk/Projects_AS/Kotlin course/Contactlensmanagement/app/src/main/res/layout/lens_item_transition_from_3_months_to_extra.xml" value="0.27447916666666666" />
         <entry key="..\:/YandexDisk/Projects_AS/Kotlin course/Contactlensmanagement/app/src/main/res/layout/lens_item_two_week.xml" value="0.27447916666666666" />
         <entry key="..\:/YandexDisk/Projects_AS/Kotlin course/Contactlensmanagement/app/src/main/res/layout/lens_item_two_weeks.xml" value="0.27447916666666666" />
+        <entry key="..\:/YandexDisk/Projects_AS/Kotlin course/Contactlensmanagement/app/src/main/res/menu/menu_bottom.xml" value="0.22685185185185186" />
+        <entry key="..\:/YandexDisk/Projects_AS/Kotlin course/Contactlensmanagement/app/src/main/res/menu/menu_bottomappbar.xml" value="0.27447916666666666" />
       </map>
     </option>
   </component>

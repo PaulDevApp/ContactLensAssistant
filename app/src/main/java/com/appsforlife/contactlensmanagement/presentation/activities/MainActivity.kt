@@ -1,9 +1,12 @@
 package com.appsforlife.contactlensmanagement.presentation.activities
 
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
+import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
@@ -21,19 +24,23 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        installSplashScreen()
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         setUpRecyclerView()
 
-        mainViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+        setSupportActionBar(binding.bottomAppbar)
+
+        mainViewModel = ViewModelProvider(this)[MainViewModel::class.java]
 
         mainViewModel.lensItemList.observe(this) {
             lensListAdapter.submitList(it)
+            startAnimationList()
         }
 
         mainViewModel.numberOfDay.observe(this) {
-            supportActionBar?.subtitle = String.format(resources.getString(R.string.marked_days),
+            binding.toolbar.subtitle = String.format(resources.getString(R.string.marked_days),
                 it.toString())
         }
 
@@ -44,9 +51,37 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        binding.fabDelete.setOnClickListener {
-            mainViewModel.removeAllItems()
+        binding.bottomAppbar.setNavigationOnClickListener {
+            Toast.makeText(this, R.string.coming_soon, Toast.LENGTH_SHORT).show()
         }
+
+    }
+
+    private fun startAnimationList() {
+        val animation = AnimationUtils.loadLayoutAnimation(this,
+            R.anim.layout_animation)
+        if (isAnim) {
+            binding.rvLensItems.layoutAnimation = animation
+            isAnim = false
+        }
+    }
+
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        val inflater = menuInflater
+        inflater.inflate(R.menu.menu_bottom, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.menu_restart -> mainViewModel.removeAllItems()
+            R.id.menu_note -> Toast.makeText(
+                this, R.string.coming_soon, Toast.LENGTH_SHORT).show()
+            R.id.menu_help -> Toast.makeText(
+                this, R.string.coming_soon, Toast.LENGTH_SHORT).show()
+        }
+        return true
     }
 
 
@@ -77,6 +112,10 @@ class MainActivity : AppCompatActivity() {
         }
         val itemTouchHelper = ItemTouchHelper(callBack)
         itemTouchHelper.attachToRecyclerView(rvLensItemList)
+    }
+
+    companion object {
+        private var isAnim = true
     }
 }
 
