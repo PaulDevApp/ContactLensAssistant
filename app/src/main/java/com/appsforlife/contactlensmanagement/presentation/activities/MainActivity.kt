@@ -30,6 +30,8 @@ class MainActivity : AppCompatActivity() {
 
         setUpRecyclerView()
 
+        setUpItemClickListener()
+
         setSupportActionBar(binding.bottomAppbar)
 
         mainViewModel = ViewModelProvider(this)[MainViewModel::class.java]
@@ -52,7 +54,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.bottomAppbar.setNavigationOnClickListener {
-            Toast.makeText(this, R.string.coming_soon, Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, R.string.toast_coming_soon, Toast.LENGTH_SHORT).show()
         }
 
     }
@@ -77,9 +79,9 @@ class MainActivity : AppCompatActivity() {
         when (item.itemId) {
             R.id.menu_restart -> mainViewModel.removeAllItems()
             R.id.menu_note -> Toast.makeText(
-                this, R.string.coming_soon, Toast.LENGTH_SHORT).show()
+                this, R.string.toast_coming_soon, Toast.LENGTH_SHORT).show()
             R.id.menu_help -> Toast.makeText(
-                this, R.string.coming_soon, Toast.LENGTH_SHORT).show()
+                this, R.string.toast_coming_soon, Toast.LENGTH_SHORT).show()
         }
         return true
     }
@@ -112,6 +114,13 @@ class MainActivity : AppCompatActivity() {
         }
         val itemTouchHelper = ItemTouchHelper(callBack)
         itemTouchHelper.attachToRecyclerView(rvLensItemList)
+    }
+
+    private fun setUpItemClickListener(){
+        lensListAdapter.onItemClickListener = {
+            Toast.makeText(
+                this, R.string.toast_click_item, Toast.LENGTH_SHORT).show()
+        }
     }
 
     companion object {

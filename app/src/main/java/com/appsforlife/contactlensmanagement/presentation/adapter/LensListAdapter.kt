@@ -13,6 +13,8 @@ import com.appsforlife.contactlensmanagement.presentation.viewholder.LensItemVie
 
 class LensListAdapter : ListAdapter<LensItem, LensItemViewHolder>(LensItemDiffCallBack()) {
 
+    var onItemClickListener: (() -> Unit)? = null
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LensItemViewHolder {
 
         val layout = when (viewType) {
@@ -37,7 +39,13 @@ class LensListAdapter : ListAdapter<LensItem, LensItemViewHolder>(LensItemDiffCa
 
     override fun onBindViewHolder(holder: LensItemViewHolder, position: Int) {
         val lensItem = getItem(position)
-        when (val binding = holder.binding) {
+        val binding = holder.binding
+
+        binding.root.setOnClickListener {
+            onItemClickListener?.invoke()
+        }
+
+        when (binding) {
             is LensItemTwoWeeksBinding -> {
                 binding.lensItem = lensItem
             }
