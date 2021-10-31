@@ -7,4 +7,8 @@
     <string name="toast_coming_soon">Coming soon…</string>
     <string name="menu_help">Help</string>
     <string name="toast_click_item">Swipe left or right for remove</string>
+    <string name="remove">Remove</string>
+    <string name="to_return">To return</string>
+    <string name="dialog_start_over">Start over?</string>
+    <string name="dialog_action_yes">Yes</string>
 </resources>

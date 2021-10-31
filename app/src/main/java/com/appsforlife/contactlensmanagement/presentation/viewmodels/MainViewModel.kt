@@ -36,9 +36,8 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         }
     }
 
-    fun addLensItem() {
+    fun addLensItem(lensItem: LensItem) {
         viewModelScope.launch {
-            val lensItem = LensItem(date = getCurrentDate())
             addLensItemUseCase.addLensItem(lensItem)
         }
     }

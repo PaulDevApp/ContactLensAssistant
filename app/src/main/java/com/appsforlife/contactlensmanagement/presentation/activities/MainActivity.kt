@@ -12,15 +12,21 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.appsforlife.contactlensmanagement.R
 import com.appsforlife.contactlensmanagement.databinding.ActivityMainBinding
+import com.appsforlife.contactlensmanagement.domain.entity.LensItem
 import com.appsforlife.contactlensmanagement.presentation.adapter.LensListAdapter
+import com.appsforlife.contactlensmanagement.presentation.dialogs.DialogStartOver
+import com.appsforlife.contactlensmanagement.presentation.listeners.DialogClickListener
+import com.appsforlife.contactlensmanagement.presentation.utils.getCurrentDate
 import com.appsforlife.contactlensmanagement.presentation.viewmodels.MainViewModel
+import com.google.android.material.snackbar.Snackbar
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), DialogClickListener {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var mainViewModel: MainViewModel
     private lateinit var lensListAdapter: LensListAdapter
+    private lateinit var dialogStartOver: DialogStartOver
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,6 +39,8 @@ class MainActivity : AppCompatActivity() {
         setUpItemClickListener()
 
         setSupportActionBar(binding.bottomAppbar)
+
+        dialogStartOver = DialogStartOver(this, this)
 
         mainViewModel = ViewModelProvider(this)[MainViewModel::class.java]
 
@@ -47,7 +55,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.fabMark.setOnClickListener {
-            mainViewModel.addLensItem()
+            val lensItem = LensItem(date = getCurrentDate())
+            mainViewModel.addLensItem(lensItem)
             if (lensListAdapter.itemCount > 15) {
                 binding.rvLensItems.smoothScrollToPosition(lensListAdapter.itemCount - 1)
             }
@@ -77,7 +86,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.menu_restart -> mainViewModel.removeAllItems()
+            R.id.menu_restart -> dialogStartOver.createDialogStartOver()
             R.id.menu_note -> Toast.makeText(
                 this, R.string.toast_coming_soon, Toast.LENGTH_SHORT).show()
             R.id.menu_help -> Toast.makeText(
@@ -110,17 +119,34 @@ class MainActivity : AppCompatActivity() {
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 val item = lensListAdapter.currentList[viewHolder.adapterPosition]
                 mainViewModel.deleteLensItem(item)
+                setSnackBar(item)
             }
         }
         val itemTouchHelper = ItemTouchHelper(callBack)
         itemTouchHelper.attachToRecyclerView(rvLensItemList)
     }
 
-    private fun setUpItemClickListener(){
+    private fun setSnackBar(item: LensItem) {
+        Snackbar.make(findViewById(R.id.main_layout),
+            resources.getString(R.string.remove),
+            Snackbar.LENGTH_SHORT)
+            .setAnchorView(R.id.fab_mark)
+            .setActionTextColor(getColor(R.color.colorAccentNight))
+            .setAction(resources.getString(R.string.to_return)
+            ) {
+                mainViewModel.addLensItem(item)
+            }.show()
+    }
+
+    private fun setUpItemClickListener() {
         lensListAdapter.onItemClickListener = {
             Toast.makeText(
                 this, R.string.toast_click_item, Toast.LENGTH_SHORT).show()
         }
+    }
+
+    override fun onDialogClick() {
+        mainViewModel.removeAllItems()
     }
 
     companion object {
