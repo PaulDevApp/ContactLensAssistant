@@ -82,7 +82,7 @@ class MainActivity : AppCompatActivity(), DialogClickListener {
 
     private fun liftUp(isMore: Boolean) {
         if (isMore) {
-            binding.rvLensItems.smoothScrollToPosition(lensListAdapter.itemCount - 1)
+            binding.rvLensItems.smoothScrollToPosition(lensListAdapter.itemCount)
         }
     }
 
