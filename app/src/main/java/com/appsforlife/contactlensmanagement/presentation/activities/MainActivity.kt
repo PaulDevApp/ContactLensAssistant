@@ -13,13 +13,16 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.appsforlife.contactlensmanagement.R
 import com.appsforlife.contactlensmanagement.databinding.ActivityMainBinding
+import com.appsforlife.contactlensmanagement.databinding.LayoutToolbarBinding
 import com.appsforlife.contactlensmanagement.domain.entity.LensItem
 import com.appsforlife.contactlensmanagement.presentation.adapter.LensListAdapter
 import com.appsforlife.contactlensmanagement.presentation.dialogs.DialogStartOver
 import com.appsforlife.contactlensmanagement.presentation.listeners.DialogClickListener
 import com.appsforlife.contactlensmanagement.presentation.utils.getCurrentDate
+import com.appsforlife.contactlensmanagement.presentation.utils.getTitleCurrentDate
 import com.appsforlife.contactlensmanagement.presentation.viewmodels.MainViewModel
 import com.google.android.material.snackbar.Snackbar
+import android.content.res.ColorStateList
 
 
 class MainActivity : AppCompatActivity(), DialogClickListener {
@@ -33,10 +36,13 @@ class MainActivity : AppCompatActivity(), DialogClickListener {
         ActivityMainBinding.inflate(layoutInflater)
     }
 
+    private lateinit var toolbarBinding: LayoutToolbarBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         installSplashScreen()
 
+        toolbarBinding = binding.layoutToolbar
         setContentView(binding.root)
 
         setUpRecyclerView()
@@ -55,13 +61,12 @@ class MainActivity : AppCompatActivity(), DialogClickListener {
         }
 
         mainViewModel.numberOfDay.observe(this) {
-            setSubTitle(it)
+            setMarkedDays(it)
             setLottieVisibility(it)
         }
 
         binding.fabMark.setOnClickListener {
-            val lensItem = LensItem(date = getCurrentDate())
-            mainViewModel.addLensItem(lensItem)
+            mainViewModel.addLensItem(LensItem(date = getCurrentDate()))
             liftUp(lensListAdapter.itemCount > 15)
         }
 
@@ -69,6 +74,12 @@ class MainActivity : AppCompatActivity(), DialogClickListener {
             Toast.makeText(this, R.string.toast_coming_soon, Toast.LENGTH_SHORT).show()
         }
 
+        setTitleCurrentDate()
+
+    }
+
+    private fun setTitleCurrentDate() {
+        toolbarBinding.tvDate.text = getTitleCurrentDate()
     }
 
     private fun setLottieVisibility(it: Int) {
@@ -79,8 +90,11 @@ class MainActivity : AppCompatActivity(), DialogClickListener {
         }
     }
 
-    private fun setSubTitle(it: Int) {
-        binding.toolbar.subtitle = String.format(resources.getString(R.string.marked_days),
+    private fun setMarkedDays(it: Int) {
+        if (it > 90) {
+            toolbarBinding.tvMarkedDays.setTextColor(applicationContext.getColor(R.color.extraColor))
+        }
+        toolbarBinding.tvMarkedDays.text = String.format(resources.getString(R.string.marked_days),
             it.toString())
     }
 
