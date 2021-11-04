@@ -24,15 +24,19 @@ import com.google.android.material.snackbar.Snackbar
 
 class MainActivity : AppCompatActivity(), DialogClickListener {
 
-    private lateinit var binding: ActivityMainBinding
+
     private lateinit var mainViewModel: MainViewModel
     private lateinit var lensListAdapter: LensListAdapter
     private lateinit var dialogStartOver: DialogStartOver
 
+    private val binding by lazy {
+        ActivityMainBinding.inflate(layoutInflater)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         installSplashScreen()
-        binding = ActivityMainBinding.inflate(layoutInflater)
+
         setContentView(binding.root)
 
         setUpRecyclerView()
