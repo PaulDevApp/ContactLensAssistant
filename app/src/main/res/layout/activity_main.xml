@@ -15,7 +15,7 @@
 
             <include
                 android:id="@+id/layout_toolbar"
-                layout="@layout/layout_toolbar" />
+                layout="@layout/layout_toolbar_main" />
         </com.google.android.material.appbar.AppBarLayout>
 
         <com.airbnb.lottie.LottieAnimationView

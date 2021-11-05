@@ -11,4 +11,15 @@
     <string name="to_return">To return</string>
     <string name="dialog_start_over">Start over?</string>
     <string name="dialog_action_yes">Yes</string>
+    <string name="useful_information">Useful information</string>
+    <string name="info_material">Contact lens materials</string>
+    <string name="info_material_description">\t\tHydrogel - lenses with a high moisture content. Recommended for people prone to allergic reactions, since the materials of hydrogel lenses are hypoallergenic;\n\t\tSilicone hydrogel - lenses with high oxygen permeability. In rare cases, they can provoke an allergic reaction.</string>
+    <string name="info_wearing_mode">Wearing mode</string>
+    <string name="info_wearing_mode_description">\t\tDaytime - lenses are worn only during the day, and removed at night\n\t\tFlexible - it is permissible to leave the lenses overnight, but not more than 2 consecutive nights;\n\t\tProlonged - use up to 6 consecutive days is possible. With prolonged wear, the lenses are not removed at night, but after 6 days they must be replaced with a new pair;\n\t\tContinuous - the lenses can be worn for up to a month without taking them off at night.</string>
+    <string name="info_mode_recommendations">Recommendations on the mode of wearing</string>
+    <string name="info_recommendations_description">\t\tDoctors recommend using daytime lenses. They are the safest with regular maintenance. Prolonged use of lenses can limit the access of oxygen to the eyes and provoke the development of pathological conditions.\n\t\tIn addition, pathogenic bacteria accumulate on the lenses, and this is fraught with complications for the eyes.</string>
+    <string name="info_replacement_time">Replacement time</string>
+    <string name="info_replacement_description">\t\tOne-day - every day the patient puts on a new pair, and in the evening he just throws out the lenses; \n\t\tBi-weekly - replacement occurs every two weeks; \n\t\tPeriod; \n\t\tThree-month; \n\t\tAnnual - nowadays they are used extremely rarely due to the higher risk of complications in comparison with planned replacement lenses.</string>
+    <string name="info_recommendations_replacement_time">Recommendations for replacement time</string>
+    <string name="info_recommendations_replacement_description">\t\tOphthalmologists advise to give preference to lenses of a more frequent replacement regime - one day or two weeks. They are safer for the eyes, since they do not have time to accumulate on their surface a large number of bacteria or lipid deposits, which can provoke severe conjunctivitis and keratitis.</string>
 </resources>

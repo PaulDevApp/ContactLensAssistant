@@ -1,0 +1,47 @@
+package com.appsforlife.contactlensmanagement.presentation.fragments
+
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import com.appsforlife.contactlensmanagement.databinding.LayoutInfoBinding
+
+class UsefulInformationFragment : Fragment() {
+
+    private var _binding: LayoutInfoBinding? = null
+    private val binding: LayoutInfoBinding
+        get() = _binding ?: throw RuntimeException("FragmentCoinDetailBinding is null")
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?,
+    ): View {
+        _binding = LayoutInfoBinding.inflate(inflater, container, false)
+        return binding.root
+
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        onBackPressed()
+
+    }
+
+    private fun onBackPressed() {
+        binding.ivBack.setOnClickListener { requireActivity().onBackPressed() }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
+    companion object {
+
+        fun newInstance(): Fragment {
+            return UsefulInformationFragment()
+        }
+    }
+}

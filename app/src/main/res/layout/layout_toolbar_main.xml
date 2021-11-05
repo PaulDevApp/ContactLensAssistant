@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <com.google.android.material.appbar.MaterialToolbar
-        android:id="@+id/toolbar"
+        android:id="@+id/toolbar_main"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="?attr/colorPrimaryDark"
@@ -14,17 +14,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <TextView
+            <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tv_app_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/notosans_bold"
+                style="@style/TextToolbarTitle"
                 android:text="@string/app_name"
-                android:textSize="15sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
+            <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tv_marked_days"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -34,16 +31,16 @@
                 app:layout_constraintTop_toBottomOf="@id/tv_app_name"
                 tools:text="marked days: 4" />
 
-            <TextView
+            <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tv_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="2dp"
                 android:fontFamily="@font/notosans_regular"
-                android:textSize="11sp"
                 android:textColor="?attr/colorSecondary"
-                app:layout_constraintTop_toBottomOf="@id/tv_marked_days"
+                android:textSize="11sp"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_marked_days"
                 tools:text="чт, 4 ноября" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
