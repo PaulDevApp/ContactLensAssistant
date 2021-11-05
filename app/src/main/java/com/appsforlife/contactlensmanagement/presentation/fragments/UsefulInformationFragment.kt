@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import com.appsforlife.contactlensmanagement.databinding.LayoutInfoBinding
 
@@ -11,7 +12,7 @@ class UsefulInformationFragment : Fragment() {
 
     private var _binding: LayoutInfoBinding? = null
     private val binding: LayoutInfoBinding
-        get() = _binding ?: throw RuntimeException("FragmentCoinDetailBinding is null")
+        get() = _binding ?: throw RuntimeException("LayoutInfoBinding is null")
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -25,12 +26,24 @@ class UsefulInformationFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        onBackPressed()
 
+        onBackPressed()
+        onBackPressedCallBack()
     }
 
     private fun onBackPressed() {
-        binding.ivBack.setOnClickListener { requireActivity().onBackPressed() }
+        binding.ivBack.setOnClickListener {
+            requireActivity().supportFragmentManager.popBackStack()
+        }
+    }
+
+    private fun onBackPressedCallBack() {
+        val callback = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                requireActivity().supportFragmentManager.popBackStack()
+            }
+        }
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
     }
 
     override fun onDestroyView() {
@@ -40,7 +53,7 @@ class UsefulInformationFragment : Fragment() {
 
     companion object {
 
-        fun newInstance(): Fragment {
+        fun newInstance(): UsefulInformationFragment {
             return UsefulInformationFragment()
         }
     }

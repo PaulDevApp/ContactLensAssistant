@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimaryDay">#F6F1DB</color>
+    <color name="colorPrimaryDay">#f5f5f5</color>
     <color name="colorPrimaryNight">#131222</color>
-    <color name="colorPrimaryDarkDay">#F6F1DB</color>
+    <color name="colorPrimaryDarkDay">#f5f5f5</color>
     <color name="colorPrimaryDarkNight">#131222</color>
-    <color name="colorBackgroundDay">#F6F1DB</color>
+    <color name="colorBackgroundDay">#f5f5f5</color>
     <color name="colorBackgroundNight">#131222</color>
-    <color name="colorSurfaceDay">#F6F1DB</color>
+    <color name="colorSurfaceDay">#f5f5f5</color>
     <color name="colorSurfaceNight">#131222</color>
-    <color name="colorAccentDay">#a3869a</color>
-    <color name="colorAccentNight">#75596f</color>
+    <color name="colorAccentDay">#75596f</color>
+    <color name="colorAccentNight">#a3869a</color>
 
-    <color name="colorTextLight">#F6F1DB</color>
+    <color name="colorTextLight">#fafafa</color>
     <color name="colorTextDark">#131222</color>
 
     <color name="twoWeekColor">#3A2F87</color>
-    <color name="monthColor">#826FAB</color>
-    <color name="threeMonthsColor">#D5ADA3</color>
+    <color name="monthColor">#7967A1</color>
+    <color name="threeMonthsColor">#B58E84</color>
     <color name="extraColor">#b57351</color>
 </resources>

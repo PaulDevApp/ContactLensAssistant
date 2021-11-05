@@ -22,7 +22,6 @@
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tv_day_of_mark"
             style="@style/TextItem"
-            android:textColor="@color/colorTextDark"
             android:gravity="center"
             android:text="@{lensItem.date}"
             tools:text="26 окт. 2021 г. 1:03:43" />

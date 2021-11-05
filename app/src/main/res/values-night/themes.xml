@@ -1,10 +1,4 @@
-<resources >
-
-    <style name="Theme.MySplash" parent="Theme.SplashScreen">
-        <item name="windowSplashScreenBackground">@color/colorPrimaryDarkNight</item>
-        <item name="windowSplashScreenAnimatedIcon">@mipmap/ic_launcher</item>
-        <item name="postSplashScreenTheme">@style/Theme.ContactLensManagement</item>
-    </style>
+<resources>
 
     <style name="Theme.ContactLensManagement" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="colorPrimary">@color/colorPrimaryNight</item>

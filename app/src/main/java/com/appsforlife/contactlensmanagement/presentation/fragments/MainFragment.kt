@@ -1,18 +1,16 @@
-package com.appsforlife.contactlensmanagement.presentation.activities
+package com.appsforlife.contactlensmanagement.presentation.fragments
 
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
-import android.view.View
+import android.view.*
 import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.appsforlife.contactlensmanagement.R
-import com.appsforlife.contactlensmanagement.databinding.ActivityMainBinding
+import com.appsforlife.contactlensmanagement.databinding.LayoutMainFragmentBinding
 import com.appsforlife.contactlensmanagement.databinding.LayoutToolbarMainBinding
 import com.appsforlife.contactlensmanagement.domain.entity.LensItem
 import com.appsforlife.contactlensmanagement.presentation.adapter.LensListAdapter
@@ -24,42 +22,53 @@ import com.appsforlife.contactlensmanagement.presentation.viewmodels.MainViewMod
 import com.google.android.material.snackbar.Snackbar
 
 
-class MainActivity : AppCompatActivity(), DialogClickListener {
+class MainFragment : Fragment(), DialogClickListener {
 
 
     private lateinit var mainViewModel: MainViewModel
     private lateinit var lensListAdapter: LensListAdapter
     private lateinit var dialogStartOver: DialogStartOver
-
-    private val binding by lazy {
-        ActivityMainBinding.inflate(layoutInflater)
-    }
-
     private lateinit var toolbarBinding: LayoutToolbarMainBinding
+
+    private var _binding: LayoutMainFragmentBinding? = null
+    private val binding: LayoutMainFragmentBinding
+        get() = _binding ?: throw RuntimeException("LayoutMainFragmentBinding is null")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        installSplashScreen()
+        setHasOptionsMenu(true)
+    }
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?,
+    ): View {
+        _binding = LayoutMainFragmentBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         toolbarBinding = binding.layoutToolbar
-        setContentView(binding.root)
 
         setUpRecyclerView()
 
         setUpItemClickListener()
 
-        setSupportActionBar(binding.bottomAppbar)
+        (activity as AppCompatActivity?)?.setSupportActionBar(binding.bottomAppbar)
 
-        dialogStartOver = DialogStartOver(this, this)
+        dialogStartOver = DialogStartOver(requireActivity(), this)
 
         mainViewModel = ViewModelProvider(this)[MainViewModel::class.java]
 
-        mainViewModel.lensItemList.observe(this) {
+        mainViewModel.lensItemList.observe(viewLifecycleOwner) {
             lensListAdapter.submitList(it)
             startAnimationList()
         }
 
-        mainViewModel.numberOfDay.observe(this) {
+        mainViewModel.numberOfDay.observe(viewLifecycleOwner) {
             setMarkedDays(it)
             setLottieVisibility(it)
         }
@@ -70,7 +79,7 @@ class MainActivity : AppCompatActivity(), DialogClickListener {
         }
 
         binding.bottomAppbar.setNavigationOnClickListener {
-            Toast.makeText(this, R.string.toast_coming_soon, Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), R.string.toast_coming_soon, Toast.LENGTH_SHORT).show()
         }
 
         setTitleCurrentDate()
@@ -81,55 +90,14 @@ class MainActivity : AppCompatActivity(), DialogClickListener {
         toolbarBinding.tvDate.text = getTitleCurrentDate()
     }
 
-    private fun setLottieVisibility(it: Int) {
-        if (it > 0) {
-            binding.lottieEmpty.visibility = View.GONE
-        } else {
-            binding.lottieEmpty.visibility = View.VISIBLE
-        }
-    }
-
-    private fun setMarkedDays(it: Int) {
-        if (it > 90) {
-            toolbarBinding.tvMarkedDays.setTextColor(applicationContext.getColor(R.color.extraColor))
-        }
-        toolbarBinding.tvMarkedDays.text = String.format(resources.getString(R.string.marked_days),
-            it.toString())
-    }
-
-    private fun liftUp(isMore: Boolean) {
-        if (isMore) {
-            binding.rvLensItems.smoothScrollToPosition(lensListAdapter.itemCount)
-        }
-    }
-
     private fun startAnimationList() {
-        val animation = AnimationUtils.loadLayoutAnimation(this,
+        val animation = AnimationUtils.loadLayoutAnimation(requireContext(),
             R.anim.layout_animation)
         if (isAnim) {
             binding.rvLensItems.layoutAnimation = animation
             isAnim = false
         }
     }
-
-
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        val inflater = menuInflater
-        inflater.inflate(R.menu.menu_bottom, menu)
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.menu_restart -> dialogStartOver.createDialogStartOver()
-            R.id.menu_note -> Toast.makeText(
-                this, R.string.toast_coming_soon, Toast.LENGTH_SHORT).show()
-            R.id.menu_help -> Toast.makeText(
-                this, R.string.toast_coming_soon, Toast.LENGTH_SHORT).show()
-        }
-        return true
-    }
-
 
     private fun setUpRecyclerView() {
         lensListAdapter = LensListAdapter()
@@ -162,11 +130,11 @@ class MainActivity : AppCompatActivity(), DialogClickListener {
     }
 
     private fun setSnackBar(item: LensItem) {
-        Snackbar.make(findViewById(R.id.main_layout),
+        Snackbar.make(binding.mainLayout,
             resources.getString(R.string.remove),
             Snackbar.LENGTH_SHORT)
             .setAnchorView(R.id.fab_mark)
-            .setActionTextColor(getColor(R.color.colorAccentNight))
+            .setActionTextColor(requireActivity().getColor(R.color.colorAccentNight))
             .setAction(resources.getString(R.string.to_return)
             ) {
                 mainViewModel.addLensItem(item)
@@ -176,17 +144,72 @@ class MainActivity : AppCompatActivity(), DialogClickListener {
     private fun setUpItemClickListener() {
         lensListAdapter.onItemClickListener = {
             Toast.makeText(
-                this, R.string.toast_click_item, Toast.LENGTH_SHORT).show()
+                requireContext(), R.string.toast_click_item, Toast.LENGTH_SHORT).show()
         }
+    }
+
+    private fun setMarkedDays(it: Int) {
+        if (it > 90) {
+            toolbarBinding.tvMarkedDays.setTextColor(requireActivity().getColor(R.color.extraColor))
+        }
+        toolbarBinding.tvMarkedDays.text = String.format(resources.getString(R.string.marked_days),
+            it.toString())
+    }
+
+    private fun setLottieVisibility(it: Int) {
+        if (it > 0) {
+            binding.lottieEmpty.visibility = View.GONE
+        } else {
+            binding.lottieEmpty.visibility = View.VISIBLE
+        }
+    }
+
+    private fun liftUp(isMore: Boolean) {
+        if (isMore) {
+            binding.rvLensItems.smoothScrollToPosition(lensListAdapter.itemCount)
+        }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.menu_bottom, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.menu_restart -> dialogStartOver.createDialogStartOver()
+            R.id.menu_note -> Toast.makeText(
+                requireContext(), R.string.toast_coming_soon, Toast.LENGTH_SHORT).show()
+            R.id.menu_help -> launchUsefulInformationFragment()
+        }
+        return true
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     override fun onDialogClick() {
         mainViewModel.removeAllItems()
     }
 
+    private fun launchUsefulInformationFragment() {
+        requireActivity().supportFragmentManager.beginTransaction()
+            .setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out)
+            .replace(R.id.fragment_container, UsefulInformationFragment.newInstance())
+            .addToBackStack(null)
+            .commit()
+    }
+
     companion object {
         private var isAnim = true
+
+        fun newInstance(): MainFragment {
+            return MainFragment()
+        }
     }
+
 }
 
 
