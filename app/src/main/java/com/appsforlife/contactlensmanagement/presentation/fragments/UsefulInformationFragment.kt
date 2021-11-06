@@ -6,12 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
-import com.appsforlife.contactlensmanagement.databinding.LayoutInfoBinding
+import com.appsforlife.contactlensmanagement.databinding.LayoutInfoFragmentBinding
 
 class UsefulInformationFragment : Fragment() {
 
-    private var _binding: LayoutInfoBinding? = null
-    private val binding: LayoutInfoBinding
+    private var _binding: LayoutInfoFragmentBinding? = null
+    private val binding: LayoutInfoFragmentBinding
         get() = _binding ?: throw RuntimeException("LayoutInfoBinding is null")
 
     override fun onCreateView(
@@ -19,7 +19,7 @@ class UsefulInformationFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View {
-        _binding = LayoutInfoBinding.inflate(inflater, container, false)
+        _binding = LayoutInfoFragmentBinding.inflate(inflater, container, false)
         return binding.root
 
     }

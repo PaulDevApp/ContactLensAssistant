@@ -1,8 +1,10 @@
 package com.appsforlife.contactlensmanagement.presentation.fragments
 
+import android.animation.ObjectAnimator
 import android.os.Bundle
 import android.view.*
 import android.view.animation.AnimationUtils
+import android.view.animation.BounceInterpolator
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -70,12 +72,14 @@ class MainFragment : Fragment(), DialogClickListener {
 
         mainViewModel.numberOfDay.observe(viewLifecycleOwner) {
             setMarkedDays(it)
-            setLottieVisibility(it)
+            setLottieAndMenuItemVisibility(it)
         }
 
         binding.fabMark.setOnClickListener {
             mainViewModel.addLensItem(LensItem(date = getCurrentDate()))
             liftUp(lensListAdapter.itemCount > 15)
+            startFabAnimation()
+
         }
 
         binding.bottomAppbar.setNavigationOnClickListener {
@@ -84,6 +88,13 @@ class MainFragment : Fragment(), DialogClickListener {
 
         setTitleCurrentDate()
 
+    }
+
+    private fun startFabAnimation() {
+        val animY = ObjectAnimator.ofFloat(binding.fabMark, "translationY", -100f, 0f)
+        animY.duration = 1000
+        animY.interpolator = BounceInterpolator()
+        animY.start()
     }
 
     private fun setTitleCurrentDate() {
@@ -156,11 +167,13 @@ class MainFragment : Fragment(), DialogClickListener {
             it.toString())
     }
 
-    private fun setLottieVisibility(it: Int) {
+    private fun setLottieAndMenuItemVisibility(it: Int) {
         if (it > 0) {
             binding.lottieEmpty.visibility = View.GONE
+            menuRestartItem.isVisible = true
         } else {
             binding.lottieEmpty.visibility = View.VISIBLE
+            menuRestartItem.isVisible = false
         }
     }
 
@@ -172,6 +185,7 @@ class MainFragment : Fragment(), DialogClickListener {
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.menu_bottom, menu)
+        menuRestartItem = menu.findItem(R.id.menu_restart)
         super.onCreateOptionsMenu(menu, inflater)
     }
 
@@ -204,6 +218,7 @@ class MainFragment : Fragment(), DialogClickListener {
 
     companion object {
         private var isAnim = true
+        private lateinit var menuRestartItem: MenuItem
 
         fun newInstance(): MainFragment {
             return MainFragment()

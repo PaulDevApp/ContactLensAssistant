@@ -5,14 +5,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.OnBackPressedCallback
+import android.view.animation.AnimationUtils
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.lifecycleScope
 import com.appsforlife.contactlensmanagement.R
-import com.appsforlife.contactlensmanagement.databinding.LayoutInfoBinding
 import com.appsforlife.contactlensmanagement.databinding.LayoutSplashscreenFragmentBinding
-import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -36,13 +33,20 @@ class SplashScreenFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        startLogoAnimation()
+
         lifecycleScope.launch {
             launchMainFragment()
         }
     }
 
+    private fun startLogoAnimation() {
+        binding.tvLogo.animation = AnimationUtils.loadAnimation(context,
+            R.anim.bottom_anim)
+    }
+
     private suspend fun launchMainFragment() {
-        delay(1000)
+        delay(600)
         requireActivity().supportFragmentManager.beginTransaction()
             .replace(R.id.fragment_container, MainFragment.newInstance())
             .commit()
