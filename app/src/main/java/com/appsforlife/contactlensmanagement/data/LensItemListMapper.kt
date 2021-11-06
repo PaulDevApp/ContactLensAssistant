@@ -9,7 +9,7 @@ class LensItemListMapper {
         date = lensItem.date
     )
 
-    fun mapDbModelToEntity(lensItemDbModel: LensItemDbModel) = LensItem(
+    private fun mapDbModelToEntity(lensItemDbModel: LensItemDbModel) = LensItem(
         id = lensItemDbModel.id,
         date = lensItemDbModel.date
     )

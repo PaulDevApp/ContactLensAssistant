@@ -2,13 +2,10 @@ package com.appsforlife.contactlensmanagement.presentation.viewmodels
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.appsforlife.contactlensmanagement.data.LensItemListRepositoryImpl
 import com.appsforlife.contactlensmanagement.domain.entity.LensItem
 import com.appsforlife.contactlensmanagement.domain.usecases.*
-import com.appsforlife.contactlensmanagement.presentation.utils.getCurrentDate
 import kotlinx.coroutines.launch
 
 class MainViewModel(application: Application) : AndroidViewModel(application) {
@@ -36,9 +33,8 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         }
     }
 
-    fun addLensItem() {
+    fun addLensItem(lensItem: LensItem) {
         viewModelScope.launch {
-            val lensItem = LensItem(date = getCurrentDate())
             addLensItemUseCase.addLensItem(lensItem)
         }
     }

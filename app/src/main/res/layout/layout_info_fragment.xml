@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/iv_back"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="15dp"
+                    android:src="@drawable/ic_backspace" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    style="@style/TextToolbarTitle"
+                    android:text="@string/useful_information" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </com.google.android.material.appbar.MaterialToolbar>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <com.google.android.material.textview.MaterialTextView
+                    style="@style/TextTitleInfo"
+                    android:text="@string/info_material" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    style="@style/TextTitleInfoDesc"
+                    android:text="@string/info_material_description" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    style="@style/TextTitleInfo"
+                    android:text="@string/info_wearing_mode" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    style="@style/TextTitleInfoDesc"
+                    android:text="@string/info_wearing_mode_description" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    style="@style/TextTitleInfo"
+                    android:text="@string/info_mode_recommendations" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    style="@style/TextTitleInfoDesc"
+                    android:text="@string/info_recommendations_description" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    style="@style/TextTitleInfo"
+                    android:text="@string/info_replacement_time" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    style="@style/TextTitleInfoDesc"
+                    android:text="@string/info_replacement_description" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    style="@style/TextTitleInfo"
+                    android:text="@string/info_recommendations_replacement_time" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    style="@style/TextTitleInfoDesc"
+                    android:text="@string/info_recommendations_replacement_description" />
+
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </ScrollView>
+
+    </LinearLayout>
+</layout>
