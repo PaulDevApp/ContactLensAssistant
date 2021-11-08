@@ -25,7 +25,7 @@ _useful information_
     implementation 'com.airbnb.android:lottie:3.7.2'
 #### The app is still under development, new features coming soon  
 ##### Screen
-![Alt-текст](https://github.com/PaulDevApp/ContactLensManagement/issues/8#issue-1047070923)
+![Alt-текст](https://user-images.githubusercontent.com/62378496/140694856-1acd0455-4f5d-49cc-b9cc-1b6d5a5737dd.jpg)
 
 
 
