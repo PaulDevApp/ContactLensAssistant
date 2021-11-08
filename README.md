@@ -25,7 +25,7 @@ _useful information_
     implementation 'com.airbnb.android:lottie:3.7.2'
 #### The app is still under development, new features coming soon  
 ##### Screen
-![Alt-текст](https://user-images.githubusercontent.com/62378496/140694856-1acd0455-4f5d-49cc-b9cc-1b6d5a5737dd.jpg)
+![Alt-текст](https://user-images.githubusercontent.com/62378496/140696414-63297d45-c43b-4d16-9eed-ceb323377d83.png)
 
 
 
