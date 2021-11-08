@@ -2,9 +2,9 @@
 # Contact lens assistant  
 Application for people who wear contact lenses
 ## Key features:
-_mark the days_    
-_write down the parameters of the contact lenses_  
-_useful information_     
+_-mark the days_    
+_-write down the parameters of the contact lenses_  
+_-useful information_     
 ### Dependency   
 ...  
 
