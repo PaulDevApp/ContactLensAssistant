@@ -25,7 +25,7 @@ _-useful information_
     implementation 'com.airbnb.android:lottie:3.7.2'
 #### Download the app
 https://play.google.com/store/apps/details?id=com.appsforlife.contactlensmanagement
-_The app is still under development, new features coming soon_  
+_The app is still under development, new features coming soon_   
 ##### Screen list
 ![Alt-текст](https://user-images.githubusercontent.com/62378496/140696414-63297d45-c43b-4d16-9eed-ceb323377d83.png)
 ![Alt-текст](https://user-images.githubusercontent.com/62378496/140696425-2bbeed2c-d7c5-4bb8-8651-f921bfb9575a.png)
