@@ -1,5 +1,4 @@
 <resources>
-    <string name="app_name">Помощник по контактным линзам</string>
     <string name="desc_mark">отметка</string>
     <string name="marked_days">отмеченные дни: %s</string>
     <string name="menu_restart">Сбросить</string>

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Contact lens assistant</string>
+    <string name="app_name" translatable="false">Contact lens assistant</string>
     <string name="desc_mark">mark</string>
     <string name="marked_days">marked days: %s</string>
     <string name="menu_restart">Restart</string>
