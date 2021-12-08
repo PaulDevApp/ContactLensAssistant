@@ -42,7 +42,9 @@ class SplashScreenFragment : Fragment() {
 
     private fun startLogoAnimation() {
         binding.tvLogo.animation = AnimationUtils.loadAnimation(context,
-            R.anim.bottom_anim)
+            R.anim.fall_down)
+        binding.ivLogo.animation = AnimationUtils.loadAnimation(context,
+            R.anim.fall_down)
     }
 
     private suspend fun launchMainFragment() {

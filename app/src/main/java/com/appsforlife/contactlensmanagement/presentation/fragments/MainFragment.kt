@@ -224,10 +224,4 @@ class MainFragment : Fragment(), DialogClickListener {
             return MainFragment()
         }
     }
-
 }
-
-
-
-
-
