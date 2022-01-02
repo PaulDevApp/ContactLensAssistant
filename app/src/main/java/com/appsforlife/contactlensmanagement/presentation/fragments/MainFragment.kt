@@ -15,7 +15,6 @@ import com.appsforlife.contactlensmanagement.R
 import com.appsforlife.contactlensmanagement.databinding.LayoutMainFragmentBinding
 import com.appsforlife.contactlensmanagement.databinding.LayoutToolbarMainBinding
 import com.appsforlife.contactlensmanagement.domain.entity.LensItem
-import com.appsforlife.contactlensmanagement.presentation.activity.SettingsActivity
 import com.appsforlife.contactlensmanagement.presentation.adapter.LensListAdapter
 import com.appsforlife.contactlensmanagement.presentation.dialogs.DialogStartOver
 import com.appsforlife.contactlensmanagement.presentation.listeners.DialogClickListener
@@ -183,6 +182,7 @@ class MainFragment : Fragment(), DialogClickListener {
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.menu_bottom, menu)
         val menuRestartItem = menu.findItem(R.id.menu_restart)
+        menuRestartItem.isVisible = false
         mainViewModel.numberOfDay.observe(viewLifecycleOwner) {
             menuRestartItem.isVisible = it > 0
         }
@@ -219,7 +219,11 @@ class MainFragment : Fragment(), DialogClickListener {
     }
 
     private fun launchSettingsActivity() {
-        startActivity(SettingsActivity.newInstance(requireContext()))
+        requireActivity().supportFragmentManager.beginTransaction()
+            .setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out)
+            .replace(R.id.fragment_container, SettingsFragment.newInstance())
+            .addToBackStack(null)
+            .commit()
     }
 
     private fun launchUsefulInformationFragment() {

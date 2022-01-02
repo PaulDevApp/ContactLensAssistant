@@ -3,6 +3,10 @@
 
     <PreferenceCategory
         app:iconSpaceReserved="false"
+        app:layout="@layout/root_toolbar" />
+
+    <PreferenceCategory
+        app:iconSpaceReserved="false"
         app:title="@string/General">
 
         <ListPreference
