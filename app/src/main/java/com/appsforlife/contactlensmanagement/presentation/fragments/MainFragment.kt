@@ -3,6 +3,7 @@ package com.appsforlife.contactlensmanagement.presentation.fragments
 import android.animation.ObjectAnimator
 import android.os.Bundle
 import android.view.*
+import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.view.animation.BounceInterpolator
 import android.widget.Toast
@@ -32,6 +33,8 @@ class MainFragment : Fragment(), DialogClickListener {
     private lateinit var toolbarBinding: LayoutToolbarMainBinding
 
     private lateinit var mainViewModel: MainViewModel
+
+    private var animation: Animation? = null
 
     private var _binding: LayoutMainFragmentBinding? = null
     private val binding: LayoutMainFragmentBinding
@@ -84,7 +87,7 @@ class MainFragment : Fragment(), DialogClickListener {
             mainViewModel.addLensItem(LensItem(date = getCurrentDate()))
             liftUp(lensListAdapter.itemCount > 15)
             startFabAnimation()
-
+            startUpAnimation()
         }
 
         binding.bottomAppbar.setNavigationOnClickListener {
@@ -93,6 +96,14 @@ class MainFragment : Fragment(), DialogClickListener {
 
         setTitleCurrentDate()
 
+    }
+
+    private fun startUpAnimation() {
+        animation = AnimationUtils.loadAnimation(
+            requireContext(),
+            R.anim.anim_up
+        )
+        toolbarBinding.tvMarkedDays.startAnimation(animation)
     }
 
     private fun startFabAnimation() {
@@ -171,13 +182,26 @@ class MainFragment : Fragment(), DialogClickListener {
     }
 
     private fun setMarkedDays(it: Int) {
-        if (it > 90) {
-            toolbarBinding.tvMarkedDays.setTextColor(requireActivity().getColor(R.color.extraColor))
+        with(toolbarBinding) {
+            when (it) {
+                in 0..14 -> {
+                    tvMarkedDays.setTextColor(requireActivity().getColor(R.color.twoWeekColor))
+                }
+                in 15..30 -> {
+                    tvMarkedDays.setTextColor(requireActivity().getColor(R.color.monthColor))
+                }
+                in 31..90 -> {
+                    tvMarkedDays.setTextColor(requireActivity().getColor(R.color.threeMonthsColor))
+                }
+                else -> {
+                    tvMarkedDays.setTextColor(requireActivity().getColor(R.color.extraColor))
+                }
+            }
+            tvMarkedDays.text = String.format(
+                resources.getString(R.string.marked_days),
+                it.toString()
+            )
         }
-        toolbarBinding.tvMarkedDays.text = String.format(
-            resources.getString(R.string.marked_days),
-            it.toString()
-        )
     }
 
     private fun liftUp(isMore: Boolean) {
