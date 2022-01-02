@@ -4,6 +4,7 @@
         <item name="colorPrimary">@color/colorPrimaryDay</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDarkDay</item>
         <item name="android:windowBackground">@color/colorBackgroundDay</item>
+        <item name="colorAccent">@color/colorAccentDay</item>
         <item name="colorSurface">@color/colorSurfaceDay</item>
         <item name="colorSecondary">@color/colorAccentDay</item>
         <item name="android:navigationBarColor">@color/colorSurfaceDay</item>

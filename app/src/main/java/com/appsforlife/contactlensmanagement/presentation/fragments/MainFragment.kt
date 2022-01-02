@@ -8,13 +8,14 @@ import android.view.animation.BounceInterpolator
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.appsforlife.contactlensmanagement.R
 import com.appsforlife.contactlensmanagement.databinding.LayoutMainFragmentBinding
 import com.appsforlife.contactlensmanagement.databinding.LayoutToolbarMainBinding
 import com.appsforlife.contactlensmanagement.domain.entity.LensItem
+import com.appsforlife.contactlensmanagement.presentation.activity.SettingsActivity
 import com.appsforlife.contactlensmanagement.presentation.adapter.LensListAdapter
 import com.appsforlife.contactlensmanagement.presentation.dialogs.DialogStartOver
 import com.appsforlife.contactlensmanagement.presentation.listeners.DialogClickListener
@@ -26,11 +27,11 @@ import com.google.android.material.snackbar.Snackbar
 
 class MainFragment : Fragment(), DialogClickListener {
 
-
-    private lateinit var mainViewModel: MainViewModel
     private lateinit var lensListAdapter: LensListAdapter
     private lateinit var dialogStartOver: DialogStartOver
     private lateinit var toolbarBinding: LayoutToolbarMainBinding
+
+    private val mainViewModel: MainViewModel by viewModels()
 
     private var _binding: LayoutMainFragmentBinding? = null
     private val binding: LayoutMainFragmentBinding
@@ -63,8 +64,6 @@ class MainFragment : Fragment(), DialogClickListener {
 
         dialogStartOver = DialogStartOver(requireActivity(), this)
 
-        mainViewModel = ViewModelProvider(this)[MainViewModel::class.java]
-
         mainViewModel.lensItemList.observe(viewLifecycleOwner) {
             lensListAdapter.submitList(it)
             startAnimationList()
@@ -72,7 +71,7 @@ class MainFragment : Fragment(), DialogClickListener {
 
         mainViewModel.numberOfDay.observe(viewLifecycleOwner) {
             setMarkedDays(it)
-            setLottieAndMenuItemVisibility(it)
+            setLottieVisibility(it)
         }
 
         binding.fabMark.setOnClickListener {
@@ -83,7 +82,7 @@ class MainFragment : Fragment(), DialogClickListener {
         }
 
         binding.bottomAppbar.setNavigationOnClickListener {
-            Toast.makeText(requireContext(), R.string.toast_coming_soon, Toast.LENGTH_SHORT).show()
+            launchSettingsActivity()
         }
 
         setTitleCurrentDate()
@@ -102,8 +101,10 @@ class MainFragment : Fragment(), DialogClickListener {
     }
 
     private fun startAnimationList() {
-        val animation = AnimationUtils.loadLayoutAnimation(requireContext(),
-            R.anim.layout_animation)
+        val animation = AnimationUtils.loadLayoutAnimation(
+            requireContext(),
+            R.anim.layout_animation
+        )
         if (isAnim) {
             binding.rvLensItems.layoutAnimation = animation
             isAnim = false
@@ -141,12 +142,15 @@ class MainFragment : Fragment(), DialogClickListener {
     }
 
     private fun setSnackBar(item: LensItem) {
-        Snackbar.make(binding.mainLayout,
+        Snackbar.make(
+            binding.mainLayout,
             resources.getString(R.string.remove),
-            Snackbar.LENGTH_SHORT)
+            Snackbar.LENGTH_SHORT
+        )
             .setAnchorView(R.id.fab_mark)
             .setActionTextColor(requireActivity().getColor(R.color.colorAccentNight))
-            .setAction(resources.getString(R.string.to_return)
+            .setAction(
+                resources.getString(R.string.to_return)
             ) {
                 mainViewModel.addLensItem(item)
             }.show()
@@ -155,7 +159,8 @@ class MainFragment : Fragment(), DialogClickListener {
     private fun setUpItemClickListener() {
         lensListAdapter.onItemClickListener = {
             Toast.makeText(
-                requireContext(), R.string.toast_click_item, Toast.LENGTH_SHORT).show()
+                requireContext(), R.string.toast_click_item, Toast.LENGTH_SHORT
+            ).show()
         }
     }
 
@@ -163,18 +168,10 @@ class MainFragment : Fragment(), DialogClickListener {
         if (it > 90) {
             toolbarBinding.tvMarkedDays.setTextColor(requireActivity().getColor(R.color.extraColor))
         }
-        toolbarBinding.tvMarkedDays.text = String.format(resources.getString(R.string.marked_days),
-            it.toString())
-    }
-
-    private fun setLottieAndMenuItemVisibility(it: Int) {
-        if (it > 0) {
-            binding.lottieEmpty.visibility = View.GONE
-            menuRestartItem.isVisible = true
-        } else {
-            binding.lottieEmpty.visibility = View.VISIBLE
-            menuRestartItem.isVisible = false
-        }
+        toolbarBinding.tvMarkedDays.text = String.format(
+            resources.getString(R.string.marked_days),
+            it.toString()
+        )
     }
 
     private fun liftUp(isMore: Boolean) {
@@ -185,15 +182,28 @@ class MainFragment : Fragment(), DialogClickListener {
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.menu_bottom, menu)
-        menuRestartItem = menu.findItem(R.id.menu_restart)
+        val menuRestartItem = menu.findItem(R.id.menu_restart)
+        mainViewModel.numberOfDay.observe(viewLifecycleOwner) {
+            menuRestartItem.isVisible = it > 0
+        }
+
         super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    private fun setLottieVisibility(it: Int) {
+        if (it > 0) {
+            binding.lottieEmpty.visibility = View.GONE
+        } else {
+            binding.lottieEmpty.visibility = View.VISIBLE
+        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.menu_restart -> dialogStartOver.createDialogStartOver()
             R.id.menu_note -> Toast.makeText(
-                requireContext(), R.string.toast_coming_soon, Toast.LENGTH_SHORT).show()
+                requireContext(), R.string.toast_coming_soon, Toast.LENGTH_SHORT
+            ).show()
             R.id.menu_help -> launchUsefulInformationFragment()
         }
         return true
@@ -208,6 +218,10 @@ class MainFragment : Fragment(), DialogClickListener {
         mainViewModel.removeAllItems()
     }
 
+    private fun launchSettingsActivity() {
+        startActivity(SettingsActivity.newInstance(requireContext()))
+    }
+
     private fun launchUsefulInformationFragment() {
         requireActivity().supportFragmentManager.beginTransaction()
             .setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out)
@@ -217,8 +231,8 @@ class MainFragment : Fragment(), DialogClickListener {
     }
 
     companion object {
+
         private var isAnim = true
-        private lateinit var menuRestartItem: MenuItem
 
         fun newInstance(): MainFragment {
             return MainFragment()

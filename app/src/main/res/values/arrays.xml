@@ -1,0 +1,15 @@
+<resources>
+    <!-- Reply Preference -->
+    <string-array name="theme_entries">
+        <item>auto</item>
+        <item>day</item>
+        <item>night</item>
+    </string-array>
+
+    <string-array name="theme_values">
+        <item>-1</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
+</resources>

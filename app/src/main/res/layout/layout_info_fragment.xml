@@ -6,29 +6,9 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <com.google.android.material.appbar.MaterialToolbar
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize">
-
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/iv_back"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="15dp"
-                    android:src="@drawable/ic_backspace" />
-
-                <com.google.android.material.textview.MaterialTextView
-                    style="@style/TextToolbarTitle"
-                    android:text="@string/useful_information" />
-
-            </androidx.appcompat.widget.LinearLayoutCompat>
-
-        </com.google.android.material.appbar.MaterialToolbar>
+        <include
+            android:id="@+id/toolbar_info"
+            layout="@layout/layout_toolbar_other" />
 
         <ScrollView
             android:layout_width="match_parent"
@@ -36,9 +16,9 @@
 
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
-                android:padding="4dp"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:padding="4dp">
 
                 <com.google.android.material.textview.MaterialTextView
                     style="@style/TextTitleInfo"

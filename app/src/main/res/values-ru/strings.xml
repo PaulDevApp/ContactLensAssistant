@@ -21,4 +21,15 @@
     <string name="info_replacement_description">\tОднодневные – каждый день пациент надевает новую пару, а вечером просто выбрасывает линзы;\n\tДвухнедельные – замена происходит каждые две недели;\n\tМесячные;\n\tТрехмесячные;\n\tГодовые – в настоящее время применяются крайне редко из-за более высокого, в сравнении с линзами плановой замены, риска осложнений.</string>
     <string name="info_recommendations_replacement_time">Рекомендации по сроку замены</string>
     <string name="info_recommendations_replacement_description">\tОфтальмологи советуют отдать предпочтение линзам более частого режима замены – однодневным или двухнедельным. Они более безопасны для глаз, так как не успевают накопить на своей поверхности большое количество бактерий или отложений липидов, которые могут спровоцировать тяжелые конъюнктивиты и кератиты.</string>
+    <string name="settings">Настройки</string>
+    <string name="General">Основные</string>
+    <string name="theme_mode">Тема</string>
+    <string name="other">Другие</string>
+    <string name="rate">Оценить приложение</string>
+    <string name="click_to_rate_app">Нажмите, чтобы оценить приложение</string>
+    <string name="other_applications">Другие приложения</string>
+    <string name="other_apps">Нажмите, чтобы получить больше приложений</string>
+    <string name="splash_screen">Заставка</string>
+    <string name="turn_off">Выключено</string>
+    <string name="turn_on">Включено</string>
 </resources>

@@ -11,6 +11,9 @@
         android:theme="@style/Theme.ContactLensManagement"
         tools:ignore="AllowBackup">
         <activity
+            android:name=".presentation.activity.SettingsActivity"
+            android:exported="false" />
+        <activity
             android:name=".presentation.activity.MainActivity"
             android:exported="true">
             <intent-filter>

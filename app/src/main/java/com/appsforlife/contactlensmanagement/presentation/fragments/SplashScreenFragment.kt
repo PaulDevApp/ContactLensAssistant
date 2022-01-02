@@ -41,10 +41,16 @@ class SplashScreenFragment : Fragment() {
     }
 
     private fun startLogoAnimation() {
-        binding.tvLogo.animation = AnimationUtils.loadAnimation(context,
-            R.anim.fall_down)
-        binding.ivLogo.animation = AnimationUtils.loadAnimation(context,
-            R.anim.fall_down)
+        with(binding) {
+            tvLogo.animation = AnimationUtils.loadAnimation(
+                context,
+                R.anim.fall_down
+            )
+            ivLogo.animation = AnimationUtils.loadAnimation(
+                context,
+                R.anim.fall_down
+            )
+        }
     }
 
     private suspend fun launchMainFragment() {
@@ -52,6 +58,12 @@ class SplashScreenFragment : Fragment() {
         requireActivity().supportFragmentManager.beginTransaction()
             .replace(R.id.fragment_container, MainFragment.newInstance())
             .commit()
+    }
+
+    companion object {
+        fun newInstance(): SplashScreenFragment {
+            return SplashScreenFragment()
+        }
     }
 
     override fun onDestroyView() {

@@ -1,0 +1,51 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory
+        app:iconSpaceReserved="false"
+        app:title="@string/General">
+
+        <ListPreference
+            app:defaultValue="-1"
+            app:entries="@array/theme_entries"
+            app:entryValues="@array/theme_values"
+            app:icon="@drawable/ic_day_night"
+            app:key="key_mode"
+            app:title="@string/theme_mode"
+            app:useSimpleSummaryProvider="true" />
+
+        <SwitchPreferenceCompat
+            app:defaultValue="true"
+            app:icon="@drawable/ic_splash"
+            app:key="splash_toggle"
+            app:summaryOff="@string/turn_off"
+            app:summaryOn="@string/turn_on"
+            app:title="@string/splash_screen" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        app:iconSpaceReserved="false"
+        app:title="@string/other">
+
+        <Preference
+            android:summary="@string/click_to_rate_app"
+            app:icon="@drawable/ic_rate_app"
+            app:title="@string/rate">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="@string/url_rate_app" />
+        </Preference>
+
+        <Preference
+            android:summary="@string/other_apps"
+            app:icon="@drawable/ic_other_apps"
+            app:title="@string/other_applications">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="@string/url_more_apps" />
+        </Preference>
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

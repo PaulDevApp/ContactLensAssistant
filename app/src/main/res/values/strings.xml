@@ -22,4 +22,19 @@
     <string name="info_replacement_description">\tOne-day - every day the patient puts on a new pair, and in the evening he just throws out the lenses; \n\tBi-weekly - replacement occurs every two weeks; \n\tPeriod; \n\tThree-month; \n\tAnnual - nowadays they are used extremely rarely due to the higher risk of complications in comparison with planned replacement lenses.</string>
     <string name="info_recommendations_replacement_time">Recommendations for replacement time</string>
     <string name="info_recommendations_replacement_description">\tOphthalmologists advise to give preference to lenses of a more frequent replacement regime - one day or two weeks. They are safer for the eyes, since they do not have time to accumulate on their surface a large number of bacteria or lipid deposits, which can provoke severe conjunctivitis and keratitis.</string>
+
+
+    <string name="settings">Settings</string>
+    <string name="General">General</string>
+    <string name="theme_mode">Theme mode</string>
+    <string name="other">Other</string>
+    <string name="rate">Rate app</string>
+    <string name="click_to_rate_app">Click to rate app</string>
+    <string name="other_applications">Other applications</string>
+    <string name="other_apps">Click to get more apps</string>
+    <string name="url_more_apps" translatable="false"><![CDATA[https://play.google.com/store/apps/developer?id=%D0%9F%D0%B0%D0%B2%D0%B5%D0%BB+%D0%97%D1%83%D0%B1%D0%BA%D0%BE&hl=ru&gl=US]]></string>
+    <string name="url_rate_app" translatable="false">https://play.google.com/store/apps/details?id=com.appsforlife.contactlensmanagement</string>
+    <string name="splash_screen">Splash screen</string>
+    <string name="turn_off">Turn off</string>
+    <string name="turn_on">Turn on</string>
 </resources>

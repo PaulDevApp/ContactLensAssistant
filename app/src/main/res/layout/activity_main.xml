@@ -4,6 +4,4 @@
     android:id="@+id/fragment_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:name="com.appsforlife.contactlensmanagement.presentation.fragments.SplashScreenFragment"
-    tools:context=".presentation.activity.MainActivity">
-</androidx.fragment.app.FragmentContainerView>
+    tools:context=".presentation.activity.MainActivity" />
