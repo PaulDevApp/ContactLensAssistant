@@ -12,6 +12,12 @@
         <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">true</item>
     </style>
 
+    <style name="FABStyleMain" parent="Widget.MaterialComponents.FloatingActionButton">
+        <item name="android:src">@drawable/ic_mark</item>
+        <item name="backgroundTint">?attr/colorAccent</item>
+        <item name="tint">?attr/colorPrimary</item>
+    </style>
+
     <style name="TextItem" parent="Widget.MaterialComponents.TextView">
         <item name="android:textColor">@color/colorTextLight</item>
         <item name="android:textSize">17sp</item>
