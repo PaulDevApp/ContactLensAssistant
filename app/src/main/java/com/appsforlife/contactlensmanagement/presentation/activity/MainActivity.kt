@@ -7,13 +7,12 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.preference.PreferenceManager
 import com.appsforlife.contactlensmanagement.R
 import com.appsforlife.contactlensmanagement.presentation.fragments.MainFragment
-import com.appsforlife.contactlensmanagement.presentation.fragments.SettingsFragment
 import com.appsforlife.contactlensmanagement.presentation.fragments.SplashScreenFragment
 
 
 class MainActivity : AppCompatActivity() {
 
-    var sharedPreferences: SharedPreferences? = null
+    private var sharedPreferences: SharedPreferences? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

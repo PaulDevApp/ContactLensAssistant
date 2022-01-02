@@ -8,7 +8,7 @@ import android.view.animation.BounceInterpolator
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.appsforlife.contactlensmanagement.R
@@ -17,6 +17,7 @@ import com.appsforlife.contactlensmanagement.databinding.LayoutToolbarMainBindin
 import com.appsforlife.contactlensmanagement.domain.entity.LensItem
 import com.appsforlife.contactlensmanagement.presentation.adapter.LensListAdapter
 import com.appsforlife.contactlensmanagement.presentation.dialogs.DialogStartOver
+import com.appsforlife.contactlensmanagement.presentation.factory.MainViewModelFactory
 import com.appsforlife.contactlensmanagement.presentation.listeners.DialogClickListener
 import com.appsforlife.contactlensmanagement.presentation.utils.getCurrentDate
 import com.appsforlife.contactlensmanagement.presentation.utils.getTitleCurrentDate
@@ -30,7 +31,7 @@ class MainFragment : Fragment(), DialogClickListener {
     private lateinit var dialogStartOver: DialogStartOver
     private lateinit var toolbarBinding: LayoutToolbarMainBinding
 
-    private val mainViewModel: MainViewModel by viewModels()
+    private lateinit var mainViewModel: MainViewModel
 
     private var _binding: LayoutMainFragmentBinding? = null
     private val binding: LayoutMainFragmentBinding
@@ -53,7 +54,13 @@ class MainFragment : Fragment(), DialogClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        mainViewModel = ViewModelProvider(
+            this,
+            MainViewModelFactory(requireContext())
+        )[MainViewModel::class.java]
+
         toolbarBinding = binding.layoutToolbar
+        requireActivity()
 
         setUpRecyclerView()
 

@@ -1,16 +1,16 @@
 package com.appsforlife.contactlensmanagement.data
 
-import android.app.Application
+import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Transformations
 import com.appsforlife.contactlensmanagement.domain.entity.LensItem
 import com.appsforlife.contactlensmanagement.domain.repository.LensItemRepository
 
 class LensItemListRepositoryImpl(
-    application: Application,
+    context: Context,
 ) : LensItemRepository {
 
-    private val lensItemDao = AppDataBase.getInstance(application).lensItemDao()
+    private val lensItemDao = AppDataBase.getInstance(context).lensItemDao()
     private val mapper = LensItemListMapper()
 
     override suspend fun addLensItem(lensItem: LensItem) {

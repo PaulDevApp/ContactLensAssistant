@@ -1,22 +1,18 @@
 package com.appsforlife.contactlensmanagement.presentation.viewmodels
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.appsforlife.contactlensmanagement.data.LensItemListRepositoryImpl
 import com.appsforlife.contactlensmanagement.domain.entity.LensItem
 import com.appsforlife.contactlensmanagement.domain.usecases.*
 import kotlinx.coroutines.launch
 
-class MainViewModel(application: Application) : AndroidViewModel(application) {
-
-    private val repository = LensItemListRepositoryImpl(application)
-
-    private val getLensItemListUseCase = GetLensItemListUseCase(repository)
-    private val deleteLensItemUseCase = DeleteLensItemUseCase(repository)
-    private val addLensItemUseCase = AddLensItemUseCase(repository)
-    private val getLensItemCountUseCase = GetLensItemCountUseCase(repository)
-    private val removeAllItemsUseCase = RemoveAllItemsUseCase(repository)
+class MainViewModel(
+    getLensItemListUseCase: GetLensItemListUseCase,
+    private val deleteLensItemUseCase: DeleteLensItemUseCase,
+    private val addLensItemUseCase: AddLensItemUseCase,
+    getLensItemCountUseCase: GetLensItemCountUseCase,
+    private val removeAllItemsUseCase: RemoveAllItemsUseCase
+) : ViewModel() {
 
     val lensItemList = getLensItemListUseCase.getLensList()
     val numberOfDay = getLensItemCountUseCase.getLensItemCount()
