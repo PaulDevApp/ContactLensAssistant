@@ -22,7 +22,7 @@
     </style>
 
     <style name="TextToolbarTitle" parent="Widget.MaterialComponents.TextView">
-        <item name="android:textSize">15sp</item>
+        <item name="android:textSize">17sp</item>
         <item name="fontFamily">@font/notosans_bold</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
