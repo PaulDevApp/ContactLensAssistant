@@ -22,6 +22,22 @@
 
                 <com.google.android.material.textview.MaterialTextView
                     style="@style/TextTitleInfo"
+                    android:text="@string/info_contact_lens_types" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    style="@style/TextTitleInfoDesc"
+                    android:text="@string/info_contact_lens_types_descriptions" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    style="@style/TextTitleInfo"
+                    android:text="@string/info_design_of_contact_lenses" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    style="@style/TextTitleInfoDesc"
+                    android:text="@string/info_design_of_contact_lenses_description" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    style="@style/TextTitleInfo"
                     android:text="@string/info_material" />
 
                 <com.google.android.material.textview.MaterialTextView
@@ -37,10 +53,6 @@
                     android:text="@string/info_wearing_mode_description" />
 
                 <com.google.android.material.textview.MaterialTextView
-                    style="@style/TextTitleInfo"
-                    android:text="@string/info_mode_recommendations" />
-
-                <com.google.android.material.textview.MaterialTextView
                     style="@style/TextTitleInfoDesc"
                     android:text="@string/info_recommendations_description" />
 
@@ -51,10 +63,6 @@
                 <com.google.android.material.textview.MaterialTextView
                     style="@style/TextTitleInfoDesc"
                     android:text="@string/info_replacement_description" />
-
-                <com.google.android.material.textview.MaterialTextView
-                    style="@style/TextTitleInfo"
-                    android:text="@string/info_recommendations_replacement_time" />
 
                 <com.google.android.material.textview.MaterialTextView
                     style="@style/TextTitleInfoDesc"
