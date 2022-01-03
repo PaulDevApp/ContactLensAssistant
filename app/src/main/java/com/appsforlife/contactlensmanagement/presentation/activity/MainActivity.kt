@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.preference.PreferenceManager
 import com.appsforlife.contactlensmanagement.R
 import com.appsforlife.contactlensmanagement.presentation.fragments.MainFragment
+import com.appsforlife.contactlensmanagement.presentation.fragments.SettingsFragment
 import com.appsforlife.contactlensmanagement.presentation.fragments.SplashScreenFragment
 
 
@@ -20,8 +21,8 @@ class MainActivity : AppCompatActivity() {
 
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
 
-        val isSplash = sharedPreferences?.getBoolean("splash_toggle", true)
-        val mode: Int = sharedPreferences?.getString("key_mode", "-1")?.toInt() ?: -1
+        val isSplash = sharedPreferences?.getBoolean(SettingsFragment.KEY_SPLASH_TOGGLE, true)
+        val mode: Int = sharedPreferences?.getString(SettingsFragment.KEY_THEME_MODE, "-1")?.toInt() ?: -1
 
         AppCompatDelegate.setDefaultNightMode(mode)
 

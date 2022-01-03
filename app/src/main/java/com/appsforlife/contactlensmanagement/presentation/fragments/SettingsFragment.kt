@@ -28,17 +28,17 @@ class SettingsFragment : PreferenceFragmentCompat(),
     }
 
     override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences?, key: String?) {
-        if (key == "key_mode") {
+        if (key == KEY_THEME_MODE) {
             val prefs = sharedPreferences?.getString(key, "-1")
 
             when (prefs?.toInt()) {
-                -1 -> {
+                KEY_THEME_MODE_AUTO -> {
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
                 }
-                1 -> {
+                KEY_THEME_MODE_NIGHT_NO -> {
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
                 }
-                2 -> {
+                KEY_THEME_MODE_NIGHT_YES -> {
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
                 }
             }
@@ -47,11 +47,11 @@ class SettingsFragment : PreferenceFragmentCompat(),
 
     override fun onPreferenceChange(preference: Preference?, newValue: Any?): Boolean {
         if (preference is SwitchPreferenceCompat) {
-            if (preference.key == "splash_toggle") {
+            if (preference.key == KEY_SPLASH_TOGGLE) {
                 if (preference.isChecked) {
-                    sharedPreferences?.edit()?.putBoolean("splash_toggle", true)?.apply()
+                    sharedPreferences?.edit()?.putBoolean(KEY_SPLASH_TOGGLE, true)?.apply()
                 } else {
-                    sharedPreferences?.edit()?.putBoolean("splash_toggle", false)?.apply()
+                    sharedPreferences?.edit()?.putBoolean(KEY_SPLASH_TOGGLE, false)?.apply()
                 }
             }
             return true
@@ -62,6 +62,11 @@ class SettingsFragment : PreferenceFragmentCompat(),
     companion object {
 
         private const val APP_SETTINGS = "app_settings"
+        const val KEY_SPLASH_TOGGLE = "splash_toggle"
+        const val KEY_THEME_MODE = "key_mode"
+        const val KEY_THEME_MODE_AUTO = -1
+        const val KEY_THEME_MODE_NIGHT_NO = 1
+        const val KEY_THEME_MODE_NIGHT_YES = 2
 
         fun newInstance(): SettingsFragment {
             return SettingsFragment()
