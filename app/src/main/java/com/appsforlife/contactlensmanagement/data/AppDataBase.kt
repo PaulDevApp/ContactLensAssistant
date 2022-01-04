@@ -4,11 +4,20 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.appsforlife.contactlensmanagement.data.lensitemdata.LensItemDao
+import com.appsforlife.contactlensmanagement.data.lensitemdata.LensItemDbModel
+import com.appsforlife.contactlensmanagement.data.noteitemdata.NoteItemDao
+import com.appsforlife.contactlensmanagement.data.noteitemdata.NoteItemDbModel
 
-@Database(entities = [LensItemDbModel::class], version = 1, exportSchema = false)
+@Database(
+    entities = [LensItemDbModel::class, NoteItemDbModel::class],
+    version = 2,
+    exportSchema = false
+)
 abstract class AppDataBase : RoomDatabase() {
 
     abstract fun lensItemDao(): LensItemDao
+    abstract fun noteItemDao(): NoteItemDao
 
     companion object {
 
@@ -29,7 +38,9 @@ abstract class AppDataBase : RoomDatabase() {
                     context,
                     AppDataBase::class.java,
                     DB_NAME
-                ).build()
+                )
+                    .fallbackToDestructiveMigration()
+                    .build()
                 INSTANCE = db
                 return db
             }

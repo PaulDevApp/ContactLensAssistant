@@ -1,7 +1,7 @@
-package com.appsforlife.contactlensmanagement.domain.repository
+package com.appsforlife.contactlensmanagement.domain.repositories
 
 import androidx.lifecycle.LiveData
-import com.appsforlife.contactlensmanagement.domain.entity.LensItem
+import com.appsforlife.contactlensmanagement.domain.entities.LensItem
 
 interface LensItemRepository {
 

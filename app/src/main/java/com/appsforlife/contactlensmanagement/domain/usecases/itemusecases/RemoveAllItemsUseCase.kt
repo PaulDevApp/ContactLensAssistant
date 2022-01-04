@@ -1,6 +1,6 @@
-package com.appsforlife.contactlensmanagement.domain.usecases
+package com.appsforlife.contactlensmanagement.domain.usecases.itemusecases
 
-import com.appsforlife.contactlensmanagement.domain.repository.LensItemRepository
+import com.appsforlife.contactlensmanagement.domain.repositories.LensItemRepository
 
 class RemoveAllItemsUseCase(private val lensItemRepository: LensItemRepository) {
 

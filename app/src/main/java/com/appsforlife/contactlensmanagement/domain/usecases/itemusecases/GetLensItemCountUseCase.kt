@@ -1,7 +1,7 @@
-package com.appsforlife.contactlensmanagement.domain.usecases
+package com.appsforlife.contactlensmanagement.domain.usecases.itemusecases
 
 import androidx.lifecycle.LiveData
-import com.appsforlife.contactlensmanagement.domain.repository.LensItemRepository
+import com.appsforlife.contactlensmanagement.domain.repositories.LensItemRepository
 
 class GetLensItemCountUseCase(private val lensItemRepository: LensItemRepository) {
 

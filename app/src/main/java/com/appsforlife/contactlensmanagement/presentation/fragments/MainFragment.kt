@@ -15,14 +15,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.appsforlife.contactlensmanagement.R
 import com.appsforlife.contactlensmanagement.databinding.LayoutMainFragmentBinding
 import com.appsforlife.contactlensmanagement.databinding.LayoutToolbarMainBinding
-import com.appsforlife.contactlensmanagement.domain.entity.LensItem
+import com.appsforlife.contactlensmanagement.domain.entities.LensItem
 import com.appsforlife.contactlensmanagement.presentation.adapter.LensListAdapter
 import com.appsforlife.contactlensmanagement.presentation.dialogs.DialogStartOver
-import com.appsforlife.contactlensmanagement.presentation.factory.MainViewModelFactory
+import com.appsforlife.contactlensmanagement.presentation.viewmodelfactories.LensItemViewModelFactory
 import com.appsforlife.contactlensmanagement.presentation.listeners.DialogClickListener
 import com.appsforlife.contactlensmanagement.presentation.utils.getCurrentDate
 import com.appsforlife.contactlensmanagement.presentation.utils.getTitleCurrentDate
-import com.appsforlife.contactlensmanagement.presentation.viewmodels.MainViewModel
+import com.appsforlife.contactlensmanagement.presentation.viewmodels.LensItemViewModel
 import com.google.android.material.snackbar.Snackbar
 
 
@@ -32,7 +32,7 @@ class MainFragment : Fragment(), DialogClickListener {
     private lateinit var dialogStartOver: DialogStartOver
     private lateinit var toolbarBinding: LayoutToolbarMainBinding
 
-    private lateinit var mainViewModel: MainViewModel
+    private lateinit var lensItemViewModel: LensItemViewModel
 
     private var animation: Animation? = null
 
@@ -57,10 +57,10 @@ class MainFragment : Fragment(), DialogClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        mainViewModel = ViewModelProvider(
+        lensItemViewModel = ViewModelProvider(
             this,
-            MainViewModelFactory(requireContext())
-        )[MainViewModel::class.java]
+            LensItemViewModelFactory(requireContext())
+        )[LensItemViewModel::class.java]
 
         toolbarBinding = binding.layoutToolbar
         requireActivity()
@@ -73,18 +73,18 @@ class MainFragment : Fragment(), DialogClickListener {
 
         dialogStartOver = DialogStartOver(requireActivity(), this)
 
-        mainViewModel.lensItemList.observe(viewLifecycleOwner) {
+        lensItemViewModel.lensItemList.observe(viewLifecycleOwner) {
             lensListAdapter.submitList(it)
             startAnimationList()
         }
 
-        mainViewModel.numberOfDay.observe(viewLifecycleOwner) {
+        lensItemViewModel.numberOfDay.observe(viewLifecycleOwner) {
             setMarkedDays(it)
             setLottieVisibility(it)
         }
 
         binding.fabMark.setOnClickListener {
-            mainViewModel.addLensItem(LensItem(date = getCurrentDate()))
+            lensItemViewModel.addLensItem(LensItem(date = getCurrentDate()))
             liftUp(lensListAdapter.itemCount > 15)
             startFabAnimation()
             startUpAnimation()
@@ -150,7 +150,7 @@ class MainFragment : Fragment(), DialogClickListener {
 
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 val item = lensListAdapter.currentList[viewHolder.adapterPosition]
-                mainViewModel.deleteLensItem(item)
+                lensItemViewModel.deleteLensItem(item)
                 setSnackBar(item)
             }
         }
@@ -169,7 +169,7 @@ class MainFragment : Fragment(), DialogClickListener {
             .setAction(
                 resources.getString(R.string.to_return)
             ) {
-                mainViewModel.addLensItem(item)
+                lensItemViewModel.addLensItem(item)
             }.show()
     }
 
@@ -214,7 +214,7 @@ class MainFragment : Fragment(), DialogClickListener {
         inflater.inflate(R.menu.menu_bottom, menu)
         val menuRestartItem = menu.findItem(R.id.menu_restart)
         menuRestartItem.isVisible = false
-        mainViewModel.numberOfDay.observe(viewLifecycleOwner) {
+        lensItemViewModel.numberOfDay.observe(viewLifecycleOwner) {
             menuRestartItem.isVisible = it > 0
         }
 
@@ -246,7 +246,7 @@ class MainFragment : Fragment(), DialogClickListener {
     }
 
     override fun onDialogClick() {
-        mainViewModel.removeAllItems()
+        lensItemViewModel.removeAllItems()
     }
 
     private fun launchSettingsActivity() {

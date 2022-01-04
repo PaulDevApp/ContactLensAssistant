@@ -1,4 +1,4 @@
-package com.appsforlife.contactlensmanagement.data
+package com.appsforlife.contactlensmanagement.data.lensitemdata
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao

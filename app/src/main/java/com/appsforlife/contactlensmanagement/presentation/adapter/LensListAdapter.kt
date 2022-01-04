@@ -7,7 +7,7 @@ import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.ListAdapter
 import com.appsforlife.contactlensmanagement.R
 import com.appsforlife.contactlensmanagement.databinding.*
-import com.appsforlife.contactlensmanagement.domain.entity.LensItem
+import com.appsforlife.contactlensmanagement.domain.entities.LensItem
 import com.appsforlife.contactlensmanagement.presentation.utils.LensItemDiffCallBack
 import com.appsforlife.contactlensmanagement.presentation.viewholder.LensItemViewHolder
 

@@ -1,6 +1,6 @@
-package com.appsforlife.contactlensmanagement.data
+package com.appsforlife.contactlensmanagement.data.lensitemdata
 
-import com.appsforlife.contactlensmanagement.domain.entity.LensItem
+import com.appsforlife.contactlensmanagement.domain.entities.LensItem
 
 class LensItemListMapper {
 

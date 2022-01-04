@@ -1,10 +1,11 @@
-package com.appsforlife.contactlensmanagement.data
+package com.appsforlife.contactlensmanagement.data.lensitemdata
 
 import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Transformations
-import com.appsforlife.contactlensmanagement.domain.entity.LensItem
-import com.appsforlife.contactlensmanagement.domain.repository.LensItemRepository
+import com.appsforlife.contactlensmanagement.data.AppDataBase
+import com.appsforlife.contactlensmanagement.domain.entities.LensItem
+import com.appsforlife.contactlensmanagement.domain.repositories.LensItemRepository
 
 class LensItemListRepositoryImpl(
     context: Context,

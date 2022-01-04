@@ -1,4 +1,4 @@
-package com.appsforlife.contactlensmanagement.domain.entity
+package com.appsforlife.contactlensmanagement.domain.entities
 
 data class LensItem(
     val date: String,

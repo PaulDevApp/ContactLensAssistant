@@ -1,13 +1,13 @@
-package com.appsforlife.contactlensmanagement.presentation.factory
+package com.appsforlife.contactlensmanagement.presentation.viewmodelfactories
 
 import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.appsforlife.contactlensmanagement.data.LensItemListRepositoryImpl
-import com.appsforlife.contactlensmanagement.domain.usecases.*
-import com.appsforlife.contactlensmanagement.presentation.viewmodels.MainViewModel
+import com.appsforlife.contactlensmanagement.data.lensitemdata.LensItemListRepositoryImpl
+import com.appsforlife.contactlensmanagement.domain.usecases.itemusecases.*
+import com.appsforlife.contactlensmanagement.presentation.viewmodels.LensItemViewModel
 
-class MainViewModelFactory(context: Context) : ViewModelProvider.Factory {
+class LensItemViewModelFactory(context: Context) : ViewModelProvider.Factory {
 
     private val repository by lazy(LazyThreadSafetyMode.SYNCHRONIZED) {
         LensItemListRepositoryImpl(context)
@@ -31,7 +31,7 @@ class MainViewModelFactory(context: Context) : ViewModelProvider.Factory {
 
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        return MainViewModel(
+        return LensItemViewModel(
             getLensItemListUseCase = getLensItemListUseCase,
             deleteLensItemUseCase = deleteLensItemUseCase,
             addLensItemUseCase = addLensItemUseCase,

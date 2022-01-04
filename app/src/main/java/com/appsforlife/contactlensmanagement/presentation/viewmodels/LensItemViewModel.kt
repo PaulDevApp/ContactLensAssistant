@@ -2,11 +2,11 @@ package com.appsforlife.contactlensmanagement.presentation.viewmodels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.appsforlife.contactlensmanagement.domain.entity.LensItem
-import com.appsforlife.contactlensmanagement.domain.usecases.*
+import com.appsforlife.contactlensmanagement.domain.entities.LensItem
+import com.appsforlife.contactlensmanagement.domain.usecases.itemusecases.*
 import kotlinx.coroutines.launch
 
-class MainViewModel(
+class LensItemViewModel(
     getLensItemListUseCase: GetLensItemListUseCase,
     private val deleteLensItemUseCase: DeleteLensItemUseCase,
     private val addLensItemUseCase: AddLensItemUseCase,
