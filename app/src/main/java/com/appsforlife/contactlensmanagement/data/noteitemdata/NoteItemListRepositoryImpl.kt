@@ -33,4 +33,8 @@ class NoteItemListRepositoryImpl(
         val dbModel = noteItemDao.getNoteItem(noteItemId)
         return mapper.mapDbModelToEntity(dbModel)
     }
+
+    override suspend fun editNoteItem(noteItem: NoteItem) {
+        noteItemDao.addNoteItem(mapper.mapEntityToDbModel(noteItem))
+    }
 }

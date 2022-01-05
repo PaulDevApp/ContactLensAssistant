@@ -9,7 +9,7 @@ import androidx.room.Query
 @Dao
 interface NoteItemDao {
 
-    @Query("SELECT * FROM note_item_db_name")
+    @Query("SELECT * FROM note_item_db_name ORDER BY id DESC")
     fun getNoteItemList(): LiveData<List<NoteItemDbModel>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)

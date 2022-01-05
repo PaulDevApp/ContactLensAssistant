@@ -1,9 +1,14 @@
 package com.appsforlife.contactlensmanagement.domain.entities
 
 data class NoteItem(
-    val opticalPower: Long,
-    val radiusOfCurvature: Long,
-    val diameter: Long,
+    val leftOpticalPower: String,
+    val leftRadiusOfCurvature: String,
+    val leftDiameter: String,
+    val rightOpticalPower: String,
+    val rightRadiusOfCurvature: String,
+    val rightDiameter: String,
+    val comment: String,
+    val title: String,
     val id: Int = UNDEFINED_ID
 ) {
     companion object {

@@ -7,7 +7,12 @@ import androidx.room.PrimaryKey
 data class NoteItemDbModel(
     @PrimaryKey(autoGenerate = true)
     val id: Int,
-    val opticalPower: Long,
-    val radiusOfCurvature: Long,
-    val diameter: Long
+    val leftOpticalPower: String,
+    val leftRadiusOfCurvature: String,
+    val leftDiameter: String,
+    val rightOpticalPower: String,
+    val rightRadiusOfCurvature: String,
+    val rightDiameter: String,
+    val comment: String,
+    val title: String
 )

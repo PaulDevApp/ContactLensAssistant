@@ -1,11 +1,11 @@
-package com.appsforlife.contactlensmanagement.presentation.viewmodelfactories
+package com.appsforlife.contactlensmanagement.presentation.viewmodelfactories.lensitemviewmodelfactory
 
 import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.appsforlife.contactlensmanagement.data.lensitemdata.LensItemListRepositoryImpl
 import com.appsforlife.contactlensmanagement.domain.usecases.itemusecases.*
-import com.appsforlife.contactlensmanagement.presentation.viewmodels.LensItemViewModel
+import com.appsforlife.contactlensmanagement.presentation.viewmodels.lensitemviewmodel.LensItemViewModel
 
 class LensItemViewModelFactory(context: Context) : ViewModelProvider.Factory {
 

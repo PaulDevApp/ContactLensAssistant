@@ -1,4 +1,4 @@
-package com.appsforlife.contactlensmanagement.presentation.viewmodels
+package com.appsforlife.contactlensmanagement.presentation.viewmodels.lensitemviewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

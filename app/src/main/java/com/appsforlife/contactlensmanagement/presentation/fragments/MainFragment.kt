@@ -18,11 +18,11 @@ import com.appsforlife.contactlensmanagement.databinding.LayoutToolbarMainBindin
 import com.appsforlife.contactlensmanagement.domain.entities.LensItem
 import com.appsforlife.contactlensmanagement.presentation.adapter.LensListAdapter
 import com.appsforlife.contactlensmanagement.presentation.dialogs.DialogStartOver
-import com.appsforlife.contactlensmanagement.presentation.viewmodelfactories.LensItemViewModelFactory
+import com.appsforlife.contactlensmanagement.presentation.viewmodelfactories.lensitemviewmodelfactory.LensItemViewModelFactory
 import com.appsforlife.contactlensmanagement.presentation.listeners.DialogClickListener
 import com.appsforlife.contactlensmanagement.presentation.utils.getCurrentDate
 import com.appsforlife.contactlensmanagement.presentation.utils.getTitleCurrentDate
-import com.appsforlife.contactlensmanagement.presentation.viewmodels.LensItemViewModel
+import com.appsforlife.contactlensmanagement.presentation.viewmodels.lensitemviewmodel.LensItemViewModel
 import com.google.android.material.snackbar.Snackbar
 
 
