@@ -1,6 +1,16 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name" translatable="false">Contact lens assistant</string>
-    <string name="desc_mark">mark</string>
+    <string name="_180" translatable="false">180</string>
+    <string name="save" translatable="false">Save</string>
+    <string name="_3_75" translatable="false">-3.75</string>
+    <string name="_01_50" translatable="false">01.50</string>
+    <string name="_8_5" translatable="false">8.5</string>
+    <string name="_9_0" translatable="false">9.0</string>
+    <string name="_2_25" translatable="false">-2.25</string>
+    <string name="_1_25" translatable="false">-1.25</string>
+    <string name="url_more_apps" translatable="false"><![CDATA[https://play.google.com/store/apps/developer?id=%D0%9F%D0%B0%D0%B2%D0%B5%D0%BB+%D0%97%D1%83%D0%B1%D0%BA%D0%BE&hl=ru&gl=US]]></string>
+    <string name="url_rate_app" translatable="false">https://play.google.com/store/apps/details?id=com.appsforlife.contactlensmanagement</string>
+    <string name="content_description_mark">mark</string>
     <string name="marked_days">marked days: %s</string>
     <string name="menu_restart">Restart</string>
     <string name="menu_note">Note</string>
@@ -38,10 +48,19 @@ Due to the material structure of silicone hydrogel contact lenses, less deposits
     <string name="click_to_rate_app">Click to rate app</string>
     <string name="other_applications">Other applications</string>
     <string name="other_apps">Click to get more apps</string>
-    <string name="url_more_apps" translatable="false"><![CDATA[https://play.google.com/store/apps/developer?id=%D0%9F%D0%B0%D0%B2%D0%B5%D0%BB+%D0%97%D1%83%D0%B1%D0%BA%D0%BE&hl=ru&gl=US]]></string>
-    <string name="url_rate_app" translatable="false">https://play.google.com/store/apps/details?id=com.appsforlife.contactlensmanagement</string>
     <string name="splash_screen">Splash screen</string>
     <string name="turn_off">Turn off</string>
     <string name="turn_on">Turn on</string>
+    <string name="content_description_add_note" tools:ignore="MissingTranslation">Add note</string>
+    <string name="notes_with_parameters">Lens parameter notes</string>
+    <string name="some_headline">some text…</string>
+    <string name="left_eye">Left eye</string>
+    <string name="right_eye">Right eye</string>
+    <string name="parameters">Parameters</string>
+    <string name="for_astigmatism">For astigmatism</string>
+    <string name="radius_of_curvature">Radius of curvature</string>
+    <string name="cylinder_power">Cylinder power</string>
+    <string name="axis">Axis</string>
+    <string name="optical_power">Optical power</string>
 
 </resources>

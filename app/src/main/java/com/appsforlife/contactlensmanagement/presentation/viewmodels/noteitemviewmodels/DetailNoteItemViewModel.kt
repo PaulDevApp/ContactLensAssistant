@@ -57,7 +57,6 @@ class DetailNoteItemViewModel(
                     rightOpticalPower = rightOpticalPower,
                     rightRadiusOfCurvature = rightRadiusOfCurvature,
                     rightDiameter = rightDiameter,
-                    comment = comment,
                     title = title
                 )
                 editNoteItemUseCase.editNoteItem(noteItem)
@@ -93,7 +92,6 @@ class DetailNoteItemViewModel(
                 rightOpticalPower = rightOpticalPower,
                 rightRadiusOfCurvature = rightRadiusOfCurvature,
                 rightDiameter = rightDiameter,
-                comment = comment,
                 title = title
             )
             addNoteItemUseCase.addNoteItem(noteItem)

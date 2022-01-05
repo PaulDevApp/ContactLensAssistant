@@ -232,9 +232,7 @@ class MainFragment : Fragment(), DialogClickListener {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.menu_restart -> dialogStartOver.createDialogStartOver()
-            R.id.menu_note -> Toast.makeText(
-                requireContext(), R.string.toast_coming_soon, Toast.LENGTH_SHORT
-            ).show()
+            R.id.menu_note -> launchNoteListFragment()
             R.id.menu_help -> launchUsefulInformationFragment()
         }
         return true
@@ -261,6 +259,13 @@ class MainFragment : Fragment(), DialogClickListener {
         requireActivity().supportFragmentManager.beginTransaction()
             .setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out)
             .replace(R.id.fragment_container, UsefulInformationFragment.newInstance())
+            .addToBackStack(null)
+            .commit()
+    }
+
+    private fun launchNoteListFragment() {
+        requireActivity().supportFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container, NoteListFragment.newInstance())
             .addToBackStack(null)
             .commit()
     }

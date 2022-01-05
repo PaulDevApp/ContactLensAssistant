@@ -12,10 +12,33 @@
         <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">true</item>
     </style>
 
-    <style name="FABStyleMain" parent="Widget.MaterialComponents.FloatingActionButton">
-        <item name="android:src">@drawable/ic_mark</item>
+    <style name="FABStyle" parent="Widget.MaterialComponents.FloatingActionButton">
+        <item name="fabSize">normal</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
         <item name="backgroundTint">?attr/colorAccent</item>
         <item name="tint">?attr/colorPrimary</item>
+    </style>
+
+    <style name="TextTitleParameters" parent="Widget.MaterialComponents.TextView">
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">?attr/colorAccent</item>
+        <item name="android:textSize">11sp</item>
+        <item name="fontFamily">@font/notosans_bold</item>
+        <item name="android:layout_marginTop">10dp</item>
+
+    </style>
+
+    <style name="EditTextParameters" parent="Widget.AppCompat.EditText">
+        <item name="android:padding">2dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:layout_marginTop">6dp</item>
+        <item name="android:background">@drawable/background_edit_text</item>
+        <item name="android:layout_marginEnd">30dp</item>
+        <item name="android:layout_marginStart">30dp</item>
+        <item name="android:inputType">number</item>
+
     </style>
 
     <style name="TextItem" parent="Widget.MaterialComponents.TextView">

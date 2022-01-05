@@ -5,25 +5,30 @@
       <map>
         <entry key="..\:/YandexDisk/Projects_AS/Kotlin course/Contactlensmanagement/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.28615384615384615" />
         <entry key="..\:/YandexDisk/Projects_AS/Kotlin course/Contactlensmanagement/app/src/main/res/drawable/back_two_week_to_one_month.xml" value="0.27314814814814814" />
+        <entry key="..\:/YandexDisk/Projects_AS/Kotlin course/Contactlensmanagement/app/src/main/res/drawable/background_button_save.xml" value="0.28615384615384615" />
         <entry key="..\:/YandexDisk/Projects_AS/Kotlin course/Contactlensmanagement/app/src/main/res/drawable/background_dialog.xml" value="0.290625" />
         <entry key="..\:/YandexDisk/Projects_AS/Kotlin course/Contactlensmanagement/app/src/main/res/drawable/background_marked_days.xml" value="0.24814814814814815" />
         <entry key="..\:/YandexDisk/Projects_AS/Kotlin course/Contactlensmanagement/app/src/main/res/drawable/background_transition_from_1_month_to_3_months.xml" value="0.27314814814814814" />
         <entry key="..\:/YandexDisk/Projects_AS/Kotlin course/Contactlensmanagement/app/src/main/res/drawable/background_transition_from_3_months_extra.xml" value="0.27314814814814814" />
+        <entry key="..\:/YandexDisk/Projects_AS/Kotlin course/Contactlensmanagement/app/src/main/res/drawable/edit_text_background.xml" value="0.28615384615384615" />
         <entry key="..\:/YandexDisk/Projects_AS/Kotlin course/Contactlensmanagement/app/src/main/res/drawable/ic_contact_lens.xml" value="0.28615384615384615" />
         <entry key="..\:/YandexDisk/Projects_AS/Kotlin course/Contactlensmanagement/app/src/main/res/drawable/ic_day_night.xml" value="0.2833333333333333" />
         <entry key="..\:/YandexDisk/Projects_AS/Kotlin course/Contactlensmanagement/app/src/main/res/drawable/ic_launcher_background.xml" value="0.28615384615384615" />
         <entry key="..\:/YandexDisk/Projects_AS/Kotlin course/Contactlensmanagement/app/src/main/res/drawable/ic_mark.xml" value="0.27314814814814814" />
         <entry key="..\:/YandexDisk/Projects_AS/Kotlin course/Contactlensmanagement/app/src/main/res/drawable/ic_other_apps.xml" value="0.2833333333333333" />
+        <entry key="..\:/YandexDisk/Projects_AS/Kotlin course/Contactlensmanagement/app/src/main/res/drawable/ic_prompt.xml" value="0.28615384615384615" />
         <entry key="..\:/YandexDisk/Projects_AS/Kotlin course/Contactlensmanagement/app/src/main/res/drawable/ic_rate_app.xml" value="0.2833333333333333" />
         <entry key="..\:/YandexDisk/Projects_AS/Kotlin course/Contactlensmanagement/app/src/main/res/drawable/ic_refresh.xml" value="0.27314814814814814" />
         <entry key="..\:/YandexDisk/Projects_AS/Kotlin course/Contactlensmanagement/app/src/main/res/drawable/ic_settings.xml" value="0.27314814814814814" />
         <entry key="..\:/YandexDisk/Projects_AS/Kotlin course/Contactlensmanagement/app/src/main/res/drawable/ic_splash.xml" value="0.2833333333333333" />
         <entry key="..\:/YandexDisk/Projects_AS/Kotlin course/Contactlensmanagement/app/src/main/res/layout/activity_main.xml" value="0.27447916666666666" />
+        <entry key="..\:/YandexDisk/Projects_AS/Kotlin course/Contactlensmanagement/app/src/main/res/layout/layout_detail_fragment.xml" value="0.27447916666666666" />
         <entry key="..\:/YandexDisk/Projects_AS/Kotlin course/Contactlensmanagement/app/src/main/res/layout/layout_dialog_delet_record.xml" value="0.27447916666666666" />
         <entry key="..\:/YandexDisk/Projects_AS/Kotlin course/Contactlensmanagement/app/src/main/res/layout/layout_dialog_start_over.xml" value="0.27447916666666666" />
         <entry key="..\:/YandexDisk/Projects_AS/Kotlin course/Contactlensmanagement/app/src/main/res/layout/layout_info.xml" value="0.264" />
         <entry key="..\:/YandexDisk/Projects_AS/Kotlin course/Contactlensmanagement/app/src/main/res/layout/layout_info_fragment.xml" value="0.27447916666666666" />
         <entry key="..\:/YandexDisk/Projects_AS/Kotlin course/Contactlensmanagement/app/src/main/res/layout/layout_main_fragment.xml" value="0.27447916666666666" />
+        <entry key="..\:/YandexDisk/Projects_AS/Kotlin course/Contactlensmanagement/app/src/main/res/layout/layout_note_list_fragment.xml" value="0.27447916666666666" />
         <entry key="..\:/YandexDisk/Projects_AS/Kotlin course/Contactlensmanagement/app/src/main/res/layout/layout_splashscreen_fragment.xml" value="0.27447916666666666" />
         <entry key="..\:/YandexDisk/Projects_AS/Kotlin course/Contactlensmanagement/app/src/main/res/layout/layout_toolbar.xml" value="0.27447916666666666" />
         <entry key="..\:/YandexDisk/Projects_AS/Kotlin course/Contactlensmanagement/app/src/main/res/layout/layout_toolbar_main.xml" value="0.27447916666666666" />

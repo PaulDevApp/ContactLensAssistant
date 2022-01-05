@@ -1,5 +1,5 @@
 <resources>
-    <string name="desc_mark">отметка</string>
+    <string name="content_description_mark">отметка</string>
     <string name="marked_days">отмеченные дни: %s</string>
     <string name="menu_restart">Сбросить</string>
     <string name="menu_note">Заметка</string>
@@ -43,4 +43,14 @@
     <string name="splash_screen">Заставка</string>
     <string name="turn_off">Выключено</string>
     <string name="turn_on">Включено</string>
+    <string name="notes_with_parameters">Заметки с параметрами лтнз</string>
+    <string name="for_astigmatism">Для астигматизма</string>
+    <string name="some_headline">какой-то текст</string>
+    <string name="left_eye">Левый глаз</string>
+    <string name="right_eye">Правый газ</string>
+    <string name="parameters">Параметры</string>
+    <string name="optical_power">Оптическая сила</string>
+    <string name="radius_of_curvature">Радиус кривизны</string>
+    <string name="cylinder_power">Сила цилиндра</string>
+    <string name="axis">Ось</string>
 </resources>

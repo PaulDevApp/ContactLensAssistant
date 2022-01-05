@@ -56,10 +56,9 @@
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab_mark"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:contentDescription="@string/desc_mark"
-            style="@style/FABStyleMain"
+            style="@style/FABStyle"
+            android:contentDescription="@string/content_description_mark"
+            android:src="@drawable/ic_mark"
             app:layout_anchor="@id/bottom_appbar" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>

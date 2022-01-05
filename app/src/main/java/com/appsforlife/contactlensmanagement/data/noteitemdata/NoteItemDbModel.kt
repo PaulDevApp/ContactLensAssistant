@@ -13,6 +13,5 @@ data class NoteItemDbModel(
     val rightOpticalPower: String,
     val rightRadiusOfCurvature: String,
     val rightDiameter: String,
-    val comment: String,
     val title: String
 )

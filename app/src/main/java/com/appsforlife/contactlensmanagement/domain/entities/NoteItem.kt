@@ -7,7 +7,6 @@ data class NoteItem(
     val rightOpticalPower: String,
     val rightRadiusOfCurvature: String,
     val rightDiameter: String,
-    val comment: String,
     val title: String,
     val id: Int = UNDEFINED_ID
 ) {

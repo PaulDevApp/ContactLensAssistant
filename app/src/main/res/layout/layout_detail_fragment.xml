@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            android:id="@+id/toolbar_note_list"
+            layout="@layout/layout_toolbar_other" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/et_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="12dp"
+            android:background="@null"
+            android:fontFamily="@font/notosans_regular"
+            android:hint="@string/some_headline"
+            android:inputType="text|textCapSentences"
+            android:maxLength="35"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar_note_list" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_mid"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_left"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/notosans_bold"
+            android:gravity="center"
+            android:text="@string/left_eye"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toStartOf="@id/guideline_mid"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/et_title" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_right"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/notosans_bold"
+            android:gravity="center"
+            android:text="@string/right_eye"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/guideline_mid"
+            app:layout_constraintTop_toBottomOf="@id/et_title" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_optical_power"
+            style="@style/TextTitleParameters"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/optical_power"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_left" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/et_optical_power_left"
+            style="@style/EditTextParameters"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/_01_50"
+            android:maxLength="5"
+            app:layout_constraintEnd_toStartOf="@id/guideline_mid"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_optical_power" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/et_optical_power_right"
+            style="@style/EditTextParameters"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/_3_75"
+            android:maxLength="5"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/guideline_mid"
+            app:layout_constraintTop_toBottomOf="@id/tv_optical_power" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_info_optical_power"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_prompt"
+            app:layout_constraintEnd_toStartOf="@id/et_optical_power_right"
+            app:layout_constraintStart_toEndOf="@id/et_optical_power_left"
+            app:layout_constraintTop_toTopOf="@id/et_optical_power_right" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_radius_of_curvature"
+            style="@style/TextTitleParameters"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/radius_of_curvature"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/et_optical_power_left" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/et_radius_of_curvature_left"
+            style="@style/EditTextParameters"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/_8_5"
+            android:maxLength="3"
+            app:layout_constraintEnd_toStartOf="@id/guideline_mid"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_radius_of_curvature" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/et_radius_of_curvature_right"
+            style="@style/EditTextParameters"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/_9_0"
+            android:maxLength="3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/guideline_mid"
+            app:layout_constraintTop_toBottomOf="@id/tv_radius_of_curvature" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_info_radius_of_curvature"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_prompt"
+            app:layout_constraintEnd_toStartOf="@id/et_optical_power_right"
+            app:layout_constraintStart_toEndOf="@id/et_optical_power_left"
+            app:layout_constraintTop_toTopOf="@id/et_radius_of_curvature_left" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_astigmatism"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="@string/for_astigmatism"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/iv_info_radius_of_curvature" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_cylinder_power"
+            style="@style/TextTitleParameters"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/cylinder_power"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_astigmatism" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/et_cylinder_power_left"
+            style="@style/EditTextParameters"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/_2_25"
+            android:maxLength="5"
+            app:layout_constraintEnd_toStartOf="@id/guideline_mid"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_cylinder_power" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/et_cylinder_power_right"
+            style="@style/EditTextParameters"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/_1_25"
+            android:maxLength="5"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/guideline_mid"
+            app:layout_constraintTop_toBottomOf="@id/tv_cylinder_power" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_axis"
+            style="@style/TextTitleParameters"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/axis"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/et_cylinder_power_left" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/et_axis_left"
+            style="@style/EditTextParameters"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/_180"
+            android:maxLength="3"
+            app:layout_constraintEnd_toStartOf="@id/guideline_mid"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_axis" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/et_axis_right"
+            style="@style/EditTextParameters"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/_180"
+            android:maxLength="3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/guideline_mid"
+            app:layout_constraintTop_toBottomOf="@id/tv_axis" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_astigmatism"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_prompt"
+            app:layout_constraintEnd_toStartOf="@id/et_optical_power_right"
+            app:layout_constraintStart_toEndOf="@id/et_optical_power_left"
+            app:layout_constraintTop_toTopOf="@id/et_cylinder_power_left" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_save"
+            style="@style/FABStyle"
+            android:layout_marginBottom="16dp"
+            android:contentDescription="@string/save"
+            android:src="@drawable/ic_save"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

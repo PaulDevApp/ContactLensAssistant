@@ -12,7 +12,6 @@ class NoteItemListMapper {
         rightOpticalPower = noteItem.rightOpticalPower,
         rightRadiusOfCurvature = noteItem.rightRadiusOfCurvature,
         rightDiameter = noteItem.rightDiameter,
-        comment = noteItem.comment,
         title = noteItem.title
     )
 
@@ -24,7 +23,6 @@ class NoteItemListMapper {
         rightOpticalPower = noteItemDbModel.rightOpticalPower,
         rightRadiusOfCurvature = noteItemDbModel.rightRadiusOfCurvature,
         rightDiameter = noteItemDbModel.rightDiameter,
-        comment = noteItemDbModel.comment,
         title = noteItemDbModel.title
     )
 
