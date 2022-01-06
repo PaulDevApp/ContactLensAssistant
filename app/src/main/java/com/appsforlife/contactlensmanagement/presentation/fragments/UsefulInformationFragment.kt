@@ -8,11 +8,8 @@ import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import com.appsforlife.contactlensmanagement.R
 import com.appsforlife.contactlensmanagement.databinding.LayoutInfoFragmentBinding
-import com.appsforlife.contactlensmanagement.databinding.LayoutToolbarOtherBinding
 
 class UsefulInformationFragment : Fragment() {
-
-    private lateinit var toolbarBinding: LayoutToolbarOtherBinding
 
     private var _binding: LayoutInfoFragmentBinding? = null
     private val binding: LayoutInfoFragmentBinding
@@ -38,13 +35,12 @@ class UsefulInformationFragment : Fragment() {
     }
 
     private fun setUpToolbar() {
-        toolbarBinding = binding.toolbarInfo
-        toolbarBinding.tvToolbarTitle.text =
+        binding.toolbarInfo.tvToolbarTitle.text =
             requireActivity().resources.getString(R.string.useful_information)
     }
 
     private fun onBackPressed() {
-        toolbarBinding.ivBack.setOnClickListener {
+        binding.toolbarInfo.ivBack.setOnClickListener {
             requireActivity().supportFragmentManager.popBackStack()
         }
     }

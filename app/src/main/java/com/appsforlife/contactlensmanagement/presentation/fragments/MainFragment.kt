@@ -14,14 +14,13 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.appsforlife.contactlensmanagement.R
 import com.appsforlife.contactlensmanagement.databinding.LayoutMainFragmentBinding
-import com.appsforlife.contactlensmanagement.databinding.LayoutToolbarMainBinding
 import com.appsforlife.contactlensmanagement.domain.entities.LensItem
 import com.appsforlife.contactlensmanagement.presentation.adapter.LensListAdapter
 import com.appsforlife.contactlensmanagement.presentation.dialogs.DialogStartOver
-import com.appsforlife.contactlensmanagement.presentation.viewmodelfactories.lensitemviewmodelfactory.LensItemViewModelFactory
 import com.appsforlife.contactlensmanagement.presentation.listeners.DialogClickListener
 import com.appsforlife.contactlensmanagement.presentation.utils.getCurrentDate
 import com.appsforlife.contactlensmanagement.presentation.utils.getTitleCurrentDate
+import com.appsforlife.contactlensmanagement.presentation.viewmodelfactories.lensitemviewmodelfactory.LensItemViewModelFactory
 import com.appsforlife.contactlensmanagement.presentation.viewmodels.lensitemviewmodel.LensItemViewModel
 import com.google.android.material.snackbar.Snackbar
 
@@ -30,7 +29,6 @@ class MainFragment : Fragment(), DialogClickListener {
 
     private lateinit var lensListAdapter: LensListAdapter
     private lateinit var dialogStartOver: DialogStartOver
-    private lateinit var toolbarBinding: LayoutToolbarMainBinding
 
     private lateinit var lensItemViewModel: LensItemViewModel
 
@@ -62,7 +60,6 @@ class MainFragment : Fragment(), DialogClickListener {
             LensItemViewModelFactory(requireContext())
         )[LensItemViewModel::class.java]
 
-        toolbarBinding = binding.layoutToolbar
         requireActivity()
 
         setUpRecyclerView()
@@ -103,7 +100,7 @@ class MainFragment : Fragment(), DialogClickListener {
             requireContext(),
             R.anim.anim_up
         )
-        toolbarBinding.tvMarkedDays.startAnimation(animation)
+        binding.toolbarMain.tvMarkedDays.startAnimation(animation)
     }
 
     private fun startFabAnimation() {
@@ -114,7 +111,7 @@ class MainFragment : Fragment(), DialogClickListener {
     }
 
     private fun setTitleCurrentDate() {
-        toolbarBinding.tvDate.text = getTitleCurrentDate()
+        binding.toolbarMain.tvDate.text = getTitleCurrentDate()
     }
 
     private fun startAnimationList() {
@@ -182,7 +179,7 @@ class MainFragment : Fragment(), DialogClickListener {
     }
 
     private fun setMarkedDays(it: Int) {
-        with(toolbarBinding) {
+        with(binding.toolbarMain) {
             when (it) {
                 in 0..14 -> {
                     tvMarkedDays.setTextColor(requireActivity().getColor(R.color.twoWeekColor))
