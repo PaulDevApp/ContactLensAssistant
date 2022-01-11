@@ -29,7 +29,7 @@ class NoteListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         setUpToolbar()
-        onBackPressed()
+
         onBackPressedCallBack()
 
         binding.fabAddNote.setOnClickListener {
@@ -40,12 +40,6 @@ class NoteListFragment : Fragment() {
     private fun setUpToolbar() {
         binding.layoutToolbarNote.tvToolbarTitle.text =
             requireActivity().resources.getString(R.string.notes_with_parameters)
-    }
-
-    private fun onBackPressed() {
-        binding.layoutToolbarNote.ivBack.setOnClickListener {
-            requireActivity().supportFragmentManager.popBackStack()
-        }
     }
 
     private fun onBackPressedCallBack() {

@@ -30,19 +30,12 @@ class UsefulInformationFragment : Fragment() {
 
         setUpToolbar()
 
-        onBackPressed()
         onBackPressedCallBack()
     }
 
     private fun setUpToolbar() {
         binding.toolbarInfo.tvToolbarTitle.text =
             requireActivity().resources.getString(R.string.useful_information)
-    }
-
-    private fun onBackPressed() {
-        binding.toolbarInfo.ivBack.setOnClickListener {
-            requireActivity().supportFragmentManager.popBackStack()
-        }
     }
 
     private fun onBackPressedCallBack() {

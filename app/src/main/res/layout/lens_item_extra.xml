@@ -15,9 +15,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/extraColor"
-        android:elevation="2dp"
-        app:cardCornerRadius="12dp"
-        app:cardUseCompatPadding="true">
+        app:cardElevation="4dp"
+        android:layout_margin="6dp"
+        app:cardCornerRadius="12dp">
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tv_day_of_mark"

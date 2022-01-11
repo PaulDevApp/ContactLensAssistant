@@ -30,19 +30,12 @@ class DetailNoteFragment : Fragment() {
 
         setUpToolbar()
 
-        onBackPressed()
         onBackPressedCallBack()
     }
 
     private fun setUpToolbar() {
         binding.toolbarNoteList.tvToolbarTitle.text =
             requireActivity().resources.getString(R.string.parameters)
-    }
-
-    private fun onBackPressed() {
-        binding.toolbarNoteList.ivBack.setOnClickListener {
-            requireActivity().supportFragmentManager.popBackStack()
-        }
     }
 
     private fun onBackPressedCallBack() {
