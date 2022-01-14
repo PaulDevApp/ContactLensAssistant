@@ -16,6 +16,7 @@
         <item name="fabSize">normal</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">wrap_content</item>
+        <item name="android:transitionName">@string/transition_name_fab</item>
         <item name="backgroundTint">?attr/colorAccent</item>
         <item name="tint">?attr/colorPrimary</item>
     </style>

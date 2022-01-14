@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
+import androidx.transition.TransitionInflater
 import com.appsforlife.contactlensmanagement.R
 import com.appsforlife.contactlensmanagement.databinding.LayoutMainFragmentBinding
 import com.appsforlife.contactlensmanagement.domain.entities.LensItem
@@ -41,6 +42,8 @@ class MainFragment : Fragment(), DialogClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
+
+        setFabTransition()
     }
 
     override fun onCreateView(
@@ -76,7 +79,7 @@ class MainFragment : Fragment(), DialogClickListener {
         }
 
         lensItemViewModel.numberOfDay.observe(viewLifecycleOwner) {
-            setMarkedDays(it)
+            setMarkedColorDays(it)
             setLottieVisibility(it)
         }
 
@@ -178,7 +181,7 @@ class MainFragment : Fragment(), DialogClickListener {
         }
     }
 
-    private fun setMarkedDays(it: Int) {
+    private fun setMarkedColorDays(it: Int) {
         with(binding.toolbarMain) {
             when (it) {
                 in 0..14 -> {
@@ -264,7 +267,15 @@ class MainFragment : Fragment(), DialogClickListener {
         requireActivity().supportFragmentManager.beginTransaction()
             .replace(R.id.fragment_container, NoteListFragment.newInstance())
             .addToBackStack(null)
+            .addSharedElement(binding.fabMark, binding.fabMark.transitionName)
             .commit()
+    }
+
+    private fun setFabTransition() {
+        sharedElementEnterTransition = TransitionInflater.from(activity)
+            .inflateTransition(R.transition.fragment_fab_transition)
+        sharedElementReturnTransition = TransitionInflater.from(activity)
+            .inflateTransition(R.transition.fragment_fab_transition)
     }
 
     companion object {

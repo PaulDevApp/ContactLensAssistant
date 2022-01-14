@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
+import androidx.transition.TransitionInflater
 import com.appsforlife.contactlensmanagement.R
 import com.appsforlife.contactlensmanagement.databinding.LayoutDetailFragmentBinding
 
@@ -14,6 +15,19 @@ class DetailNoteFragment : Fragment() {
     private var _binding: LayoutDetailFragmentBinding? = null
     private val binding: LayoutDetailFragmentBinding
         get() = _binding ?: throw RuntimeException("LayoutDetailFragmentBinding is null")
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        setFabTransition()
+    }
+
+    private fun setFabTransition() {
+        sharedElementEnterTransition = TransitionInflater.from(activity)
+            .inflateTransition(R.transition.fragment_fab_transition)
+        sharedElementReturnTransition = TransitionInflater.from(activity)
+            .inflateTransition(R.transition.fragment_fab_transition)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,

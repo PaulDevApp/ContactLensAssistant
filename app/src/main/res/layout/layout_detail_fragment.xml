@@ -23,7 +23,7 @@
             android:layout_marginEnd="12dp"
             android:background="@null"
             android:fontFamily="@font/notosans_regular"
-            android:hint="@string/some_headline"
+            android:hint="@string/any_title"
             android:inputType="text|textCapSentences"
             android:maxLength="35"
             android:maxLines="1"
