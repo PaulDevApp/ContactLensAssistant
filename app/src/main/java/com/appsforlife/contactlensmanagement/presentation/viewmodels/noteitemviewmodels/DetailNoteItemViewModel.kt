@@ -37,7 +37,6 @@ class DetailNoteItemViewModel(
         inputRightOpticalPower: String?,
         inputRightRadiusOfCurvature: String?,
         inputRightDiameter: String?,
-        inputComment: String?,
         inputTitle: String?
     ) {
         val leftOpticalPower = parseValue(value = inputLeftOpticalPower)
@@ -46,7 +45,6 @@ class DetailNoteItemViewModel(
         val rightOpticalPower = parseValue(value = inputRightOpticalPower)
         val rightRadiusOfCurvature = parseValue(value = inputRightRadiusOfCurvature)
         val rightDiameter = parseValue(value = inputRightDiameter)
-        val comment = parseValue(value = inputComment)
         val title = parseValue(value = inputTitle)
         _noteItem.value?.let {
             viewModelScope.launch {
@@ -73,7 +71,6 @@ class DetailNoteItemViewModel(
         inputRightOpticalPower: String?,
         inputRightRadiusOfCurvature: String?,
         inputRightDiameter: String?,
-        inputComment: String?,
         inputTitle: String?
     ) {
         val leftOpticalPower = parseValue(value = inputLeftOpticalPower)
@@ -82,7 +79,6 @@ class DetailNoteItemViewModel(
         val rightOpticalPower = parseValue(value = inputRightOpticalPower)
         val rightRadiusOfCurvature = parseValue(value = inputRightRadiusOfCurvature)
         val rightDiameter = parseValue(value = inputRightDiameter)
-        val comment = parseValue(value = inputComment)
         val title = parseValue(value = inputTitle)
         viewModelScope.launch {
             val noteItem = NoteItem(

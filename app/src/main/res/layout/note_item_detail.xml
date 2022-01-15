@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="6dp"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="4dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="6dp">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_item_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/notosans_regular"
+                android:maxLength="35"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="@string/any_title" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline_item_mid"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.5" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_item_left"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:fontFamily="@font/notosans_bold"
+                android:gravity="center"
+                android:text="@string/left_eye"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toStartOf="@id/guideline_item_mid"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_item_title" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_item_right"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:fontFamily="@font/notosans_bold"
+                android:gravity="center"
+                android:text="@string/right_eye"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/guideline_item_mid"
+                app:layout_constraintTop_toBottomOf="@id/tv_item_title" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_item_optical_power"
+                style="@style/TextTitleParameters"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:text="@string/optical_power"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_item_left" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_item_optical_power_left"
+                style="@style/EditTextParameters"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textSize="13sp"
+                app:layout_constraintEnd_toStartOf="@id/guideline_item_mid"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_item_optical_power"
+                tools:text="@string/_01_50" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_item_optical_power_right"
+                style="@style/EditTextParameters"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textSize="13sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/guideline_item_mid"
+                app:layout_constraintTop_toBottomOf="@id/tv_item_optical_power"
+                tools:text="@string/_3_75" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_item_radius_of_curvature"
+                style="@style/TextTitleParameters"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/radius_of_curvature"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_item_optical_power_left" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_item_radius_of_curvature_left"
+                style="@style/EditTextParameters"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textSize="13sp"
+                app:layout_constraintEnd_toStartOf="@id/guideline_item_mid"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_item_radius_of_curvature"
+                tools:text="@string/_8_5" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_item_radius_of_curvature_right"
+                style="@style/EditTextParameters"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textSize="13sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/guideline_item_mid"
+                app:layout_constraintTop_toBottomOf="@id/tv_item_radius_of_curvature"
+                tools:text="@string/_9_0" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_item_astigmatism"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="@string/for_astigmatism"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_item_radius_of_curvature_left" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_item_cylinder_power"
+                style="@style/TextTitleParameters"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/cylinder_power"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_item_astigmatism" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_item_cylinder_power_left"
+                style="@style/EditTextParameters"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textSize="13sp"
+                app:layout_constraintEnd_toStartOf="@id/guideline_item_mid"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_item_cylinder_power"
+                tools:text="@string/_2_25" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_item_cylinder_power_right"
+                style="@style/EditTextParameters"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textSize="13sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/guideline_item_mid"
+                app:layout_constraintTop_toBottomOf="@id/tv_item_cylinder_power"
+                tools:text="@string/_1_25" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_item_axis"
+                style="@style/TextTitleParameters"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/axis"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_item_cylinder_power_left" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_item_axis_left"
+                style="@style/EditTextParameters"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textSize="13sp"
+                app:layout_constraintEnd_toStartOf="@id/guideline_item_mid"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_item_axis"
+                tools:text="@string/_180" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_item_axis_right"
+                style="@style/EditTextParameters"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textSize="13sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/guideline_item_mid"
+                app:layout_constraintTop_toBottomOf="@id/tv_item_axis"
+                tools:text="@string/_180" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+</layout>
