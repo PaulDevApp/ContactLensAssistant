@@ -113,8 +113,6 @@ class DetailNoteFragment : Fragment() {
 
     companion object {
 
-        const val NAME = "DetailNoteFragment"
-
         fun newInstance(): DetailNoteFragment {
             return DetailNoteFragment()
         }

@@ -4,8 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.animation.AnimationUtils
-import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -13,12 +11,8 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.transition.TransitionInflater
 import com.appsforlife.contactlensmanagement.R
 import com.appsforlife.contactlensmanagement.databinding.LayoutNoteListFragmentBinding
-import com.appsforlife.contactlensmanagement.presentation.adapters.LensListAdapter
 import com.appsforlife.contactlensmanagement.presentation.adapters.NoteListAdapter
-import com.appsforlife.contactlensmanagement.presentation.dialogs.DialogStartOver
-import com.appsforlife.contactlensmanagement.presentation.viewmodelfactories.lensitemviewmodelfactory.LensItemViewModelFactory
 import com.appsforlife.contactlensmanagement.presentation.viewmodelfactories.noteitemviewmodelfactory.NoteItemViewModelFactory
-import com.appsforlife.contactlensmanagement.presentation.viewmodels.lensitemviewmodel.LensItemViewModel
 import com.appsforlife.contactlensmanagement.presentation.viewmodels.noteitemviewmodels.NoteItemViewModel
 
 class NoteListFragment : Fragment() {
