@@ -31,12 +31,12 @@ class DetailNoteItemViewModel(
     fun editNoteItem(
         inputLeftOpticalPower: String?,
         inputLeftRadiusOfCurvature: String?,
-        inputLeftCylinderPower: String,
-        inputLeftAxis: String,
+        inputLeftCylinderPower: String?,
+        inputLeftAxis: String?,
         inputRightOpticalPower: String?,
         inputRightRadiusOfCurvature: String?,
-        inputRightCylinderPower: String,
-        inputRightAxis: String,
+        inputRightCylinderPower: String?,
+        inputRightAxis: String?,
         inputTitle: String?
     ) {
         val leftOpticalPower = parseValue(value = inputLeftOpticalPower)

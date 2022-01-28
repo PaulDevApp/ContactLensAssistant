@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -28,17 +29,6 @@ class NoteListFragment : Fragment() {
         super.onCreate(savedInstanceState)
 
         setFabTransition()
-    }
-
-    private fun setFabTransition() {
-        sharedElementEnterTransition = activity?.let {
-            TransitionInflater.from(it)
-                .inflateTransition(R.transition.fragment_fab_transition)
-        }
-        sharedElementReturnTransition = activity?.let {
-            TransitionInflater.from(it)
-                .inflateTransition(R.transition.fragment_fab_transition)
-        }
     }
 
     override fun onCreateView(
@@ -69,8 +59,12 @@ class NoteListFragment : Fragment() {
 
         onBackPressedCallBack()
 
+        noteListAdapter.onItemClickListener = {
+            launchDetailEditNoteFragment(it.id)
+        }
+
         binding.fabAddNote.setOnClickListener {
-            launchDetailNoteFragment()
+            launchDetailAddNoteFragment()
         }
     }
 
@@ -106,12 +100,31 @@ class NoteListFragment : Fragment() {
         _binding = null
     }
 
-    private fun launchDetailNoteFragment() {
+    private fun launchDetailEditNoteFragment(noteId: Int) {
+        requireActivity().supportFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container, DetailNoteFragment.newInstanceEdit(noteId))
+            .addToBackStack(null)
+            .addSharedElement(binding.fabAddNote, binding.fabAddNote.transitionName)
+            .commit()
+    }
+
+    private fun launchDetailAddNoteFragment() {
         requireActivity().supportFragmentManager.beginTransaction()
             .replace(R.id.fragment_container, DetailNoteFragment.newInstance())
             .addToBackStack(null)
             .addSharedElement(binding.fabAddNote, binding.fabAddNote.transitionName)
             .commit()
+    }
+
+    private fun setFabTransition() {
+        sharedElementEnterTransition = activity?.let {
+            TransitionInflater.from(it)
+                .inflateTransition(R.transition.fragment_fab_transition)
+        }
+        sharedElementReturnTransition = activity?.let {
+            TransitionInflater.from(it)
+                .inflateTransition(R.transition.fragment_fab_transition)
+        }
     }
 
     companion object {
@@ -122,6 +135,7 @@ class NoteListFragment : Fragment() {
         fun newInstance(): NoteListFragment {
             return NoteListFragment()
         }
+
     }
 
 }
