@@ -282,10 +282,14 @@ class MainFragment : Fragment(), DialogClickListener {
     }
 
     private fun setFabTransition() {
-        sharedElementEnterTransition = TransitionInflater.from(activity)
-            .inflateTransition(R.transition.fragment_fab_transition)
-        sharedElementReturnTransition = TransitionInflater.from(activity)
-            .inflateTransition(R.transition.fragment_fab_transition)
+        sharedElementEnterTransition = activity?.let {
+            TransitionInflater.from(it)
+                .inflateTransition(R.transition.fragment_fab_transition)
+        }
+        sharedElementReturnTransition = activity?.let {
+            TransitionInflater.from(it)
+                .inflateTransition(R.transition.fragment_fab_transition)
+        }
     }
 
     companion object {

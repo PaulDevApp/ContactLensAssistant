@@ -28,10 +28,14 @@ class DetailNoteFragment : Fragment() {
     }
 
     private fun setFabTransition() {
-        sharedElementEnterTransition = TransitionInflater.from(activity)
-            .inflateTransition(com.appsforlife.contactlensmanagement.R.transition.fragment_fab_transition)
-        sharedElementReturnTransition = TransitionInflater.from(activity)
-            .inflateTransition(com.appsforlife.contactlensmanagement.R.transition.fragment_fab_transition)
+        sharedElementEnterTransition = activity?.let {
+            TransitionInflater.from(it)
+                .inflateTransition(com.appsforlife.contactlensmanagement.R.transition.fragment_fab_transition)
+        }
+        sharedElementReturnTransition = activity?.let {
+            TransitionInflater.from(it)
+                .inflateTransition(com.appsforlife.contactlensmanagement.R.transition.fragment_fab_transition)
+        }
     }
 
     override fun onCreateView(

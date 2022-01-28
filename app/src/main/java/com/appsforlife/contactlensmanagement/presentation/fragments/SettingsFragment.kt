@@ -25,8 +25,10 @@ class SettingsFragment : PreferenceFragmentCompat(),
             Context.MODE_PRIVATE
         )
 
-        PreferenceManager.getDefaultSharedPreferences(context)
-            .registerOnSharedPreferenceChangeListener(this)
+        context?.let {
+            PreferenceManager.getDefaultSharedPreferences(it)
+                .registerOnSharedPreferenceChangeListener(this)
+        }
     }
 
     override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences?, key: String?) {
@@ -45,20 +47,6 @@ class SettingsFragment : PreferenceFragmentCompat(),
                 }
             }
         }
-    }
-
-    override fun onPreferenceChange(preference: Preference?, newValue: Any?): Boolean {
-        if (preference is SwitchPreferenceCompat) {
-            if (preference.key == KEY_SPLASH_TOGGLE) {
-                if (preference.isChecked) {
-                    sharedPreferences?.edit()?.putBoolean(KEY_SPLASH_TOGGLE, true)?.apply()
-                } else {
-                    sharedPreferences?.edit()?.putBoolean(KEY_SPLASH_TOGGLE, false)?.apply()
-                }
-            }
-            return true
-        }
-        return true
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -92,5 +80,19 @@ class SettingsFragment : PreferenceFragmentCompat(),
         fun newInstance(): SettingsFragment {
             return SettingsFragment()
         }
+    }
+
+    override fun onPreferenceChange(preference: Preference, newValue: Any?): Boolean {
+        if (preference is SwitchPreferenceCompat) {
+            if (preference.key == KEY_SPLASH_TOGGLE) {
+                if (preference.isChecked) {
+                    sharedPreferences?.edit()?.putBoolean(KEY_SPLASH_TOGGLE, true)?.apply()
+                } else {
+                    sharedPreferences?.edit()?.putBoolean(KEY_SPLASH_TOGGLE, false)?.apply()
+                }
+            }
+            return true
+        }
+        return true
     }
 }
