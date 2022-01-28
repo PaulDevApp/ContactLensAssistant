@@ -31,11 +31,13 @@ class MainActivity : AppCompatActivity() {
                 supportFragmentManager
                     .beginTransaction()
                     .replace(R.id.fragment_container, SplashScreenFragment.newInstance())
+                    .addToBackStack(null)
                     .commit()
             } else {
                 supportFragmentManager
                     .beginTransaction()
                     .replace(R.id.fragment_container, MainFragment.newInstance())
+                    .addToBackStack(MainFragment.NAME)
                     .commit()
             }
         }

@@ -6,11 +6,16 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.transition.TransitionInflater
-import com.appsforlife.contactlensmanagement.R
 import com.appsforlife.contactlensmanagement.databinding.LayoutDetailFragmentBinding
+import com.appsforlife.contactlensmanagement.presentation.viewmodelfactories.noteitemviewmodelfactory.DetailNoteItemViewModelFactory
+import com.appsforlife.contactlensmanagement.presentation.viewmodels.noteitemviewmodels.DetailNoteItemViewModel
+
 
 class DetailNoteFragment : Fragment() {
+
+    private lateinit var detailNoteViewModel: DetailNoteItemViewModel
 
     private var _binding: LayoutDetailFragmentBinding? = null
     private val binding: LayoutDetailFragmentBinding
@@ -24,9 +29,9 @@ class DetailNoteFragment : Fragment() {
 
     private fun setFabTransition() {
         sharedElementEnterTransition = TransitionInflater.from(activity)
-            .inflateTransition(R.transition.fragment_fab_transition)
+            .inflateTransition(com.appsforlife.contactlensmanagement.R.transition.fragment_fab_transition)
         sharedElementReturnTransition = TransitionInflater.from(activity)
-            .inflateTransition(R.transition.fragment_fab_transition)
+            .inflateTransition(com.appsforlife.contactlensmanagement.R.transition.fragment_fab_transition)
     }
 
     override fun onCreateView(
@@ -42,23 +47,59 @@ class DetailNoteFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        detailNoteViewModel = ViewModelProvider(
+            this,
+            DetailNoteItemViewModelFactory(requireContext())
+        )[DetailNoteItemViewModel::class.java]
+
+        with(binding) {
+            viewModel = detailNoteViewModel
+            lifecycleOwner = viewLifecycleOwner
+
+            fabSave.setOnClickListener {
+                saveNote()
+                backPresses()
+            }
+        }
+
+
         setUpToolbar()
 
         onBackPressedCallBack()
     }
 
+    private fun saveNote() {
+        with(binding) {
+            detailNoteViewModel.addNoteItem(
+                inputLeftOpticalPower = etOpticalPowerLeft.text?.toString(),
+                inputLeftRadiusOfCurvature = etRadiusOfCurvatureLeft.text?.toString(),
+                inputLeftCylinderPower = etCylinderPowerLeft.text?.toString(),
+                inputLeftAxis = etAxisLeft.text?.toString(),
+                inputRightOpticalPower = etOpticalPowerRight.text?.toString(),
+                inputRightRadiusOfCurvature = etRadiusOfCurvatureRight.text?.toString(),
+                inputRightCylinderPower = etCylinderPowerRight.text?.toString(),
+                inputRightAxis = etAxisRight.text?.toString(),
+                inputTitle = etTitle.text?.toString()
+            )
+        }
+    }
+
     private fun setUpToolbar() {
         binding.toolbarNoteList.tvToolbarTitle.text =
-            requireActivity().resources.getString(R.string.parameters)
+            requireActivity().resources.getString(com.appsforlife.contactlensmanagement.R.string.parameters)
     }
 
     private fun onBackPressedCallBack() {
-        val callback = object : OnBackPressedCallback(true) {
-            override fun handleOnBackPressed() {
-                requireActivity().supportFragmentManager.popBackStack()
-            }
-        }
-        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner,
+            object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    backPresses()
+                }
+            })
+    }
+
+    private fun backPresses() {
+        requireActivity().supportFragmentManager.popBackStack(NoteListFragment.NAME, 0)
     }
 
     override fun onDestroyView() {
@@ -67,6 +108,8 @@ class DetailNoteFragment : Fragment() {
     }
 
     companion object {
+
+        const val NAME = "DetailNoteFragment"
 
         fun newInstance(): DetailNoteFragment {
             return DetailNoteFragment()

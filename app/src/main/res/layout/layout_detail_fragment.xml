@@ -4,6 +4,10 @@
 
     <data>
 
+        <variable
+            name="viewModel"
+            type="com.appsforlife.contactlensmanagement.presentation.viewmodels.noteitemviewmodels.DetailNoteItemViewModel" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -28,6 +32,7 @@
             android:maxLength="35"
             android:maxLines="1"
             android:singleLine="true"
+            android:text="@{viewModel.noteItem.title}"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -83,6 +88,7 @@
             android:layout_height="wrap_content"
             android:hint="@string/_01_50"
             android:maxLength="5"
+            android:text="@{viewModel.noteItem.leftOpticalPower}"
             app:layout_constraintEnd_toStartOf="@id/guideline_mid"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_optical_power" />
@@ -94,6 +100,7 @@
             android:layout_height="wrap_content"
             android:hint="@string/_3_75"
             android:maxLength="5"
+            android:text="@{viewModel.noteItem.rightOpticalPower}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/guideline_mid"
             app:layout_constraintTop_toBottomOf="@id/tv_optical_power" />
@@ -124,6 +131,7 @@
             android:layout_height="wrap_content"
             android:hint="@string/_8_5"
             android:maxLength="3"
+            android:text="@{viewModel.noteItem.leftRadiusOfCurvature}"
             app:layout_constraintEnd_toStartOf="@id/guideline_mid"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_radius_of_curvature" />
@@ -135,6 +143,7 @@
             android:layout_height="wrap_content"
             android:hint="@string/_9_0"
             android:maxLength="3"
+            android:text="@{viewModel.noteItem.rightRadiusOfCurvature}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/guideline_mid"
             app:layout_constraintTop_toBottomOf="@id/tv_radius_of_curvature" />
@@ -153,6 +162,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
+            android:textSize="14sp"
             android:text="@string/for_astigmatism"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -175,6 +185,7 @@
             android:layout_height="wrap_content"
             android:hint="@string/_2_25"
             android:maxLength="5"
+            android:text="@{viewModel.noteItem.leftCylinderPower}"
             app:layout_constraintEnd_toStartOf="@id/guideline_mid"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_cylinder_power" />
@@ -186,6 +197,7 @@
             android:layout_height="wrap_content"
             android:hint="@string/_1_25"
             android:maxLength="5"
+            android:text="@{viewModel.noteItem.rightCylinderPower}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/guideline_mid"
             app:layout_constraintTop_toBottomOf="@id/tv_cylinder_power" />
@@ -207,6 +219,7 @@
             android:layout_height="wrap_content"
             android:hint="@string/_180"
             android:maxLength="3"
+            android:text="@{viewModel.noteItem.leftAxis}"
             app:layout_constraintEnd_toStartOf="@id/guideline_mid"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_axis" />
@@ -218,6 +231,7 @@
             android:layout_height="wrap_content"
             android:hint="@string/_180"
             android:maxLength="3"
+            android:text="@{viewModel.noteItem.rightAxis}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/guideline_mid"
             app:layout_constraintTop_toBottomOf="@id/tv_axis" />

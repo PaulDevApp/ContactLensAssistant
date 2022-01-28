@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.appsforlife.contactlensmanagement.R
@@ -38,6 +39,8 @@ class SplashScreenFragment : Fragment() {
         lifecycleScope.launch {
             launchMainFragment()
         }
+
+        onBackPressedCallBack()
     }
 
     private fun startLogoAnimation() {
@@ -57,10 +60,21 @@ class SplashScreenFragment : Fragment() {
         delay(600)
         requireActivity().supportFragmentManager.beginTransaction()
             .replace(R.id.fragment_container, MainFragment.newInstance())
+            .addToBackStack(MainFragment.NAME)
             .commit()
     }
 
+    private fun onBackPressedCallBack() {
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner,
+            object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    activity?.moveTaskToBack(true)
+                }
+            })
+    }
+
     companion object {
+
         fun newInstance(): SplashScreenFragment {
             return SplashScreenFragment()
         }

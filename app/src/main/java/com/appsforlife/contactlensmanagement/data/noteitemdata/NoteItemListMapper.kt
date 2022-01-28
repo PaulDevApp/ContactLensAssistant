@@ -8,10 +8,12 @@ class NoteItemListMapper {
         id = noteItem.id,
         leftOpticalPower = noteItem.leftOpticalPower,
         leftRadiusOfCurvature = noteItem.leftRadiusOfCurvature,
-        leftDiameter = noteItem.leftDiameter,
+        leftCylinderPower = noteItem.leftCylinderPower,
+        leftAxis = noteItem.leftAxis,
         rightOpticalPower = noteItem.rightOpticalPower,
         rightRadiusOfCurvature = noteItem.rightRadiusOfCurvature,
-        rightDiameter = noteItem.rightDiameter,
+        rightCylinderPower = noteItem.rightCylinderPower,
+        rightAxis = noteItem.rightAxis,
         title = noteItem.title
     )
 
@@ -19,10 +21,12 @@ class NoteItemListMapper {
         id = noteItemDbModel.id,
         leftOpticalPower = noteItemDbModel.leftOpticalPower,
         leftRadiusOfCurvature = noteItemDbModel.leftRadiusOfCurvature,
-        leftDiameter = noteItemDbModel.leftDiameter,
+        leftCylinderPower = noteItemDbModel.leftCylinderPower,
+        leftAxis = noteItemDbModel.leftAxis,
         rightOpticalPower = noteItemDbModel.rightOpticalPower,
         rightRadiusOfCurvature = noteItemDbModel.rightRadiusOfCurvature,
-        rightDiameter = noteItemDbModel.rightDiameter,
+        rightCylinderPower = noteItemDbModel.rightCylinderPower,
+        rightAxis = noteItemDbModel.rightAxis,
         title = noteItemDbModel.title
     )
 

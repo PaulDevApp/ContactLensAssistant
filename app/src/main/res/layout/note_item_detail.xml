@@ -5,6 +5,10 @@
 
     <data>
 
+        <variable
+            name="noteItem"
+            type="com.appsforlife.contactlensmanagement.domain.entities.NoteItem" />
+
     </data>
 
     <com.google.android.material.card.MaterialCardView
@@ -26,9 +30,12 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/notosans_regular"
                 android:maxLength="35"
+                android:paddingStart="5dp"
+                android:paddingEnd="5dp"
                 android:maxLines="1"
                 android:singleLine="true"
-                android:textSize="16sp"
+                android:text="@{noteItem.title}"
+                android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -49,7 +56,7 @@
                 android:fontFamily="@font/notosans_bold"
                 android:gravity="center"
                 android:text="@string/left_eye"
-                android:textSize="14sp"
+                android:textSize="12sp"
                 app:layout_constraintEnd_toStartOf="@id/guideline_item_mid"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_item_title" />
@@ -62,7 +69,7 @@
                 android:fontFamily="@font/notosans_bold"
                 android:gravity="center"
                 android:text="@string/right_eye"
-                android:textSize="14sp"
+                android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/guideline_item_mid"
                 app:layout_constraintTop_toBottomOf="@id/tv_item_title" />
@@ -80,10 +87,10 @@
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tv_item_optical_power_left"
-                style="@style/EditTextParameters"
+                style="@style/TextViewParameters"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:textSize="13sp"
+                android:text="@{noteItem.leftOpticalPower}"
                 app:layout_constraintEnd_toStartOf="@id/guideline_item_mid"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_item_optical_power"
@@ -91,10 +98,10 @@
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tv_item_optical_power_right"
-                style="@style/EditTextParameters"
+                style="@style/TextViewParameters"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:textSize="13sp"
+                android:text="@{noteItem.rightOpticalPower}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/guideline_item_mid"
                 app:layout_constraintTop_toBottomOf="@id/tv_item_optical_power"
@@ -105,6 +112,7 @@
                 style="@style/TextTitleParameters"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
                 android:text="@string/radius_of_curvature"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -112,10 +120,10 @@
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tv_item_radius_of_curvature_left"
-                style="@style/EditTextParameters"
+                style="@style/TextViewParameters"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:textSize="13sp"
+                android:text="@{noteItem.leftRadiusOfCurvature}"
                 app:layout_constraintEnd_toStartOf="@id/guideline_item_mid"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_item_radius_of_curvature"
@@ -123,10 +131,10 @@
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tv_item_radius_of_curvature_right"
-                style="@style/EditTextParameters"
+                style="@style/TextViewParameters"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:textSize="13sp"
+                android:text="@{noteItem.rightRadiusOfCurvature}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/guideline_item_mid"
                 app:layout_constraintTop_toBottomOf="@id/tv_item_radius_of_curvature"
@@ -136,8 +144,9 @@
                 android:id="@+id/tv_item_astigmatism"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="5dp"
                 android:text="@string/for_astigmatism"
+                android:textSize="11sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_item_radius_of_curvature_left" />
@@ -147,6 +156,7 @@
                 style="@style/TextTitleParameters"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
                 android:text="@string/cylinder_power"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -154,10 +164,10 @@
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tv_item_cylinder_power_left"
-                style="@style/EditTextParameters"
+                style="@style/TextViewParameters"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:textSize="13sp"
+                android:text="@{noteItem.leftCylinderPower}"
                 app:layout_constraintEnd_toStartOf="@id/guideline_item_mid"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_item_cylinder_power"
@@ -165,10 +175,10 @@
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tv_item_cylinder_power_right"
-                style="@style/EditTextParameters"
+                style="@style/TextViewParameters"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:textSize="13sp"
+                android:text="@{noteItem.rightCylinderPower}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/guideline_item_mid"
                 app:layout_constraintTop_toBottomOf="@id/tv_item_cylinder_power"
@@ -179,6 +189,7 @@
                 style="@style/TextTitleParameters"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
                 android:text="@string/axis"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -186,10 +197,10 @@
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tv_item_axis_left"
-                style="@style/EditTextParameters"
+                style="@style/TextViewParameters"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:textSize="13sp"
+                android:text="@{noteItem.leftAxis}"
                 app:layout_constraintEnd_toStartOf="@id/guideline_item_mid"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_item_axis"
@@ -197,10 +208,10 @@
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tv_item_axis_right"
-                style="@style/EditTextParameters"
+                style="@style/TextViewParameters"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:textSize="13sp"
+                android:text="@{noteItem.rightAxis}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/guideline_item_mid"
                 app:layout_constraintTop_toBottomOf="@id/tv_item_axis"

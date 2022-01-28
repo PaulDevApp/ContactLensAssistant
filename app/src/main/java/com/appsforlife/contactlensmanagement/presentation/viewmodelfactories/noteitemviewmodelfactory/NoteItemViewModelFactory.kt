@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.appsforlife.contactlensmanagement.data.noteitemdata.NoteItemListRepositoryImpl
 import com.appsforlife.contactlensmanagement.domain.usecases.noteusecases.*
 import com.appsforlife.contactlensmanagement.presentation.viewmodels.noteitemviewmodels.DetailNoteItemViewModel
+import com.appsforlife.contactlensmanagement.presentation.viewmodels.noteitemviewmodels.NoteItemViewModel
 
 class NoteItemViewModelFactory(context: Context) : ViewModelProvider.Factory {
 
@@ -13,24 +14,19 @@ class NoteItemViewModelFactory(context: Context) : ViewModelProvider.Factory {
         NoteItemListRepositoryImpl(context)
     }
 
-    private val editNoteItemUseCase by lazy(LazyThreadSafetyMode.SYNCHRONIZED) {
-        EditNoteItemUseCase(repository)
+    private val getNoteItemListUseCase by lazy(LazyThreadSafetyMode.SYNCHRONIZED) {
+        GetNoteItemListUseCase(repository)
     }
 
-    private val addNoteItemUseCase by lazy(LazyThreadSafetyMode.SYNCHRONIZED) {
-        AddNoteItemUseCase(repository)
-    }
-
-    private val getNoteItemUseCase by lazy(LazyThreadSafetyMode.SYNCHRONIZED) {
-        GetNoteItemUseCase(repository)
+    private val deleteNoteItemUseCase by lazy(LazyThreadSafetyMode.SYNCHRONIZED) {
+        DeleteNoteItemUseCase(repository)
     }
 
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        return DetailNoteItemViewModel(
-            editNoteItemUseCase = editNoteItemUseCase,
-            addNoteItemUseCase = addNoteItemUseCase,
-            getNoteItemUseCase = getNoteItemUseCase
+        return NoteItemViewModel(
+            getNoteItemListUseCase = getNoteItemListUseCase,
+            deleteNoteItemUseCase = deleteNoteItemUseCase
         ) as T
     }
 }

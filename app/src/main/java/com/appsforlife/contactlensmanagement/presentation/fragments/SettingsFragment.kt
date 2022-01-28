@@ -3,6 +3,8 @@ package com.appsforlife.contactlensmanagement.presentation.fragments
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.view.View
+import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
@@ -59,14 +61,33 @@ class SettingsFragment : PreferenceFragmentCompat(),
         return true
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        onBackPressedCallBack()
+    }
+
+    private fun onBackPressedCallBack() {
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner,
+            object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    backPresses()
+                }
+            })
+    }
+
+    private fun backPresses() {
+        requireActivity().supportFragmentManager.popBackStack(MainFragment.NAME, 0)
+    }
+
     companion object {
 
         private const val APP_SETTINGS = "app_settings"
+        private const val KEY_THEME_MODE_AUTO = -1
+        private const val KEY_THEME_MODE_NIGHT_NO = 1
+        private const val KEY_THEME_MODE_NIGHT_YES = 2
+
         const val KEY_SPLASH_TOGGLE = "splash_toggle"
         const val KEY_THEME_MODE = "key_mode"
-        const val KEY_THEME_MODE_AUTO = -1
-        const val KEY_THEME_MODE_NIGHT_NO = 1
-        const val KEY_THEME_MODE_NIGHT_YES = 2
 
         fun newInstance(): SettingsFragment {
             return SettingsFragment()

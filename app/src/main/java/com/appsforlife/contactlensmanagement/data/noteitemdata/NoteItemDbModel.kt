@@ -2,6 +2,7 @@ package com.appsforlife.contactlensmanagement.data.noteitemdata
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.appsforlife.contactlensmanagement.domain.entities.NoteItem
 
 @Entity(tableName = "note_item_db_name")
 data class NoteItemDbModel(
@@ -9,9 +10,11 @@ data class NoteItemDbModel(
     val id: Int,
     val leftOpticalPower: String,
     val leftRadiusOfCurvature: String,
-    val leftDiameter: String,
+    val leftCylinderPower: String,
+    val leftAxis: String,
     val rightOpticalPower: String,
     val rightRadiusOfCurvature: String,
-    val rightDiameter: String,
+    val rightCylinderPower: String,
+    val rightAxis: String,
     val title: String
 )

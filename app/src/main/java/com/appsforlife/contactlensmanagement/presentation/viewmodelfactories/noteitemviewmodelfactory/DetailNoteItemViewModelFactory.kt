@@ -14,19 +14,24 @@ class DetailNoteItemViewModelFactory(context: Context) : ViewModelProvider.Facto
         NoteItemListRepositoryImpl(context)
     }
 
-    private val getNoteItemListUseCase by lazy(LazyThreadSafetyMode.SYNCHRONIZED) {
-        GetNoteItemListUseCase(repository)
+    private val editNoteItemUseCase by lazy(LazyThreadSafetyMode.SYNCHRONIZED) {
+        EditNoteItemUseCase(repository)
     }
 
-    private val deleteNoteItemUseCase by lazy(LazyThreadSafetyMode.SYNCHRONIZED) {
-        DeleteNoteItemUseCase(repository)
+    private val addNoteItemUseCase by lazy(LazyThreadSafetyMode.SYNCHRONIZED) {
+        AddNoteItemUseCase(repository)
+    }
+
+    private val getNoteItemUseCase by lazy(LazyThreadSafetyMode.SYNCHRONIZED) {
+        GetNoteItemUseCase(repository)
     }
 
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        return NoteItemViewModel(
-            getNoteItemListUseCase = getNoteItemListUseCase,
-            deleteNoteItemUseCase = deleteNoteItemUseCase
+        return DetailNoteItemViewModel(
+            editNoteItemUseCase = editNoteItemUseCase,
+            addNoteItemUseCase = addNoteItemUseCase,
+            getNoteItemUseCase = getNoteItemUseCase
         ) as T
     }
 }

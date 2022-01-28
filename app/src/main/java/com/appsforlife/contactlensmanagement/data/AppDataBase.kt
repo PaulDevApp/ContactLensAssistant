@@ -23,7 +23,7 @@ abstract class AppDataBase : RoomDatabase() {
 
         private var INSTANCE: AppDataBase? = null
         private val LOCK = Any()
-        private const val DB_NAME = "lens_item.db"
+        private const val DB_NAME = "app.db"
 
         fun getInstance(context: Context): AppDataBase {
             INSTANCE?.let {

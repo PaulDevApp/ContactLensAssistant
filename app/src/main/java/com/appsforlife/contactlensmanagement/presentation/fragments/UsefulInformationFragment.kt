@@ -38,21 +38,27 @@ class UsefulInformationFragment : Fragment() {
             requireActivity().resources.getString(R.string.useful_information)
     }
 
-    private fun onBackPressedCallBack() {
-        val callback = object : OnBackPressedCallback(true) {
-            override fun handleOnBackPressed() {
-                requireActivity().supportFragmentManager.popBackStack()
-            }
-        }
-        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
-    }
-
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
 
+    private fun onBackPressedCallBack() {
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner,
+            object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    backPresses()
+                }
+            })
+    }
+
+    private fun backPresses() {
+        requireActivity().supportFragmentManager.popBackStack(MainFragment.NAME, 0)
+    }
+
     companion object {
+
+        const val NAME = "UsefulInformationFragment"
 
         fun newInstance(): UsefulInformationFragment {
             return UsefulInformationFragment()

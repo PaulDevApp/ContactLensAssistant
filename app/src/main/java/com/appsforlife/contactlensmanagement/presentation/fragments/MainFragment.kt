@@ -7,8 +7,10 @@ import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.view.animation.BounceInterpolator
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
@@ -16,7 +18,7 @@ import androidx.transition.TransitionInflater
 import com.appsforlife.contactlensmanagement.R
 import com.appsforlife.contactlensmanagement.databinding.LayoutMainFragmentBinding
 import com.appsforlife.contactlensmanagement.domain.entities.LensItem
-import com.appsforlife.contactlensmanagement.presentation.adapter.LensListAdapter
+import com.appsforlife.contactlensmanagement.presentation.adapters.LensListAdapter
 import com.appsforlife.contactlensmanagement.presentation.dialogs.DialogStartOver
 import com.appsforlife.contactlensmanagement.presentation.listeners.DialogClickListener
 import com.appsforlife.contactlensmanagement.presentation.utils.getCurrentDate
@@ -63,8 +65,6 @@ class MainFragment : Fragment(), DialogClickListener {
             LensItemViewModelFactory(requireContext())
         )[LensItemViewModel::class.java]
 
-        requireActivity()
-
         setUpRecyclerView()
 
         setUpItemClickListener()
@@ -95,6 +95,7 @@ class MainFragment : Fragment(), DialogClickListener {
         }
 
         setTitleCurrentDate()
+        onBackPressedCallBack()
 
     }
 
@@ -259,14 +260,23 @@ class MainFragment : Fragment(), DialogClickListener {
         requireActivity().supportFragmentManager.beginTransaction()
             .setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out)
             .replace(R.id.fragment_container, UsefulInformationFragment.newInstance())
-            .addToBackStack(null)
+            .addToBackStack(UsefulInformationFragment.NAME)
             .commit()
+    }
+
+    private fun onBackPressedCallBack() {
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner,
+            object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    activity?.moveTaskToBack(true)
+                }
+            })
     }
 
     private fun launchNoteListFragment() {
         requireActivity().supportFragmentManager.beginTransaction()
             .replace(R.id.fragment_container, NoteListFragment.newInstance())
-            .addToBackStack(null)
+            .addToBackStack(NoteListFragment.NAME)
             .addSharedElement(binding.fabMark, binding.fabMark.transitionName)
             .commit()
     }
@@ -280,6 +290,7 @@ class MainFragment : Fragment(), DialogClickListener {
 
     companion object {
 
+        const val NAME = "MainFragment"
         private var isAnim = true
 
         fun newInstance(): MainFragment {

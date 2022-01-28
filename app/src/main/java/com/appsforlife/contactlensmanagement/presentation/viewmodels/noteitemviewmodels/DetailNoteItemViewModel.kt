@@ -1,5 +1,6 @@
 package com.appsforlife.contactlensmanagement.presentation.viewmodels.noteitemviewmodels
 
+import android.text.TextUtils
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -19,9 +20,6 @@ class DetailNoteItemViewModel(
     val noteItem: LiveData<NoteItem>
         get() = _noteItem
 
-    private val _shouldCloseScreen = MutableLiveData<Unit>()
-    val shouldCloseScreen: LiveData<Unit>
-        get() = _shouldCloseScreen
 
     fun getNoteItem(noteItemId: Int) {
         viewModelScope.launch {
@@ -33,33 +31,36 @@ class DetailNoteItemViewModel(
     fun editNoteItem(
         inputLeftOpticalPower: String?,
         inputLeftRadiusOfCurvature: String?,
-        inputLeftDiameter: String?,
+        inputLeftCylinderPower: String,
+        inputLeftAxis: String,
         inputRightOpticalPower: String?,
         inputRightRadiusOfCurvature: String?,
-        inputRightDiameter: String?,
+        inputRightCylinderPower: String,
+        inputRightAxis: String,
         inputTitle: String?
     ) {
         val leftOpticalPower = parseValue(value = inputLeftOpticalPower)
         val leftRadiusOfCurvature = parseValue(value = inputLeftRadiusOfCurvature)
-        val leftDiameter = parseValue(value = inputLeftDiameter)
+        val leftCylinderPower = parseValue(value = inputLeftCylinderPower)
+        val leftAxis = parseValue(value = inputLeftAxis)
         val rightOpticalPower = parseValue(value = inputRightOpticalPower)
         val rightRadiusOfCurvature = parseValue(value = inputRightRadiusOfCurvature)
-        val rightDiameter = parseValue(value = inputRightDiameter)
+        val rightCylinderPower = parseValue(value = inputRightCylinderPower)
+        val rightAxis = parseValue(value = inputRightAxis)
         val title = parseValue(value = inputTitle)
-        _noteItem.value?.let {
-            viewModelScope.launch {
-                val noteItem = it.copy(
-                    leftOpticalPower = leftOpticalPower,
-                    leftRadiusOfCurvature = leftRadiusOfCurvature,
-                    leftDiameter = leftDiameter,
-                    rightOpticalPower = rightOpticalPower,
-                    rightRadiusOfCurvature = rightRadiusOfCurvature,
-                    rightDiameter = rightDiameter,
-                    title = title
-                )
-                editNoteItemUseCase.editNoteItem(noteItem)
-                finishWork()
-            }
+        viewModelScope.launch {
+            val noteItem = NoteItem(
+                leftOpticalPower = leftOpticalPower,
+                leftRadiusOfCurvature = leftRadiusOfCurvature,
+                leftCylinderPower = leftCylinderPower,
+                leftAxis = leftAxis,
+                rightOpticalPower = rightOpticalPower,
+                rightRadiusOfCurvature = rightRadiusOfCurvature,
+                rightCylinderPower = rightCylinderPower,
+                rightAxis = rightAxis,
+                title = title
+            )
+            editNoteItemUseCase.editNoteItem(noteItem)
         }
     }
 
@@ -67,41 +68,47 @@ class DetailNoteItemViewModel(
     fun addNoteItem(
         inputLeftOpticalPower: String?,
         inputLeftRadiusOfCurvature: String?,
-        inputLeftDiameter: String?,
+        inputLeftCylinderPower: String?,
+        inputLeftAxis: String?,
         inputRightOpticalPower: String?,
         inputRightRadiusOfCurvature: String?,
-        inputRightDiameter: String?,
+        inputRightCylinderPower: String?,
+        inputRightAxis: String?,
         inputTitle: String?
     ) {
         val leftOpticalPower = parseValue(value = inputLeftOpticalPower)
         val leftRadiusOfCurvature = parseValue(value = inputLeftRadiusOfCurvature)
-        val leftDiameter = parseValue(value = inputLeftDiameter)
+        val leftCylinderPower = parseValue(value = inputLeftCylinderPower)
+        val leftAxis = parseValue(value = inputLeftAxis)
         val rightOpticalPower = parseValue(value = inputRightOpticalPower)
         val rightRadiusOfCurvature = parseValue(value = inputRightRadiusOfCurvature)
-        val rightDiameter = parseValue(value = inputRightDiameter)
+        val rightCylinderPower = parseValue(value = inputRightCylinderPower)
+        val rightAxis = parseValue(value = inputRightAxis)
         val title = parseValue(value = inputTitle)
         viewModelScope.launch {
             val noteItem = NoteItem(
                 leftOpticalPower = leftOpticalPower,
                 leftRadiusOfCurvature = leftRadiusOfCurvature,
-                leftDiameter = leftDiameter,
+                leftCylinderPower = leftCylinderPower,
+                leftAxis = leftAxis,
                 rightOpticalPower = rightOpticalPower,
                 rightRadiusOfCurvature = rightRadiusOfCurvature,
-                rightDiameter = rightDiameter,
+                rightCylinderPower = rightCylinderPower,
+                rightAxis = rightAxis,
                 title = title
             )
             addNoteItemUseCase.addNoteItem(noteItem)
-            finishWork()
         }
     }
 
     private fun parseValue(value: String?): String {
-        return value?.trim() ?: "-"
+        return if (TextUtils.isEmpty(value)) {
+            "-"
+        } else {
+            value.toString()
+        }
     }
 
-    private fun finishWork() {
-        _shouldCloseScreen.value = Unit
-    }
 }
 
 

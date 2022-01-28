@@ -1,4 +1,4 @@
-package com.appsforlife.contactlensmanagement.presentation.adapter
+package com.appsforlife.contactlensmanagement.presentation.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
