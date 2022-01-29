@@ -130,9 +130,11 @@ class MainFragment : Fragment(), DialogClickListener {
 
     private fun setUpRecyclerView() {
         lensListAdapter = LensListAdapter()
-        binding.rvLensItems.adapter = lensListAdapter
-        binding.rvLensItems.setHasFixedSize(true)
-        setUpItemTouchHelper(binding.rvLensItems)
+        with(binding) {
+            rvLensItems.adapter = lensListAdapter
+            rvLensItems.setHasFixedSize(true)
+            setUpItemTouchHelper(rvLensItems)
+        }
     }
 
     private fun setUpItemTouchHelper(rvLensItemList: RecyclerView) {

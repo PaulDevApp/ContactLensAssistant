@@ -4,9 +4,10 @@ import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.appsforlife.contactlensmanagement.data.noteitemdata.NoteItemListRepositoryImpl
-import com.appsforlife.contactlensmanagement.domain.usecases.noteusecases.*
+import com.appsforlife.contactlensmanagement.domain.usecases.noteusecases.AddNoteItemUseCase
+import com.appsforlife.contactlensmanagement.domain.usecases.noteusecases.EditNoteItemUseCase
+import com.appsforlife.contactlensmanagement.domain.usecases.noteusecases.GetNoteItemUseCase
 import com.appsforlife.contactlensmanagement.presentation.viewmodels.noteitemviewmodels.DetailNoteItemViewModel
-import com.appsforlife.contactlensmanagement.presentation.viewmodels.noteitemviewmodels.NoteItemViewModel
 
 class DetailNoteItemViewModelFactory(context: Context) : ViewModelProvider.Factory {
 
@@ -31,7 +32,7 @@ class DetailNoteItemViewModelFactory(context: Context) : ViewModelProvider.Facto
         return DetailNoteItemViewModel(
             editNoteItemUseCase = editNoteItemUseCase,
             addNoteItemUseCase = addNoteItemUseCase,
-            getNoteItemUseCase = getNoteItemUseCase
+            getNoteItemUseCase = getNoteItemUseCase,
         ) as T
     }
 }

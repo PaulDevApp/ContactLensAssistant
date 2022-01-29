@@ -37,4 +37,7 @@ class NoteItemListRepositoryImpl(
     override suspend fun editNoteItem(noteItem: NoteItem) {
         noteItemDao.addNoteItem(mapper.mapEntityToDbModel(noteItem))
     }
+
+    override fun getNotesItemCount(): LiveData<Int> = noteItemDao.getRowCount()
+
 }

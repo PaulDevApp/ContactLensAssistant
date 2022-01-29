@@ -22,11 +22,21 @@ class NoteItemViewModelFactory(context: Context) : ViewModelProvider.Factory {
         DeleteNoteItemUseCase(repository)
     }
 
+    private val getNotesItemCountUseCase by lazy(LazyThreadSafetyMode.SYNCHRONIZED) {
+        GetNotesItemCountUseCase(repository)
+    }
+
+    private val addNoteItemUseCase by lazy(LazyThreadSafetyMode.SYNCHRONIZED) {
+        AddNoteItemUseCase(repository)
+    }
+
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return NoteItemViewModel(
             getNoteItemListUseCase = getNoteItemListUseCase,
-            deleteNoteItemUseCase = deleteNoteItemUseCase
+            deleteNoteItemUseCase = deleteNoteItemUseCase,
+            getNotesItemCountUseCase = getNotesItemCountUseCase,
+            addNoteItemUseCase = addNoteItemUseCase
         ) as T
     }
 }

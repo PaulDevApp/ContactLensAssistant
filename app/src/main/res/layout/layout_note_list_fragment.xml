@@ -13,14 +13,21 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.google.android.material.appbar.AppBarLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+        <include
+            android:id="@+id/layout_toolbar_note"
+            layout="@layout/layout_toolbar_other" />
 
-            <include
-                android:id="@+id/layout_toolbar_note"
-                layout="@layout/layout_toolbar_other" />
-        </com.google.android.material.appbar.AppBarLayout>
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lottie_empty"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/note"
+            app:lottie_repeatCount="1"
+            app:lottie_speed="0.7" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_note_items"

@@ -20,4 +20,7 @@ interface NoteItemDao {
 
     @Query("SELECT * FROM note_item_db_name WHERE id=:noteItemId LIMIT 1")
     suspend fun getNoteItem(noteItemId: Int): NoteItemDbModel
+
+    @Query("SELECT COUNT(id) FROM note_item_db_name")
+    fun getRowCount(): LiveData<Int>
 }
