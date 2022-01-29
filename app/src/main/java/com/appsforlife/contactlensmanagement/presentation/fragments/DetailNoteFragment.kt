@@ -8,8 +8,10 @@ import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.transition.TransitionInflater
+import com.appsforlife.contactlensmanagement.R
 import com.appsforlife.contactlensmanagement.databinding.LayoutDetailFragmentBinding
 import com.appsforlife.contactlensmanagement.domain.entities.NoteItem
+import com.appsforlife.contactlensmanagement.presentation.dialogs.DialogInfo
 import com.appsforlife.contactlensmanagement.presentation.viewmodelfactories.noteitemviewmodelfactory.DetailNoteItemViewModelFactory
 import com.appsforlife.contactlensmanagement.presentation.viewmodels.noteitemviewmodels.DetailNoteItemViewModel
 
@@ -17,6 +19,7 @@ import com.appsforlife.contactlensmanagement.presentation.viewmodels.noteitemvie
 class DetailNoteFragment : Fragment() {
 
     private lateinit var detailNoteViewModel: DetailNoteItemViewModel
+    private lateinit var dialogInfo: DialogInfo
 
     private var _binding: LayoutDetailFragmentBinding? = null
     private val binding: LayoutDetailFragmentBinding
@@ -35,11 +38,11 @@ class DetailNoteFragment : Fragment() {
     private fun setFabTransition() {
         sharedElementEnterTransition = activity?.let {
             TransitionInflater.from(it)
-                .inflateTransition(com.appsforlife.contactlensmanagement.R.transition.fragment_fab_transition)
+                .inflateTransition(R.transition.fragment_fab_transition)
         }
         sharedElementReturnTransition = activity?.let {
             TransitionInflater.from(it)
-                .inflateTransition(com.appsforlife.contactlensmanagement.R.transition.fragment_fab_transition)
+                .inflateTransition(R.transition.fragment_fab_transition)
         }
     }
 
@@ -61,10 +64,26 @@ class DetailNoteFragment : Fragment() {
             DetailNoteItemViewModelFactory(requireContext())
         )[DetailNoteItemViewModel::class.java]
 
+        dialogInfo = DialogInfo(requireActivity())
+
         with(binding) {
             viewModel = detailNoteViewModel
             lifecycleOwner = viewLifecycleOwner
+
+            ivInfoOpticalPower.setOnClickListener {
+                dialogInfo.createDialogInfo(requireActivity().resources.getString(R.string.info_optical_power))
+            }
+
+            ivInfoRadiusOfCurvature.setOnClickListener {
+                dialogInfo.createDialogInfo(requireActivity().resources.getString(R.string.info_radius_of_curvature))
+            }
+
+            ivAstigmatism.setOnClickListener {
+                dialogInfo.createDialogInfo(requireActivity().resources.getString(R.string.info_astigmatism))
+            }
+
         }
+
 
         setUpToolbar()
 
@@ -144,7 +163,7 @@ class DetailNoteFragment : Fragment() {
 
     private fun setUpToolbar() {
         binding.toolbarNoteList.tvToolbarTitle.text =
-            requireActivity().resources.getString(com.appsforlife.contactlensmanagement.R.string.parameters)
+            requireActivity().resources.getString(R.string.parameters)
     }
 
     private fun onBackPressedCallBack() {

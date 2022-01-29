@@ -3,7 +3,7 @@
     <string name="_180" translatable="false">180</string>
     <string name="save" translatable="false">Save</string>
     <string name="_3_75" translatable="false">-3.75</string>
-    <string name="_01_50" translatable="false">01.50</string>
+    <string name="_01_50" translatable="false">+3.50</string>
     <string name="_8_5" translatable="false">8.5</string>
     <string name="_9_0" translatable="false">9.0</string>
     <string name="_2_25" translatable="false">-2.25</string>
@@ -64,5 +64,10 @@ Due to the material structure of silicone hydrogel contact lenses, less deposits
     <string name="axis">Axis</string>
     <string name="optical_power">Optical power</string>
     <string name="transition_name_fab" translatable="false">fab</string>
-
+    <string name="info_optical_power">Optical power (sphere) refers to the power of your contact lens, which is written as a number with a "+" or "-" sign and one or two digits after the decimal point (for example: +2.5 or -4.25). The optical power of a contact lens is not the same parameter as for your glasses.
+Please note that very often the optical power for your right eye (OD) may differ from the optical power for your left eye (OS), both in magnitude and in sign. If your eyes have different diopters for the right and left eyes, then you will need to purchase several packs of contact lenses.</string>
+    <string name="info_radius_of_curvature">The radius of curvature (BC) refers to the radius of the curve on the inner surface of your contact lens. This is a number with one digit after the decimal point, usually 8.3 to 9.0. In most cases, this parameter is the same for both eyes.</string>
+    <string name="info_astigmatism">If you wear bifocal or toric contact lenses to correct astigmatism, they will perform better.
+\n\tCyl (cylinder): can have values from - 0.75 to - 2.25.
+\n\tAX (Axis Angle): Can have values from 10 to 180 degrees.</string>
 </resources>
