@@ -5,9 +5,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.appsforlife.contactlensmanagement.domain.entities.LensItem
 import com.appsforlife.contactlensmanagement.domain.entities.NoteItem
-import com.appsforlife.contactlensmanagement.domain.usecases.noteusecases.*
+import com.appsforlife.contactlensmanagement.domain.usecases.noteusecases.AddNoteItemUseCase
+import com.appsforlife.contactlensmanagement.domain.usecases.noteusecases.EditNoteItemUseCase
+import com.appsforlife.contactlensmanagement.domain.usecases.noteusecases.GetNoteItemUseCase
 import kotlinx.coroutines.launch
 
 class DetailNoteItemViewModel(
@@ -48,19 +49,21 @@ class DetailNoteItemViewModel(
         val rightCylinderPower = parseValue(value = inputRightCylinderPower)
         val rightAxis = parseValue(value = inputRightAxis)
         val title = parseValue(value = inputTitle)
-        viewModelScope.launch {
-            val noteItem = NoteItem(
-                leftOpticalPower = leftOpticalPower,
-                leftRadiusOfCurvature = leftRadiusOfCurvature,
-                leftCylinderPower = leftCylinderPower,
-                leftAxis = leftAxis,
-                rightOpticalPower = rightOpticalPower,
-                rightRadiusOfCurvature = rightRadiusOfCurvature,
-                rightCylinderPower = rightCylinderPower,
-                rightAxis = rightAxis,
-                title = title
-            )
-            editNoteItemUseCase.editNoteItem(noteItem)
+        _noteItem.value?.let {
+            viewModelScope.launch {
+                val noteItem = it.copy(
+                    leftOpticalPower = leftOpticalPower,
+                    leftRadiusOfCurvature = leftRadiusOfCurvature,
+                    leftCylinderPower = leftCylinderPower,
+                    leftAxis = leftAxis,
+                    rightOpticalPower = rightOpticalPower,
+                    rightRadiusOfCurvature = rightRadiusOfCurvature,
+                    rightCylinderPower = rightCylinderPower,
+                    rightAxis = rightAxis,
+                    title = title
+                )
+                editNoteItemUseCase.editNoteItem(noteItem)
+            }
         }
     }
 
