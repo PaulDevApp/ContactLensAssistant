@@ -14,7 +14,8 @@ class NoteItemListMapper {
         rightRadiusOfCurvature = noteItem.rightRadiusOfCurvature,
         rightCylinderPower = noteItem.rightCylinderPower,
         rightAxis = noteItem.rightAxis,
-        title = noteItem.title
+        title = noteItem.title,
+        text = noteItem.text
     )
 
     fun mapDbModelToEntity(noteItemDbModel: NoteItemDbModel) = NoteItem(
@@ -27,7 +28,8 @@ class NoteItemListMapper {
         rightRadiusOfCurvature = noteItemDbModel.rightRadiusOfCurvature,
         rightCylinderPower = noteItemDbModel.rightCylinderPower,
         rightAxis = noteItemDbModel.rightAxis,
-        title = noteItemDbModel.title
+        title = noteItemDbModel.title,
+        text = noteItemDbModel.text
     )
 
     fun mapListDbModelToListEntity(list: List<NoteItemDbModel>) = list.map {

@@ -113,7 +113,8 @@ class DetailNoteFragment : Fragment() {
                     inputRightRadiusOfCurvature = etRadiusOfCurvatureRight.text?.toString(),
                     inputRightCylinderPower = etCylinderPowerRight.text?.toString(),
                     inputRightAxis = etAxisRight.text?.toString(),
-                    inputTitle = etTitle.text?.toString()
+                    inputTitle = etTitle.text?.toString(),
+                    inputText = etText.text?.toString()
                 )
                 backPresses()
             }
@@ -133,7 +134,8 @@ class DetailNoteFragment : Fragment() {
                     inputRightRadiusOfCurvature = etRadiusOfCurvatureRight.text?.toString(),
                     inputRightCylinderPower = etCylinderPowerRight.text?.toString(),
                     inputRightAxis = etAxisRight.text?.toString(),
-                    inputTitle = etTitle.text?.toString()
+                    inputTitle = etTitle.text?.toString(),
+                    inputText = etText.text?.toString()
                 )
                 backPresses()
             }

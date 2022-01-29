@@ -10,6 +10,7 @@ data class NoteItem(
     val rightCylinderPower: String,
     val rightAxis: String,
     val title: String,
+    val text: String,
     val id: Int = UNDEFINED_ID
 ) {
     companion object {

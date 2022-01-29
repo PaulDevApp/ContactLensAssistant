@@ -14,10 +14,10 @@
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/extraColor"
-        app:cardElevation="4dp"
         android:layout_margin="6dp"
-        app:cardCornerRadius="12dp">
+        android:backgroundTint="@color/extraColor"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="4dp">
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tv_day_of_mark"

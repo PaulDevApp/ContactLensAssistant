@@ -16,5 +16,6 @@ data class NoteItemDbModel(
     val rightRadiusOfCurvature: String,
     val rightCylinderPower: String,
     val rightAxis: String,
-    val title: String
+    val title: String,
+    val text: String
 )

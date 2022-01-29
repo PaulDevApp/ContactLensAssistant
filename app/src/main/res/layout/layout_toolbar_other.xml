@@ -3,17 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <com.google.android.material.appbar.MaterialToolbar
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimaryDark"
-        app:layout_scrollFlags="scroll|enterAlways">
+        android:layout_height="wrap_content">
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/tv_toolbar_title"
-            style="@style/TextToolbarTitle"
-            android:layout_gravity="center"
-            tools:text="Toolbar" />
+        <com.google.android.material.appbar.MaterialToolbar
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimaryDark"
+            app:layout_scrollFlags="scroll|enterAlways">
 
-    </com.google.android.material.appbar.MaterialToolbar>
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_toolbar_title"
+                style="@style/TextToolbarTitle"
+                android:layout_gravity="center"
+                tools:text="Toolbar" />
+
+        </com.google.android.material.appbar.MaterialToolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
 </layout>

@@ -30,9 +30,9 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/notosans_regular"
                 android:maxLength="35"
+                android:maxLines="1"
                 android:paddingStart="5dp"
                 android:paddingEnd="5dp"
-                android:maxLines="1"
                 android:singleLine="true"
                 android:text="@{noteItem.title}"
                 android:textSize="14sp"
@@ -56,7 +56,7 @@
                 android:fontFamily="@font/notosans_bold"
                 android:gravity="center"
                 android:text="@string/left_eye"
-                android:textSize="12sp"
+                android:textSize="11sp"
                 app:layout_constraintEnd_toStartOf="@id/guideline_item_mid"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_item_title" />
@@ -69,7 +69,7 @@
                 android:fontFamily="@font/notosans_bold"
                 android:gravity="center"
                 android:text="@string/right_eye"
-                android:textSize="12sp"
+                android:textSize="11sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/guideline_item_mid"
                 app:layout_constraintTop_toBottomOf="@id/tv_item_title" />

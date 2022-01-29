@@ -18,6 +18,7 @@
             android:id="@+id/toolbar_note_list"
             layout="@layout/layout_toolbar_other" />
 
+
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/et_title"
             android:layout_width="0dp"
@@ -162,8 +163,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:textSize="14sp"
             android:text="@string/for_astigmatism"
+            android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/iv_info_radius_of_curvature" />
@@ -244,6 +245,26 @@
             app:layout_constraintEnd_toStartOf="@id/et_optical_power_right"
             app:layout_constraintStart_toEndOf="@id/et_optical_power_left"
             app:layout_constraintTop_toTopOf="@id/et_cylinder_power_left" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/et_text"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="30dp"
+            android:autoLink="web|phone|email"
+            android:background="@null"
+            android:fontFamily="@font/notosans_italic"
+            android:gravity="top"
+            android:hint="@string/any_text"
+            android:text="@{viewModel.noteItem.text}"
+            android:textSize="17sp"
+            app:layout_constraintBottom_toTopOf="@id/fab_save"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/et_axis_left" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab_save"

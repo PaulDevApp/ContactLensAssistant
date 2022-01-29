@@ -54,6 +54,7 @@ Due to the material structure of silicone hydrogel contact lenses, less deposits
     <string name="content_description_add_note" tools:ignore="MissingTranslation">Add note</string>
     <string name="notes_with_parameters">Lens parameter notes</string>
     <string name="any_title">any title…</string>
+    <string name="any_text">any text…</string>
     <string name="left_eye">Left eye</string>
     <string name="right_eye">Right eye</string>
     <string name="parameters">Parameters</string>

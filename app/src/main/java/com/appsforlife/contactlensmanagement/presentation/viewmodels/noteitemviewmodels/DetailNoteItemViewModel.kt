@@ -38,7 +38,8 @@ class DetailNoteItemViewModel(
         inputRightRadiusOfCurvature: String?,
         inputRightCylinderPower: String?,
         inputRightAxis: String?,
-        inputTitle: String?
+        inputTitle: String?,
+        inputText: String?
     ) {
         val leftOpticalPower = parseValue(value = inputLeftOpticalPower)
         val leftRadiusOfCurvature = parseValue(value = inputLeftRadiusOfCurvature)
@@ -49,6 +50,7 @@ class DetailNoteItemViewModel(
         val rightCylinderPower = parseValue(value = inputRightCylinderPower)
         val rightAxis = parseValue(value = inputRightAxis)
         val title = parseValue(value = inputTitle)
+        val text = parseValue(value = inputText)
         _noteItem.value?.let {
             viewModelScope.launch {
                 val noteItem = it.copy(
@@ -60,7 +62,8 @@ class DetailNoteItemViewModel(
                     rightRadiusOfCurvature = rightRadiusOfCurvature,
                     rightCylinderPower = rightCylinderPower,
                     rightAxis = rightAxis,
-                    title = title
+                    title = title,
+                    text = text
                 )
                 editNoteItemUseCase.editNoteItem(noteItem)
             }
@@ -77,7 +80,8 @@ class DetailNoteItemViewModel(
         inputRightRadiusOfCurvature: String?,
         inputRightCylinderPower: String?,
         inputRightAxis: String?,
-        inputTitle: String?
+        inputTitle: String?,
+        inputText: String?
     ) {
         val leftOpticalPower = parseValue(value = inputLeftOpticalPower)
         val leftRadiusOfCurvature = parseValue(value = inputLeftRadiusOfCurvature)
@@ -88,6 +92,7 @@ class DetailNoteItemViewModel(
         val rightCylinderPower = parseValue(value = inputRightCylinderPower)
         val rightAxis = parseValue(value = inputRightAxis)
         val title = parseValue(value = inputTitle)
+        val text = parseValue(value = inputText)
         viewModelScope.launch {
             val noteItem = NoteItem(
                 leftOpticalPower = leftOpticalPower,
@@ -98,7 +103,8 @@ class DetailNoteItemViewModel(
                 rightRadiusOfCurvature = rightRadiusOfCurvature,
                 rightCylinderPower = rightCylinderPower,
                 rightAxis = rightAxis,
-                title = title
+                title = title,
+                text = text
             )
             addNoteItemUseCase.addNoteItem(noteItem)
         }
