@@ -1,19 +1,15 @@
 package com.appsforlife.contactlensmanagement.data.noteitemdata
 
-import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Transformations
-import com.appsforlife.contactlensmanagement.data.AppDataBase
-import com.appsforlife.contactlensmanagement.data.lensitemdata.LensItemListMapper
 import com.appsforlife.contactlensmanagement.domain.entities.NoteItem
 import com.appsforlife.contactlensmanagement.domain.repositories.NoteItemRepository
+import javax.inject.Inject
 
-class NoteItemListRepositoryImpl(
-    context: Context
+class NoteItemListRepositoryImpl @Inject constructor(
+    private val noteItemDao: NoteItemDao,
+    private val mapper: NoteItemListMapper
 ) : NoteItemRepository {
-
-    private val noteItemDao = AppDataBase.getInstance(context).noteItemDao()
-    private val mapper = NoteItemListMapper()
 
     override suspend fun addNoteItem(noteItem: NoteItem) {
         noteItemDao.addNoteItem(mapper.mapEntityToDbModel(noteItem))

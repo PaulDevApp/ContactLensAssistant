@@ -1,5 +1,6 @@
 package com.appsforlife.contactlensmanagement.presentation.fragments
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,9 +12,11 @@ import androidx.transition.TransitionInflater
 import com.appsforlife.contactlensmanagement.R
 import com.appsforlife.contactlensmanagement.databinding.LayoutDetailFragmentBinding
 import com.appsforlife.contactlensmanagement.domain.entities.NoteItem
+import com.appsforlife.contactlensmanagement.presentation.App
 import com.appsforlife.contactlensmanagement.presentation.dialogs.DialogInfo
-import com.appsforlife.contactlensmanagement.presentation.viewmodelfactories.noteitemviewmodelfactory.DetailNoteItemViewModelFactory
+import com.appsforlife.contactlensmanagement.presentation.viewmodelfactory.ViewModelFactory
 import com.appsforlife.contactlensmanagement.presentation.viewmodels.noteitemviewmodels.DetailNoteItemViewModel
+import javax.inject.Inject
 
 
 class DetailNoteFragment : Fragment() {
@@ -27,6 +30,17 @@ class DetailNoteFragment : Fragment() {
 
     private var noteId: Int = NoteItem.UNDEFINED_ID
     private var screenMode: String = MODE_UNKNOWN
+
+    @Inject
+    lateinit var viewModelFactory: ViewModelFactory
+    private val component by lazy {
+        (requireActivity().application as App).component
+    }
+
+    override fun onAttach(context: Context) {
+        component.inject(this)
+        super.onAttach(context)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -61,7 +75,7 @@ class DetailNoteFragment : Fragment() {
 
         detailNoteViewModel = ViewModelProvider(
             this,
-            DetailNoteItemViewModelFactory(requireContext())
+            viewModelFactory
         )[DetailNoteItemViewModel::class.java]
 
         dialogInfo = DialogInfo(requireActivity())

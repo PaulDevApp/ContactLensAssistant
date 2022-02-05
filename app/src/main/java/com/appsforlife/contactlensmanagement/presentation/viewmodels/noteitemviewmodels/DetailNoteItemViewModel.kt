@@ -11,8 +11,9 @@ import com.appsforlife.contactlensmanagement.domain.usecases.noteusecases.EditNo
 import com.appsforlife.contactlensmanagement.domain.usecases.noteusecases.GetNoteItemUseCase
 import com.appsforlife.contactlensmanagement.domain.usecases.noteusecases.GetNotesItemCountUseCase
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class DetailNoteItemViewModel(
+class DetailNoteItemViewModel @Inject constructor(
     private val editNoteItemUseCase: EditNoteItemUseCase,
     private val addNoteItemUseCase: AddNoteItemUseCase,
     private val getNoteItemUseCase: GetNoteItemUseCase

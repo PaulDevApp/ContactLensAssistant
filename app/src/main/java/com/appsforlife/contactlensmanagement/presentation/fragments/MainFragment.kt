@@ -1,6 +1,7 @@
 package com.appsforlife.contactlensmanagement.presentation.fragments
 
 import android.animation.ObjectAnimator
+import android.content.Context
 import android.os.Bundle
 import android.view.*
 import android.view.animation.Animation
@@ -17,14 +18,16 @@ import androidx.transition.TransitionInflater
 import com.appsforlife.contactlensmanagement.R
 import com.appsforlife.contactlensmanagement.databinding.LayoutMainFragmentBinding
 import com.appsforlife.contactlensmanagement.domain.entities.LensItem
+import com.appsforlife.contactlensmanagement.presentation.App
 import com.appsforlife.contactlensmanagement.presentation.adapters.LensListAdapter
 import com.appsforlife.contactlensmanagement.presentation.dialogs.DialogStartOver
 import com.appsforlife.contactlensmanagement.presentation.listeners.DialogClickListener
 import com.appsforlife.contactlensmanagement.presentation.utils.getCurrentDate
 import com.appsforlife.contactlensmanagement.presentation.utils.getTitleCurrentDate
-import com.appsforlife.contactlensmanagement.presentation.viewmodelfactories.lensitemviewmodelfactory.LensItemViewModelFactory
+import com.appsforlife.contactlensmanagement.presentation.viewmodelfactory.ViewModelFactory
 import com.appsforlife.contactlensmanagement.presentation.viewmodels.lensitemviewmodel.LensItemViewModel
 import com.google.android.material.snackbar.Snackbar
+import javax.inject.Inject
 
 
 class MainFragment : Fragment(), DialogClickListener {
@@ -40,11 +43,22 @@ class MainFragment : Fragment(), DialogClickListener {
     private val binding: LayoutMainFragmentBinding
         get() = _binding ?: throw RuntimeException("LayoutMainFragmentBinding is null")
 
+    @Inject
+    lateinit var viewModelFactory: ViewModelFactory
+    private val component by lazy {
+        (requireActivity().application as App).component
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
 
         setFabTransition()
+    }
+
+    override fun onAttach(context: Context) {
+        component.inject(this)
+        super.onAttach(context)
     }
 
     override fun onCreateView(
@@ -61,7 +75,7 @@ class MainFragment : Fragment(), DialogClickListener {
 
         lensItemViewModel = ViewModelProvider(
             this,
-            LensItemViewModelFactory(requireContext())
+            viewModelFactory
         )[LensItemViewModel::class.java]
 
         setUpRecyclerView()
@@ -162,9 +176,9 @@ class MainFragment : Fragment(), DialogClickListener {
 
     private fun setSnackBar(item: LensItem) {
         Snackbar.make(
-            binding.mainLayout,
+            requireActivity().findViewById(android.R.id.content),
             resources.getString(R.string.remove),
-            Snackbar.LENGTH_SHORT
+            Snackbar.LENGTH_LONG
         )
             .setAnchorView(R.id.fab_mark)
             .setActionTextColor(requireActivity().getColor(R.color.colorAccentNight))

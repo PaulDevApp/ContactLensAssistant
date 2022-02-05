@@ -1,18 +1,15 @@
 package com.appsforlife.contactlensmanagement.data.lensitemdata
 
-import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Transformations
-import com.appsforlife.contactlensmanagement.data.AppDataBase
 import com.appsforlife.contactlensmanagement.domain.entities.LensItem
 import com.appsforlife.contactlensmanagement.domain.repositories.LensItemRepository
+import javax.inject.Inject
 
-class LensItemListRepositoryImpl(
-    context: Context,
+class LensItemListRepositoryImpl @Inject constructor(
+    private val lensItemDao: LensItemDao,
+    private val mapper: LensItemListMapper
 ) : LensItemRepository {
-
-    private val lensItemDao = AppDataBase.getInstance(context).lensItemDao()
-    private val mapper = LensItemListMapper()
 
     override suspend fun addLensItem(lensItem: LensItem) {
         lensItemDao.addLensItem(mapper.mapEntityToDbModel(lensItem))

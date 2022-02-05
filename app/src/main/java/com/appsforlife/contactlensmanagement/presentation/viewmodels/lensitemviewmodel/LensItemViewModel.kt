@@ -5,8 +5,9 @@ import androidx.lifecycle.viewModelScope
 import com.appsforlife.contactlensmanagement.domain.entities.LensItem
 import com.appsforlife.contactlensmanagement.domain.usecases.itemusecases.*
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class LensItemViewModel(
+class LensItemViewModel @Inject constructor(
     getLensItemListUseCase: GetLensItemListUseCase,
     private val deleteLensItemUseCase: DeleteLensItemUseCase,
     private val addLensItemUseCase: AddLensItemUseCase,

@@ -1,8 +1,9 @@
 package com.appsforlife.contactlensmanagement.data.noteitemdata
 
 import com.appsforlife.contactlensmanagement.domain.entities.NoteItem
+import javax.inject.Inject
 
-class NoteItemListMapper {
+class NoteItemListMapper @Inject constructor() {
 
     fun mapEntityToDbModel(noteItem: NoteItem) = NoteItemDbModel(
         id = noteItem.id,

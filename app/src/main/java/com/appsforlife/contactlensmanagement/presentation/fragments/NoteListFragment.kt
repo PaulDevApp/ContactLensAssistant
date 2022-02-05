@@ -1,5 +1,6 @@
 package com.appsforlife.contactlensmanagement.presentation.fragments
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -15,10 +16,12 @@ import androidx.transition.TransitionInflater
 import com.appsforlife.contactlensmanagement.R
 import com.appsforlife.contactlensmanagement.databinding.LayoutNoteListFragmentBinding
 import com.appsforlife.contactlensmanagement.domain.entities.NoteItem
+import com.appsforlife.contactlensmanagement.presentation.App
 import com.appsforlife.contactlensmanagement.presentation.adapters.NoteListAdapter
-import com.appsforlife.contactlensmanagement.presentation.viewmodelfactories.noteitemviewmodelfactory.NoteItemViewModelFactory
+import com.appsforlife.contactlensmanagement.presentation.viewmodelfactory.ViewModelFactory
 import com.appsforlife.contactlensmanagement.presentation.viewmodels.noteitemviewmodels.NoteItemViewModel
 import com.google.android.material.snackbar.Snackbar
+import javax.inject.Inject
 
 class NoteListFragment : Fragment() {
 
@@ -28,6 +31,17 @@ class NoteListFragment : Fragment() {
     private var _binding: LayoutNoteListFragmentBinding? = null
     private val binding: LayoutNoteListFragmentBinding
         get() = _binding ?: throw RuntimeException("LayoutNoteListFragmentBinding is null")
+
+    @Inject
+    lateinit var viewModelFactory: ViewModelFactory
+    private val component by lazy {
+        (requireActivity().application as App).component
+    }
+
+    override fun onAttach(context: Context) {
+        component.inject(this)
+        super.onAttach(context)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,7 +64,7 @@ class NoteListFragment : Fragment() {
 
         noteViewModel = ViewModelProvider(
             this,
-            NoteItemViewModelFactory(requireContext())
+            viewModelFactory
         )[NoteItemViewModel::class.java]
 
         setUpRecyclerView()
@@ -112,9 +126,9 @@ class NoteListFragment : Fragment() {
 
     private fun setSnackBar(item: NoteItem) {
         Snackbar.make(
-            binding.noteListLayout,
+            requireActivity().findViewById(android.R.id.content),
             resources.getString(R.string.remove),
-            Snackbar.LENGTH_SHORT
+            Snackbar.LENGTH_LONG
         )
             .setAnchorView(R.id.fab_add_note)
             .setActionTextColor(requireActivity().getColor(R.color.colorAccentNight))
