@@ -9,7 +9,6 @@ import com.appsforlife.contactlensmanagement.domain.entities.NoteItem
 import com.appsforlife.contactlensmanagement.domain.usecases.noteusecases.AddNoteItemUseCase
 import com.appsforlife.contactlensmanagement.domain.usecases.noteusecases.EditNoteItemUseCase
 import com.appsforlife.contactlensmanagement.domain.usecases.noteusecases.GetNoteItemUseCase
-import com.appsforlife.contactlensmanagement.domain.usecases.noteusecases.GetNotesItemCountUseCase
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 

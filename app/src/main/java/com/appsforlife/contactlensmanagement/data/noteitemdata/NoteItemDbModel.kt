@@ -2,7 +2,6 @@ package com.appsforlife.contactlensmanagement.data.noteitemdata
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.appsforlife.contactlensmanagement.domain.entities.NoteItem
 
 @Entity(tableName = "note_item_db_name")
 data class NoteItemDbModel(

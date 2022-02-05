@@ -2,7 +2,6 @@ package com.appsforlife.contactlensmanagement.presentation.viewmodels.noteitemvi
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.appsforlife.contactlensmanagement.domain.entities.LensItem
 import com.appsforlife.contactlensmanagement.domain.entities.NoteItem
 import com.appsforlife.contactlensmanagement.domain.usecases.noteusecases.AddNoteItemUseCase
 import com.appsforlife.contactlensmanagement.domain.usecases.noteusecases.DeleteNoteItemUseCase

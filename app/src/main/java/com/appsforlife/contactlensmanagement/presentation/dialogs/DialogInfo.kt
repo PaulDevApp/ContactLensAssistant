@@ -7,8 +7,6 @@ import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import com.appsforlife.contactlensmanagement.R
-import com.appsforlife.contactlensmanagement.presentation.listeners.DialogClickListener
-import com.google.android.material.textview.MaterialTextView
 
 class DialogInfo(
     private val activity: Activity

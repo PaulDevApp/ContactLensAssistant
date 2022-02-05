@@ -14,7 +14,6 @@ interface LensDataModule {
 
     @ApplicationScope
     @Binds
-
     fun bindLensListRepository(impl: LensItemListRepositoryImpl): LensItemRepository
 
     companion object {
