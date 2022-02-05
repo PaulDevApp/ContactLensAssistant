@@ -9,20 +9,28 @@ _-useful information_
 ...  
 
     // coroutines
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.1"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.1"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2" 
 
     // lifecycle & view model
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0"
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.4.0"
 
     // room
-    implementation "androidx.room:room-runtime:2.3.0"
-    implementation "androidx.room:room-ktx:2.3.0"
-    kapt "androidx.room:room-compiler:2.3.0"
+    implementation "androidx.room:room-runtime:2.4.1"
+    implementation "androidx.room:room-ktx:2.4.1"
+    kapt "androidx.room:room-compiler:2.4.1"
+    
+    // dagger
+    implementation 'com.google.dagger:dagger:2.40.1'
+    kapt "com.google.dagger:dagger-compiler:2.40.1"
 
     // lottie
     implementation 'com.airbnb.android:lottie:3.7.2'
+    
+    // preference
+    implementation 'androidx.preference:preference-ktx:1.2.0'
+    
 #### Download the app
 https://play.google.com/store/apps/details?id=com.appsforlife.contactlensmanagement   
 
